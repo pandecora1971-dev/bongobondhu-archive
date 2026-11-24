@@ -1,0 +1,47 @@
+{
+  "id": 41,
+  "slug": "social-safety-net",
+  "title": "সামাজিক নিরাপত্তা কর্মসূচি",
+  "query": "Bangladesh social safety net programme",
+  "folder": "41-social-safety-net",
+  "photos": [
+    {
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/1200x630x1xxxxx1x694528/uploads/dten/2018/07/web-pm-hasina-ganabhaban-g2p-focus-bangla-edited-17-07-2018-1531826160190.jpg?watermark=media%2F2023%2F05%2F28%2F1280px-Dhaka_Tribune_Logo.svg-1-a9e61c86dded62d74300fef48fee558f.png",
+      "source": "https://www.dhakatribune.com/bangladesh/150700/pm-social-safety-net-allowances-not-meant-to",
+      "source_title": "PM: Social safety net allowances not meant to sustain whole family",
+      "caption": "Electronic Distribution of Social Safety Net Allowances",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/900x0x1/uploads/dten/2017/03/Hasina_mobile-banking_Body.jpg",
+      "source": "https://www.dhakatribune.com/bangladesh/education/15547/pm-launches-stipend-distribution-through-mobile",
+      "source_title": "PM launches stipend distribution through mobile banking",
+      "caption": "Launch of \"Mayer Hasi\" Mobile Banking Stipend Project",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.bssnews.net/bangla/assets/news_photos/2022/06/28/image-48132-1656416619.jpg",
+      "source": "https://www.bssnews.net/bangla/national/48132",
+      "source_title": "মাগুরায় অনুদানের চেক ও নতুন ভাতা বহি বিতরণ | জাতীয়",
+      "caption": "মাগুরায় চেক ও ভাতা বহি বিতরণ অনুষ্ঠান",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.newagebd.com/files/records/news/202309/212170_165.jpg",
+      "source": "https://www.newagebd.net/article/212170/tcb-smart-cards-to-be-distributed-by-jan-next-year-tipu",
+      "source_title": "New Age | TCB smart cards to be distributed by Jan next year: Tipu",
+      "caption": "TCB Subsidised Goods Distribution in Dhaka",
+      "name": "04",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

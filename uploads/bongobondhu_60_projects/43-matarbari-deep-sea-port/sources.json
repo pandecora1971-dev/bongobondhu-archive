@@ -1,0 +1,41 @@
+{
+  "id": 43,
+  "slug": "matarbari-deep-sea-port",
+  "title": "মাতারবাড়ী গভীর সমুদ্রবন্দর",
+  "query": "Matarbari deep sea port",
+  "folder": "43-matarbari-deep-sea-port",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "চ্যানেল উদ্বোধনের অনুষ্ঠান। ছবিতে বন্দর প্রাঙ্গণ নিশ্চিত করা যায়নি।",
+      "source": "https://www.bssnews.net/bangla/news-flash/114047",
+      "credit": "মাতারবাড়ী গভীর সমুদ্র বন্দর উদ্বোধন প্রধানমন্ত্রীর | শিরোনাম",
+      "url": "https://www.bssnews.net/bangla/assets/news_photos/2023/11/11/image-114047-1699717091.jpg",
+      "source_title": "মাতারবাড়ী গভীর সমুদ্র বন্দর উদ্বোধন প্রধানমন্ত্রীর | শিরোনাম",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "চ্যানেল উদ্বোধনের দোয়া। ছবিতে বন্দর প্রাঙ্গণ নিশ্চিত করা যায়নি।",
+      "source": "https://www.risingbd.com/national/news/528291",
+      "credit": "মাতারবাড়ী গভীর সমুদ্রবন্দরের চ্যানেল উদ্বোধন করলেন প্রধানমন্ত্রী",
+      "url": "https://cdn.risingbd.com/media/imgAll/2023October/Untitled-1-2311111426.jpg",
+      "source_title": "মাতারবাড়ী গভীর সমুদ্রবন্দরের চ্যানেল উদ্বোধন করলেন প্রধানমন্ত্রী",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "মাতারবাড়ী বন্দর এলাকার নির্মাণদৃশ্য",
+      "source": "https://www.tbsnews.net/features/panorama/game-changing-projects-are-line-bay-bengal-industrial-growth-belt-initiative",
+      "credit": "'The game-changing projects are in line with the Bay of Bengal Industrial Growth Belt initiative' | The Business Standard",
+      "url": "https://www.tbsnews.net/sites/default/files/styles/infograph/public/images/2021/08/25/matarbari_project.jpg",
+      "source_title": "'The game-changing projects are in line with the Bay of Bengal Industrial Growth Belt initiative' | The Business Standard",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "চ্যানেল উদ্বোধনের অনুষ্ঠান। ছবির মঞ্চটি বন্দর প্রাঙ্গণে কি না যাচাই বাকি।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

@@ -1,0 +1,51 @@
+{
+  "id": 2,
+  "slug": "dhaka-metro-line-6",
+  "title": "ঢাকা মেট্রোরেল এমআরটি লাইন-৬",
+  "query": "Dhaka metro MRT Line 6",
+  "folder": "02-dhaka-metro-line-6",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "উদ্বোধনী ট্রেনের পাশে সবুজ পতাকা হাতে শেখ হাসিনা",
+      "source": "https://indianexpress.com/article/world/bangladesh-metro-service-dhaka-japan-funded-8349380/",
+      "credit": "Bangladesh launches first-ever Japan-funded metro service in Dhaka | World News - The Indian Express",
+      "url": "https://images.indianexpress.com/2022/12/Bangladesh_Metro_Rail_1200.jpg",
+      "source_title": "Bangladesh launches first-ever Japan-funded metro service in Dhaka | World News - The Indian Express",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "উত্তরা থেকে আগারগাঁওয়ের প্রথম যাত্রায় শেখ হাসিনা",
+      "source": "https://bdnews24.com/metro-rail/hbo2udt8s2",
+      "credit": "‘Another feather in Bangladesh’s cap’: Metro rail completes maiden trip with Hasina on board",
+      "url": "https://cdn.bdnews24.com/bdnews24/media/bdnews24-english/2022-12/6ee1b6ac-8af1-401d-b83f-42aa640c9913/hasina_metro_ride.jpg",
+      "source_title": "‘Another feather in Bangladesh’s cap’: Metro rail completes maiden trip with Hasina on board",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "উত্তরা দক্ষিণ স্টেশনের ওপর থেকে দৃশ্য",
+      "source": "https://www.thedailystar.net/news/bangladesh/transport/news/birds-eye-view-all-metro-rail-stations-3459691",
+      "credit": "Bird's-eye view of all metro rail stations | The Daily Star",
+      "url": "https://tds-images.thedailystar.net/sites/default/files/styles/very_big_201/public/images/2023/11/02/uttara_south_01.jpg",
+      "source_title": "Bird's-eye view of all metro rail stations | The Daily Star",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "এলিভেটেড লাইনে মেট্রোট্রেন",
+      "source": "https://www.kuhudak.com/dhaka-metrorail-travel/",
+      "credit": "ঢাকা মেট্রোরেল ভ্রমণ - কুহুডাক",
+      "url": "https://www.kuhudak.com/wp-content/uploads/Dhaka-Metrorail-Travel-Kuhudak-scaled.jpg",
+      "source_title": "ঢাকা মেট্রোরেল ভ্রমণ - কুহুডাক",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

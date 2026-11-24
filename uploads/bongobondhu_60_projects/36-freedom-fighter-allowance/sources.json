@@ -1,0 +1,38 @@
+{
+  "id": 36,
+  "slug": "freedom-fighter-allowance",
+  "title": "মুক্তিযোদ্ধা সম্মানী/ভাতা",
+  "query": "Bangladesh freedom fighters honorarium allowance",
+  "folder": "36-freedom-fighter-allowance",
+  "photos": [
+    {
+      "url": "https://cdn.rtvonline.com/media/images/2018/08/19/image-49471-1534698170.jpg",
+      "source": "https://rtvonline.com/bangladesh/49471",
+      "source_title": "খেতাবপ্রাপ্ত মুক্তিযোদ্ধাদের আর্থিক সহায়তা দিলেন প্রধানমন্ত্রী",
+      "caption": "Financial Aid for Freedom Fighters",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/900x0x1/uploads/dten/2021/02/bd-pm-open-freedom-fighters-g2p-government-allowances-4-1613386384352.jpg",
+      "source": "https://www.dhakatribune.com/amp/bangladesh/238634/freedom-fighter-allowance-to-be-raised-to-20k",
+      "source_title": "Freedom fighter allowance to be raised to 20K",
+      "caption": "Freedom Fighter Allowance Hike Ceremony",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.observerbd.com/2022/10/18/observerbd.com_1666102160.jpg",
+      "source": "https://www.observerbd.com/news/388826",
+      "source_title": "Freedom fighters get smart ID cards, certificates in Bhola",
+      "caption": "Freedom Fighters Honored with Smart ID Cards and Certificates",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

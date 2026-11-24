@@ -1,0 +1,38 @@
+{
+  "id": 15,
+  "slug": "coxs-bazar-airport-expansion",
+  "title": "কক্সবাজার বিমানবন্দরের সম্প্রসারণ",
+  "query": "Coxs Bazar airport expansion",
+  "folder": "15-coxs-bazar-airport-expansion",
+  "photos": [
+    {
+      "url": "https://www.bssnews.net/assets/news_photos/2021/08/29/image-14102-1630228179.jpg",
+      "source": "https://www.bssnews.net/news/14102",
+      "source_title": "PM opens Cox’s Bazar airport runway expansion work | News",
+      "caption": "Virtual Inauguration of Cox’s Bazar Runway Expansion",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.thedailystar.net/sites/default/files/styles/big_1/public/images/2021/08/29/cosx-bazar-airport.jpg",
+      "source": "https://www.thedailystar.net/news/bangladesh/news/coxs-bazar-runway-expansion-pm-kick-breaking-ground-today-2163291",
+      "source_title": "Cox’s Bazar Runway Expansion: Hasina to break ground today | The Daily Star",
+      "caption": "Cox’s Bazar Runway Extension Over the Bay of Bengal",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.lightcastlebd.com/wp-content/uploads/2021/12/coxs-bazar-airport-7.jpg",
+      "source": "https://www.lightcastlebd.com/insights/2021/12/coxs-bazar-airport-taking-off-towards-a-new-horizon/",
+      "source_title": "Cox’s Bazar Airport: Taking Off Towards A New Horizon - LightCastle Partners",
+      "caption": "Cox’s Bazar Airport Aerial View",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

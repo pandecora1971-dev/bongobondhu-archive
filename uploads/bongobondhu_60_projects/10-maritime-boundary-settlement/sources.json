@@ -1,0 +1,38 @@
+{
+  "id": 10,
+  "slug": "maritime-boundary-settlement",
+  "title": "সমুদ্রসীমা বিরোধ নিষ্পত্তি",
+  "query": "Bangladesh maritime boundary settlement Myanmar India",
+  "folder": "10-maritime-boundary-settlement",
+  "photos": [
+    {
+      "url": "https://cdn.bdnews24.com/bdnews24/media/bdnews24-english/2024-02/393620f0-2359-412c-8fc6-18c6b22dd44c/sheikh_hasina_220224_01.jpg",
+      "source": "https://bdnews24.com/economy/q8z8ayq4t9",
+      "source_title": "Hasina calls for global investment to unlock Bangladesh's offshore energy resources",
+      "caption": "Golden Jubilee of the Territorial Waters and Maritime Zones Act, 1974",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://i0.wp.com/amti.csis.org/wp-content/uploads/2015/10/territory_myanmar_bangladesh.jpg?fit=1018%2C1024&ssl=1",
+      "source": "https://amti.csis.org/territory_myanmar_bangladesh/",
+      "source_title": "Bangladesh-Myanmar Maritime Dispute | AMTI Maps",
+      "caption": "Bangladesh-Myanmar Maritime Boundary Dispute",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://media.prothomalo.com/prothomalo-english/import/media/2014/07/08/53bbbbca09f3c-maritime-map.jpg?auto=format%2Ccompress&w=640",
+      "source": "https://en.prothomalo.com/bangladesh/Country-finally-gets-19-467sq-km-in-Bay",
+      "source_title": "Country finally gets 19,467sq km in Bay | Prothom Alo",
+      "caption": "Bay of Bengal Maritime Boundary Delimitation",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "আইনি নিষ্পত্তি ও নীতিগত উদ্যোগ। মানচিত্র ও সামুদ্রিক বিষয়ক অনুষ্ঠান রয়েছে।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

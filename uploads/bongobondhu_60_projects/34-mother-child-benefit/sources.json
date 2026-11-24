@@ -1,0 +1,38 @@
+{
+  "id": 34,
+  "slug": "mother-child-benefit",
+  "title": "মাতৃত্বকালীন/মা ও শিশু সহায়তা",
+  "query": "Bangladesh maternity mother child benefit allowance",
+  "folder": "34-mother-child-benefit",
+  "photos": [
+    {
+      "url": "https://www.worldbank.org/content/dam/photos/780x439/2021/nov/Jawtno.JPG",
+      "source": "https://www.worldbank.org/en/news/feature/2021/11/09/early-years-programs-sowing-the-seeds-for-a-brighter-future",
+      "source_title": "Early Years Programs in Bangladesh",
+      "caption": "Empowering Mothers Through Jawtno Cash Transfers",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-tebariaup-natore/2024/12/9f327f2d31ac45899ae8107d9a086960.jpg",
+      "source": "https://tebariaup.natore.gov.bd/",
+      "source_title": "হোম | ০২ নং তেবাড়িয়া ইউনিয়ন",
+      "caption": "Maternity Allowance Distribution Program",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://files.quantummethod.org.bd/media/image/news/matri_mongol_activities_at_quantumom__s_shafian_on_05april2019_20190408_4.jpg",
+      "source": "https://quantummethod.org.bd/en/detail/news/48a3d3f6-5a04-11e9-8ae5-4b4fa35746f5",
+      "source_title": "Quantum Method | The Science of Living",
+      "caption": "Maternal and Child Welfare Gathering",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "উপকারভোগী ও কর্মসূচির ছবি। শেখ হাসিনার এই কর্মসূচির নির্দিষ্ট ছবি বাকি। World Bank-এর Jawtno/যত্ন কর্মসূচির ছবি মা-শিশু সহায়তার বৃহত্তর প্রসঙ্গে রয়েছে। এই প্রকল্পের জন্য শেখ হাসিনার উপযুক্ত সফর বা উদ্বোধনের ছবি এখনও নিশ্চিত করা যায়নি।",
+  "hasina_requirement": "pending"
+}

@@ -1,0 +1,503 @@
+// বঙ্গবন্ধু ও বাংলাদেশ — data model
+// Bangla/English labels for every enum live in src/lib/labels.ts, never in enum names.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled connection (Supabase: port 6543, ?pgbouncer=true)
+  directUrl = env("DIRECT_URL") // direct connection for migrations (Supabase: port 5432)
+}
+
+// ───────────────────────────── enums ─────────────────────────────
+
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+  ARCHIVED
+}
+
+enum Subject {
+  BB // বঙ্গবন্ধু
+  SH // শেখ হাসিনা
+}
+
+enum ContributionType {
+  EVENT
+  QUOTE
+  PHOTO
+  VIDEO
+  DOCUMENT
+  LINK
+  MEMOIR
+}
+
+enum Attribution {
+  NAME
+  ALIAS
+  ANON
+}
+
+/// What the complaint submitter sees on /report/status
+enum ComplaintProgress {
+  RECEIVED
+  UNDER_REVIEW
+  NEED_INFO
+  VERIFIED
+  CLOSED
+}
+
+enum CrimeCategory {
+  JULY_MILITANT
+  MOB
+  LOOTING
+  ARSON
+  JOY_BANGLA_ASSAULT
+  ADMIN_INVOLVED
+  JAIL_KILLING_TORTURE
+  BAIL_OBSTRUCTION
+  EDU_INSTITUTION_MOB
+  MURDER_ABDUCTION
+  ATTEMPTED_MURDER
+  KILLING_TORTURE
+  FALSE_CASE
+  THREAT_EXTORTION
+  LAND_GRAB
+  CHILD_ABUSE
+  OTHER
+}
+
+enum Harm {
+  DEATH
+  INJURY
+  PROPERTY
+  DISPLACED
+  LIVELIHOOD
+  TRAUMA
+}
+
+enum VictimType {
+  SELF
+  FAMILY
+  OTHER_PERSON
+  MULTIPLE
+}
+
+enum HowKnown {
+  SAW
+  MEDIA
+  VICTIM_TOLD
+  HEARD
+}
+
+enum TriState {
+  YES
+  NO
+  UNKNOWN
+  REFUSED
+}
+
+enum IdMode {
+  ANON
+  CONTACT
+}
+
+enum Organization {
+  AWAMI_LEAGUE
+  JUBO_LEAGUE
+  CHHATRA_LEAGUE
+  SWECHCHHASEBAK_LEAGUE
+  KRISHAK_LEAGUE
+  SRAMIK_LEAGUE
+  MOHILA_AWAMI_LEAGUE
+  JUBO_MOHILA_LEAGUE
+  TANTI_LEAGUE
+  MATSYAJIBI_LEAGUE
+  AINJIBI_PARISHAD
+  BANGABANDHU_PARISHAD
+  PROBASHI
+  OTHER
+}
+
+enum ActivityType {
+  MEETING
+  PROCESSION
+  HUMAN_CHAIN
+  PROTEST
+  RELIEF
+  PRAYER
+  OUTREACH
+  ONLINE_CAMPAIGN
+  LEGAL_AID
+  SUPPORT_DETAINED
+  OTHER
+}
+
+enum CommitteeLevel {
+  CENTRAL
+  METRO
+  DISTRICT
+  UPAZILA
+  MUNICIPALITY
+  UNION
+  WARD
+  CAMPUS
+  ABROAD
+}
+
+enum Division {
+  DHAKA
+  CHATTOGRAM
+  RAJSHAHI
+  KHULNA
+  BARISHAL
+  SYLHET
+  RANGPUR
+  MYMENSINGH
+  ABROAD
+}
+
+enum ProjectStatus {
+  D // চালু / সম্পন্ন
+  P // আংশিক
+  O // চলমান
+  L // নীতি / পরিকল্পনা
+  A // নথিভুক্তির বিষয়
+}
+
+enum OwnerType {
+  CONTRIBUTION
+  COMPLAINT
+  ACCUSED
+  POST
+  PROJECT
+  MILESTONE
+  FILM
+  CHAPTER
+  SITE
+}
+
+enum MediaKind {
+  IMAGE
+  VIDEO
+  AUDIO
+  PDF
+}
+
+enum MediaState {
+  PENDING // presigned, waiting for upload / finalise
+  READY
+  FAILED
+}
+
+/// SUPER_ADMIN: no limits. MODERATOR: only what `permissions` grants, never user management.
+enum AdminRole {
+  SUPER_ADMIN
+  MODERATOR
+}
+
+/// What a moderator may do. Super admins implicitly have all of these.
+enum Permission {
+  CONTRIBUTIONS // BB / SH contribution queue
+  POSTS // দুঃসময়ের গল্প queue
+  COMPLAINTS // complaint queue (without contact details)
+  COMPLAINT_PII // see decrypted contact / victim name on complaints
+  CONTENT // edit homepage content, projects, films, history, site images
+  EXPORT // CSV export (never with contact details — that is super admin only)
+}
+
+// ───────────────────────────── public submissions ─────────────────────────────
+
+model Contribution {
+  id          String             @id @default(cuid())
+  ref         String             @unique // BB-2026-XXXXX
+  subject     Subject
+  types       ContributionType[]
+  year        Int
+  date        String?            @db.VarChar(60)
+  place       String?            @db.VarChar(200)
+  title       String             @db.VarChar(300)
+  description String             @db.Text
+  sourceUrls  String[]
+  videoLink   String?            @db.VarChar(1000)
+  attribution Attribution        @default(ANON)
+  name        String?            @db.VarChar(120)
+  /// AES-256-GCM encrypted (src/lib/crypto.ts). Never published.
+  contactEnc  String?
+  status      Status             @default(PENDING)
+  reviewNote  String?            @db.Text
+  reviewedAt  DateTime?
+  reviewedBy  String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@index([status, createdAt])
+  @@index([subject, status])
+}
+
+model Complaint {
+  id           String            @id @default(cuid())
+  code         String            @unique // XXXX-XXXX
+  /// scrypt hash of the one-time secret key. The secret itself is never stored.
+  secretHash   String
+  crimes       CrimeCategory[]
+  harms        Harm[]
+  victimType   VictimType?
+  victimCount  Int?
+  /// encrypted
+  victimNameEnc String?
+  incidentDate DateTime?         @db.Date
+  division     Division?
+  district     String?           @db.VarChar(80)
+  thana        String?           @db.VarChar(120)
+  description  String            @db.Text
+  links        String[]
+  witness      TriState?
+  caseFiled    TriState?
+  idMode       IdMode            @default(ANON)
+  /// encrypted
+  contactEnc   String?
+  status       Status            @default(PENDING)
+  progress     ComplaintProgress @default(RECEIVED)
+  internalNote String?           @db.Text
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  accused      AccusedPerson[]
+  updates      ComplaintUpdate[]
+
+  @@index([status, createdAt])
+  @@index([progress])
+}
+
+model AccusedPerson {
+  id          String    @id @default(cuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  order       Int       @default(0)
+  name        String?   @db.VarChar(200)
+  role        String?   @db.VarChar(200)
+  org         String?   @db.VarChar(200)
+  description String?   @db.Text
+  how         HowKnown?
+  facebookUrl String?   @db.VarChar(1000)
+  photoUrl    String?   @db.VarChar(1000)
+
+  @@index([complaintId])
+}
+
+/// A message on a complaint's timeline. `public` ones are shown on /report/status.
+model ComplaintUpdate {
+  id          String             @id @default(cuid())
+  complaintId String
+  complaint   Complaint          @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  fromPublic  Boolean            @default(false) // follow-up added by the submitter
+  public      Boolean            @default(true)
+  progress    ComplaintProgress?
+  message     String             @db.Text
+  adminId     String?
+  createdAt   DateTime           @default(now())
+
+  @@index([complaintId, createdAt])
+}
+
+model ActivityPost {
+  id           String          @id @default(cuid())
+  org          Organization
+  activityType ActivityType
+  level        CommitteeLevel?
+  date         DateTime?       @db.Date
+  division     Division?
+  district     String          @db.VarChar(80)
+  thana        String          @db.VarChar(120)
+  place        String?         @db.VarChar(200)
+  participants Int?
+  title        String          @db.VarChar(300)
+  description  String?         @db.Text
+  links        String[]
+  name         String?         @db.VarChar(120)
+  role         String?         @db.VarChar(120)
+  anonymous    Boolean         @default(true)
+  status       Status          @default(PENDING)
+  reviewNote   String?         @db.Text
+  publishedAt  DateTime?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([status, publishedAt])
+  @@index([status, org])
+  @@index([status, division, district])
+}
+
+// ───────────────────────────── media ─────────────────────────────
+
+model MediaAsset {
+  id          String     @id @default(cuid())
+  state       MediaState @default(PENDING)
+  kind        MediaKind  @default(IMAGE)
+  /// object key in storage (processed file). Null for seed images still on an external URL.
+  key         String?
+  thumbKey    String?
+  /// original remote URL (seed data); used until the image is imported into our storage
+  externalUrl String?    @db.VarChar(2000)
+  mime        String?    @db.VarChar(100)
+  size        Int?
+  width       Int?
+  height      Int?
+  originalName String?   @db.VarChar(255)
+  ownerType   OwnerType?
+  ownerId     String?
+  /// for SITE images: hero, dom, s0..s5 etc.
+  slot        String?    @db.VarChar(40)
+  sort        Int        @default(0)
+  alt         String?    @db.VarChar(500)
+  caption     String?    @db.VarChar(500)
+  credit      String?    @db.VarChar(500)
+  license     String?    @db.VarChar(200)
+  sourceUrl   String?    @db.VarChar(2000)
+  /// sha256 of the per-upload token handed to the browser; proves the submitter owns the upload
+  uploadTokenHash String?
+  hidden      Boolean    @default(false) // redacted by an admin
+  createdAt   DateTime   @default(now())
+
+  @@index([ownerType, ownerId, sort])
+  @@index([slot, sort])
+  @@index([state, createdAt])
+}
+
+// ───────────────────────────── editable site content ─────────────────────────────
+
+/// The 60-project index
+model Project {
+  id      String  @id @default(cuid())
+  order   Int     @unique
+  titleBn String
+  titleEn String
+  sector  String?
+  place   String?
+  year    String?
+  cost    String?
+  noteBn  String? @db.Text
+  noteEn  String? @db.Text
+}
+
+/// The development roadmap ("road") + atlas pins
+model Milestone {
+  id        String        @id @default(cuid())
+  order     Int           @unique // index used by atlas + films (prototype D.projects order)
+  roadOrder Int? // position on the road (null = not shown on road)
+  roadYearBn String?
+  status    ProjectStatus
+  titleBn   String
+  titleEn   String
+  placeBn   String
+  placeEn   String
+  whenBn    String
+  whenEn    String
+  descBn    String        @db.Text
+  descEn    String        @db.Text
+  lng       Float?
+  lat       Float?
+}
+
+model Film {
+  id        String  @id @default(cuid())
+  order     Int     @unique
+  titleBn   String
+  titleEn   String
+  subBn     String
+  subEn     String
+  descBn    String  @db.Text
+  descEn    String  @db.Text
+  color     String  @default("amber")
+  youtubeId String?
+  videoUrl  String? @db.VarChar(2000)
+  /// use images of this Project order (60-index) when the film has none of its own
+  projectOrder Int?
+  published Boolean @default(true)
+}
+
+model HistoryChapter {
+  id      String          @id @default(cuid())
+  order   Int             @unique
+  yearBn  String
+  yearEn  String
+  titleBn String
+  titleEn String
+  descBn  String          @db.Text
+  descEn  String          @db.Text
+  events  TimelineEvent[]
+}
+
+model TimelineEvent {
+  id        String         @id @default(cuid())
+  chapterId String
+  chapter   HistoryChapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  order     Int
+  dateBn    String
+  dateEn    String
+  textBn    String         @db.Text
+  textEn    String         @db.Text
+
+  @@index([chapterId, order])
+}
+
+/// Misc. structured copy (hero captions, domains, index, terms, key years, 1975 list, 2024 timeline …).
+/// Each key has a zod schema in src/lib/content.ts.
+model ContentBlock {
+  key       String   @id
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
+// ───────────────────────────── admin ─────────────────────────────
+
+model AdminUser {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  name           String
+  passwordHash   String
+  role           AdminRole    @default(MODERATOR)
+  permissions    Permission[]
+  active         Boolean      @default(true)
+  /// bumped on password / role / permission change or "log out everywhere" → old sessions die
+  sessionVersion Int          @default(1)
+  lastLoginAt    DateTime?
+  createdById    String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  audit          AuditLog[]
+}
+
+/// Append-only log book. The actor's name / email / role are copied in, so the record survives
+/// even if that admin account is later deleted.
+model AuditLog {
+  id         String     @id @default(cuid())
+  adminId    String?
+  admin      AdminUser? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+  actorName  String?    @db.VarChar(120)
+  actorEmail String?    @db.VarChar(200)
+  actorRole  String?    @db.VarChar(20)
+  action     String     @db.VarChar(60)
+  entityType String     @db.VarChar(40)
+  entityId   String?
+  detail     Json?
+  createdAt  DateTime   @default(now())
+
+  @@index([createdAt])
+  @@index([adminId, createdAt])
+  @@index([entityType, entityId])
+}
+
+// ───────────────────────────── infra ─────────────────────────────
+
+/// Fixed-window rate limiting. `key` = sha256(salt + route + ip); the IP itself is never stored.
+model RateLimit {
+  key     String   @id
+  count   Int
+  resetAt DateTime
+
+  @@index([resetAt])
+}

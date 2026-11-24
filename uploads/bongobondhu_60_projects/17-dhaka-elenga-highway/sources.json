@@ -1,0 +1,29 @@
+{
+  "id": 17,
+  "slug": "dhaka-elenga-highway",
+  "title": "ঢাকা–এলেঙ্গা মহাসড়ক উন্নয়ন",
+  "query": "Dhaka Elenga highway four lane",
+  "folder": "17-dhaka-elenga-highway",
+  "photos": [
+    {
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/1200x630x1xxxxx1x694528/uploads/dten/2018/08/web-pm-ganabhaban-inauguration-of-23-bridges-focus-bangla-edited-14-08-2018-1534271678642.jpg?watermark=media%2F2023%2F05%2F28%2F1280px-Dhaka_Tribune_Logo.svg-1-a9e61c86dded62d74300fef48fee558f.png",
+      "source": "https://www.dhakatribune.com/bangladesh/development/153126/pm-inaugurates-23-bridges-in-dhaka-tangail-highway",
+      "source_title": "PM inaugurates 23 bridges in Dhaka-Tangail highway",
+      "caption": "Inauguration of 23 Bridges via Videoconference",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.thedailystar.net/sites/default/files/styles/social_share/public/images/2022/04/08/joydebpur-elenga-highway.jpg",
+      "source": "https://www.thedailystar.net/news/bangladesh/transport/news/highway-management-set-improve-3000696",
+      "source_title": "RHD to introduce country’s 1st road operation unit: Highway management set to improve | The Daily Star",
+      "caption": "Joydebpur–Elenga Highway Expansion",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

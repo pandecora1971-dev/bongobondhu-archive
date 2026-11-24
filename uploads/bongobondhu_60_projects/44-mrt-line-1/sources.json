@@ -1,0 +1,38 @@
+{
+  "id": 44,
+  "slug": "mrt-line-1",
+  "title": "এমআরটি লাইন-১",
+  "query": "Dhaka MRT Line 1 underground metro",
+  "folder": "44-mrt-line-1",
+  "photos": [
+    {
+      "url": "https://today.thefinancialexpress.com.bd/uploads/1675356795.jpg",
+      "source": "https://today.thefinancialexpress.com.bd/first-page/another-milestone-1675356795",
+      "source_title": "Finance News: Latest Financial News, Finance News today in Bangladesh",
+      "caption": "Inauguration of MRT Line‑1 Construction",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/MRT_Line_1_Route_Map_%28en%29.svg/1280px-MRT_Line_1_Route_Map_%28en%29.svg.png",
+      "source": "https://commons.wikimedia.org/wiki/Category%3AMRT_Line_1",
+      "source_title": "Category:MRT Line 1 - Wikimedia Commons",
+      "caption": "Dhaka MRT Line 1 Route Map",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.researchgate.net/profile/Arafat-Chowdhury-4/publication/388979318/figure/fig1/AS%3A11431281310113592%401739684669251/The-route-alignment-and-stations-layout-of-MRT-Line-1-DMTCL-2021.png",
+      "source": "https://www.researchgate.net/figure/The-route-alignment-and-stations-layout-of-MRT-Line-1-DMTCL-2021_fig1_388979318",
+      "source_title": "The route alignment and stations layout of MRT Line-1 (DMTCL, 2021) | Download Scientific Diagram",
+      "caption": "Dhaka Metro Rail Line 1 Route Alignment and Stations Layout",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

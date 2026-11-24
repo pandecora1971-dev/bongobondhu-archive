@@ -1,0 +1,38 @@
+{
+  "id": 29,
+  "slug": "highway-four-lanes",
+  "title": "মহাসড়ক চার লেনে উন্নীতকরণ",
+  "query": "Bangladesh four lane highway expansion",
+  "folder": "29-highway-four-lanes",
+  "photos": [
+    {
+      "url": "https://www.bssnews.net/bangla/assets/news_photos/2022/12/21/image-71714-1671608523.jpg",
+      "source": "https://www.bssnews.net/bangla/news-flash/71714",
+      "source_title": "৫০টি জেলায় ১০০টি রাস্তা-মহাসড়ক উদ্বোধন প্রধানমন্ত্রীর | শিরোনাম",
+      "caption": "Virtual Inauguration of 100 Highways",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/imgAllNew/BG/2019November/rangpur-expressway2-20220803081637.jpg",
+      "source": "https://www.jagonews24.com/economy/news/782707",
+      "source_title": "এলেঙ্গা-রংপুর চার লেন: ৬ বছর চলার পর বদলাচ্ছে প্রকল্প",
+      "caption": "Elenga–Rangpur Four-Lane Highway Construction",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.observerbd.com/2021/12/07/observerbd.com_1638810060.jpg",
+      "source": "https://www.observerbd.com/news.php?id=343127",
+      "source_title": "Dhaka-Sylhet-Tamabil highway uplift project to rise by Tk 4,089cr",
+      "caption": "Dhaka–Sylhet–Tamabil Highway Expansion",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

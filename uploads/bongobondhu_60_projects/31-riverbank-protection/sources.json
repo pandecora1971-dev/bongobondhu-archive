@@ -1,0 +1,38 @@
+{
+  "id": 31,
+  "slug": "riverbank-protection",
+  "title": "নদীভাঙন রোধ ও নদীতীর সংরক্ষণ",
+  "query": "Bangladesh riverbank erosion protection embankment",
+  "folder": "31-riverbank-protection",
+  "photos": [
+    {
+      "url": "https://ewce-cats.mist.ac.bd/storage/upload/slider/230411045621-8690.jpeg",
+      "source": "https://ewce-cats.mist.ac.bd/",
+      "source_title": "CATS-MIST (EWCE)",
+      "caption": "Riverbank Inspection by Bangladesh Leadership",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.bwdb.gov.bd/archive/jpg/9868.jpg",
+      "source": "https://www.bwdb.gov.bd/photo-gallery/Reclamation%20Land",
+      "source_title": "Bangladesh Water Development Board | Photo Gallery",
+      "caption": "Concrete Riverbank Embankment",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://file-khulna.portal.gov.bd/uploads/487dc052-0596-4863-aa71-92d6cb22accd/673/0c1/38e/6730c138e636a908488921.jpg",
+      "source": "https://bwdb.narail.gov.bd/en/site/files/OUla-%E0%A6%8F%E0%A6%AA%E0%A6%BF%E0%A6%8F-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%A8%E0%A7%A8%E0%A7%A9",
+      "source_title": "River Bank Protective Work",
+      "caption": "Riverbank Protection Construction",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "পরিদর্শনের ছবির সুনির্দিষ্ট বাঁধ ও তারিখ যাচাই বাকি।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

@@ -1,0 +1,38 @@
+{
+  "id": 30,
+  "slug": "southern-infrastructure",
+  "title": "দক্ষিণাঞ্চলের অবকাঠামো উন্নয়ন",
+  "query": "Bangladesh southern region infrastructure development",
+  "folder": "30-southern-infrastructure",
+  "photos": [
+    {
+      "url": "https://www.albd.org/media/filer_public/2c/3b/2c3b8925-1c72-4eab-aa58-b4536ee7268a/11-02-2018-barisal.jpg",
+      "source": "https://albd.org/articles/news/31480/HPM-Sheikh-Hasina-lays-foundation-of-41-development-projects",
+      "source_title": "HPM Sheikh Hasina lays foundation of 41 development projects",
+      "caption": "Barishal Development Projects Ceremony",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/imgAllNew/BG/2019November/pm-2-20211024155447.jpg",
+      "source": "https://www.jagonews24.com/national/news/709702",
+      "source_title": "একটা শ্রেণি দেশের ভাবমূর্তি ক্ষতিগ্রস্ত করতে চায়: প্রধানমন্ত্রী",
+      "caption": "Inauguration of Payra Bridge",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://media.prothomalo.com/prothomalo-english/2022-09/71cacf2b-a511-4ec8-b05a-bce82d4a9581/Bangamata_Begum_Fazilatun_Nesa_Mujib_8th_Bangladesh_China_Friendship_Bridge.jpg",
+      "source": "https://en.prothomalo.com/bangladesh/d9xewd5bxo",
+      "source_title": "PM Hasina opens Bangamata Fazilatun Nesa Bridge in Pirojpur | Prothom Alo",
+      "caption": "Bangamata Begum Fazilatun Nesa Mujib 8th Bangladesh–China Friendship Bridge",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "বিস্তৃত আঞ্চলিক উদ্যোগের প্রতিনিধিত্বকারী প্রকল্প।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

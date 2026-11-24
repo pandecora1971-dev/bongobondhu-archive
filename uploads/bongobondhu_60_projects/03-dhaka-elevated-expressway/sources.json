@@ -1,0 +1,51 @@
+{
+  "id": 3,
+  "slug": "dhaka-elevated-expressway",
+  "title": "ঢাকা এলিভেটেড এক্সপ্রেসওয়ে",
+  "query": "Dhaka Elevated Expressway",
+  "folder": "03-dhaka-elevated-expressway",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "কাওলা প্রান্তে এক্সপ্রেসওয়ের প্রথম অংশের উদ্বোধন",
+      "source": "https://www.dhakatribune.com/bangladesh/324230/pm-hasina-inaugurates-dhaka-elevated-expressway",
+      "credit": "PM Hasina inaugurates Dhaka Elevated Expressway",
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/800x450x1/uploads/media/2023/09/02/Elevated-expressway-2-214d7b9c555b70f7309b4213cdf4c38f.jpeg?jadewits_media_id=3412",
+      "source_title": "PM Hasina inaugurates Dhaka Elevated Expressway",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "বিমানবন্দর–ফার্মগেট অংশের উদ্বোধনী আয়োজন",
+      "source": "https://www.tbsnews.net/bangladesh/infrastructure/pm-inaugurates-airport-farmgate-part-dhaka-elevated-expressway-693338",
+      "credit": "PM inaugurates Airport-Farmgate part of Dhaka Elevated Expressway | The Business Standard",
+      "url": "https://www.tbsnews.net/sites/default/files/styles/big_3/public/images/2023/09/02/dhaka_elevated_expressway_2.jpg",
+      "source_title": "PM inaugurates Airport-Farmgate part of Dhaka Elevated Expressway | The Business Standard",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "এলিভেটেড সড়কের প্রশস্ত দৃশ্য",
+      "source": "https://www.tbsnews.net/bangladesh/infrastructure/pm-inaugurates-airport-farmgate-part-dhaka-elevated-expressway-693338",
+      "credit": "PM inaugurates Airport-Farmgate part of Dhaka Elevated Expressway | The Business Standard",
+      "url": "https://www.tbsnews.net/sites/default/files/styles/big_3/public/images/2023/09/01/elevated-expressway_0.jpg",
+      "source_title": "PM inaugurates Airport-Farmgate part of Dhaka Elevated Expressway | The Business Standard",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "মহাখালী থেকে এক্সপ্রেসওয়ের দৃশ্য",
+      "source": "https://www.thedailystar.net/opinion/views/news/the-expressways-hope-reducing-traffic-not-lost-yet-3431151",
+      "credit": "The expressway’s hope of reducing traffic is not lost yet | The Daily Star",
+      "url": "https://www.thedailystar.net/sites/default/files/styles/social_share/public/images/2023/09/30/elevated_expressway_ready_for_inaguration_photo_was_taken_at_mohakhali_area_-photo_naimur_rahman_4.jpg",
+      "source_title": "The expressway’s hope of reducing traffic is not lost yet | The Daily Star",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

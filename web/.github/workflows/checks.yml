@@ -1,0 +1,62 @@
+name: Application checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: archive
+          POSTGRES_PASSWORD: test-only-password
+          POSTGRES_DB: archive_test
+        ports: [5432:5432]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://archive:test-only-password@localhost:5432/archive_test
+      DIRECT_URL: postgresql://archive:test-only-password@localhost:5432/archive_test
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      STORAGE_DRIVER: local
+      ALLOW_LOCAL_STORAGE: 'true'
+      AUTH_TRUST_HOST: 'true'
+      SEED_ADMIN_EMAIL: ci@example.invalid
+      SEED_ADMIN_NAME: CI test administrator
+      SECURITY_TEST_DATABASE: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Generate temporary test secrets
+        run: |
+          for name in AUTH_SECRET RATE_LIMIT_SALT ENCRYPTION_KEY UPLOAD_SIGNING_SECRET SEED_ADMIN_PASSWORD; do
+            value=$(openssl rand -base64 32)
+            echo "::add-mask::$value"
+            echo "$name=$value" >> "$GITHUB_ENV"
+          done
+      - run: npm ci --no-audit --no-fund
+      - run: npm run db:deploy
+      - run: npm run db:seed
+      - run: npm run test:validation
+      - run: npm run test:security:unit
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Verify access control against disposable database
+        run: |
+          npm start > /tmp/archive-server.log 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://localhost:3000/admin/login > /dev/null; then break; fi
+            sleep 2
+          done
+          npm run test:security

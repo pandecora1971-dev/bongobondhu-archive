@@ -1,0 +1,38 @@
+{
+  "id": 5,
+  "slug": "hatirjheel",
+  "title": "হাতিরঝিল সমন্বিত উন্নয়ন",
+  "query": "Hatirjheel integrated development lake",
+  "folder": "05-hatirjheel",
+  "photos": [
+    {
+      "url": "https://www.albd.org/media/filer_public/e5/63/e56302e6-c38a-4e95-bf58-7ddd41bb61d1/29-07-2018-u-loop.jpg",
+      "source": "https://albd.org/articles/news/32065/Govt-has-a-plan-for-a-ring-road-around-Dhaka%3A-HPM-Sheikh-Hasina",
+      "source_title": "Govt has a plan for a ring-road around Dhaka: HPM Sheikh Hasina",
+      "caption": "Inauguration of Hatirjeel North U-loop",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.albd.org/media/filer_public/38/14/3814d70a-9562-4091-ae87-cb5aba138ec8/29-07-2018-u-loop-2.jpg",
+      "source": "https://albd.org/articles/news/32065/Govt-has-a-plan-for-a-ring-road-around-Dhaka%3A-HPM-Sheikh-Hasina",
+      "source_title": "Govt has a plan for a ring-road around Dhaka: HPM Sheikh Hasina",
+      "caption": "Inauguration of Hatirjeel North U-loop",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://today.thefinancialexpress.com.bd/uploads/1653414123.jpg",
+      "source": "https://today.thefinancialexpress.com.bd/metro-news/form-an-authority-to-preserve-hatirjheel-project-hc-1653414123",
+      "source_title": "Finance News: Latest Financial News, Finance News today in Bangladesh",
+      "caption": "Hatirjheel Lake Aerial Panorama",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

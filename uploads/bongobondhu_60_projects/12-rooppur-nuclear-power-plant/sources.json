@@ -1,0 +1,51 @@
+{
+  "id": 12,
+  "slug": "rooppur-nuclear-power-plant",
+  "title": "রূপপুর পারমাণবিক বিদ্যুৎকেন্দ্র",
+  "query": "Rooppur nuclear power plant",
+  "folder": "12-rooppur-nuclear-power-plant",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "রূপপুরে ইউনিট ১-এর মূল নির্মাণকাজ শুরু",
+      "source": "https://old.thefinancialexpress.com.bd/national/rooppur-power-plant-pm-launches-core-construction-1512024671",
+      "credit": "Rooppur power plant: PM launches core construction",
+      "url": "https://old.thefinancialexpress.com.bd/uploads/1512033036.jpg",
+      "source_title": "Rooppur power plant: PM launches core construction",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "রূপপুরে ইউনিট ২-এর কংক্রিট ঢালাই অনুষ্ঠানে শেখ হাসিনা",
+      "source": "https://www.daily-sun.com/post/322072/PM-Sheikh-Hasina-opens-second-unit-of-Rooppur-Nuclear-Power-Plant-",
+      "credit": "PM Sheikh Hasina opens second unit of Rooppur Nuclear Power Plant",
+      "url": "https://dscdn.daily-sun.com/english/uploads/news_photos/2018/07/14/dailysun_pm-russian-dy-pm.jpg",
+      "source_title": "PM Sheikh Hasina opens second unit of Rooppur Nuclear Power Plant",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "IAEA-প্রকাশিত নির্মাণাধীন বিদ্যুৎকেন্দ্র",
+      "source": "https://www.iaea.org/bulletin/bangladesh-nuclear-reactor-construction-progresses-ahead-of-planned-2023-start-up",
+      "credit": "Bangladesh nuclear reactor construction progresses ahead of planned 2023 start-up | IAEA",
+      "url": "https://www.iaea.org/sites/default/files/nppbangladesh.jpg",
+      "source_title": "Bangladesh nuclear reactor construction progresses ahead of planned 2023 start-up | IAEA",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "ইউনিট ১-এর ভিত্তির নির্মাণদৃশ্য",
+      "source": "https://www.nucnet.org/news/first-concrete-poured-for-unit-1-at-bangladesh-s-rooppur",
+      "credit": "First Concrete Poured For Unit 1 At Bangladesh’s Rooppur",
+      "url": "https://nucnet.imgix.net/KeM7oY5yG2gqSiT7cYePSmG3?auto=format&fit=crop&fm=jpg&h=423&ixlib=rails-4.3.1&lossless=true&q=60&s=a53eae38ca649480d86f9070b79ad6fd&w=770",
+      "source_title": "First Concrete Poured For Unit 1 At Bangladesh’s Rooppur",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

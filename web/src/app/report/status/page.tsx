@@ -1,0 +1,28 @@
+import type { Metadata } from "next";
+import { getLang, translator } from "@/lib/i18n";
+import { status } from "@/i18n/forms";
+import SiteHeader from "@/components/forms/SiteHeader";
+import StatusLookup from "@/components/forms/StatusLookup";
+import s from "@/components/forms/forms.module.css";
+
+export const dynamic = "force-dynamic";
+export const maxDuration = 60; // image processing in the submit action
+export const metadata: Metadata = { title: "অভিযোগের অবস্থা", robots: { index: false } };
+
+export default async function StatusPage() {
+  const lang = await getLang();
+  const t = translator(status, lang);
+  return (
+    <div className={s.page}>
+      <SiteHeader lang={lang} />
+      <section className={`${s.hero} ${s.gut}`}>
+        <div style={{ flex: "1 1 520px", maxWidth: 760 }}>
+          <div className={s.eyebrow}>{t("eyebrow")}</div>
+          <h1 className={s.h1}>{t("h1")}</h1>
+          <p className={s.lead}>{t("lead")}</p>
+        </div>
+      </section>
+      <StatusLookup lang={lang} />
+    </div>
+  );
+}

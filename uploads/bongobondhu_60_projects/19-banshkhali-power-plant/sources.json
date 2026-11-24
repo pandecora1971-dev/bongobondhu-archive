@@ -1,0 +1,38 @@
+{
+  "id": 19,
+  "slug": "banshkhali-power-plant",
+  "title": "বাঁশখালী (এস. আলম) বিদ্যুৎকেন্দ্র",
+  "query": "Banshkhali SS power plant S Alam",
+  "folder": "19-banshkhali-power-plant",
+  "photos": [
+    {
+      "url": "https://cdn.dhakapost.com/media/imgAll/BG/2023May/banshkhali-20230524193144.jpg",
+      "source": "https://www.dhakapost.com/national/196323",
+      "source_title": "বাঁশখালী এসএস পাওয়ার প্ল্যান্টের বিদ্যুৎ জাতীয় গ্রিডে",
+      "caption": "SS Power Plant Begins Grid Supply",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/800x450x1/uploads/media/2024/02/27/power-plant-1-c2e2cf3a4e807bd187aeec4980656c28.jpg?jadewits_media_id=15848",
+      "source": "https://www.dhakatribune.com/bangladesh/340495/ss-power-plant-to-become-fully-operational-this",
+      "source_title": "SS Power Plant to become fully operational this year",
+      "caption": "SS Power Plant in Banshkhali, Chittagong",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.khaborerkagoj.com/uploads/2023/10/20/1697779382.banshkhali-powerplant.jpg",
+      "source": "https://www.khaborerkagoj.com/national/788218",
+      "source_title": "বাঁশখালী কয়লা বিদ্যুৎকেন্দ্রে দ্বিতীয় ইউনিটের উৎপাদন শুরু শনিবার । খবরের কাগজ",
+      "caption": "Banshkhali Coal Power Plant Second Unit Launch",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": " এই প্রকল্পের জন্য শেখ হাসিনার উপযুক্ত সফর বা উদ্বোধনের ছবি এখনও নিশ্চিত করা যায়নি।",
+  "hasina_requirement": "pending"
+}

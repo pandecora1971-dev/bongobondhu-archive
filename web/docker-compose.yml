@@ -1,0 +1,43 @@
+# Local development: PostgreSQL 16 + MinIO (S3-compatible, stands in for Cloudflare R2)
+#   docker compose up -d
+# MinIO console: http://localhost:9001  (minio / minio-secret)
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: archive
+      POSTGRES_PASSWORD: archive
+      POSTGRES_DB: archive
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U archive"]
+      interval: 5s
+      retries: 10
+
+  minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio-secret
+    ports: ["9000:9000", "9001:9001"]
+    volumes: [miniodata:/data]
+
+  # creates the bucket and the CORS rule needed for browser presigned uploads
+  minio-init:
+    image: minio/mc:RELEASE.2025-04-16T18-13-26Z
+    depends_on: [minio]
+    entrypoint: >
+      /bin/sh -c "
+      until mc alias set local http://minio:9000 minio minio-secret; do sleep 1; done;
+      mc mb -p local/archive;
+      mc anonymous set none local/archive;
+      exit 0;
+      "
+
+volumes:
+  pgdata:
+  miniodata:

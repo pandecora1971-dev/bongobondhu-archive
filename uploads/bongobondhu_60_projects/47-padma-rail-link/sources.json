@@ -1,0 +1,51 @@
+{
+  "id": 47,
+  "slug": "padma-rail-link",
+  "title": "পদ্মা সেতু রেল সংযোগ",
+  "query": "Padma bridge rail link",
+  "folder": "47-padma-rail-link",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "ঢাকা–ভাঙ্গা রেল সংযোগের উদ্বোধন",
+      "source": "https://www.bssnews.net/news-flash/151873",
+      "credit": "PM opens Dhaka-Bhanga rail service | News Flash",
+      "url": "https://www.bssnews.net/assets/news_photos/2023/10/10/image-151873-1696927158.jpg",
+      "source_title": "PM opens Dhaka-Bhanga rail service | News Flash",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "পদ্মা সেতু পেরোনোর উদ্বোধনী ট্রেনে শেখ হাসিনা",
+      "source": "https://www.bssnews.net/news-flash/151893",
+      "credit": "PM crosses Padma River by train  | News Flash",
+      "url": "https://www.bssnews.net/assets/news_photos/2023/10/10/image-151893-1696935742.jpg",
+      "source_title": "PM crosses Padma River by train  | News Flash",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "পদ্মা সেতু দিয়ে ট্রেন পার হচ্ছে",
+      "source": "https://www.kalbela.com/national/101046",
+      "credit": "পদ্মা সেতুর সমাপনী অনুষ্ঠান শুক্রবার, ব্যয় ৫ কোটি টাকা | কালবেলা",
+      "url": "https://www.kalbela.com/assets/news_photos/2024/07/03/image_101046_1720004477.webp",
+      "source_title": "পদ্মা সেতুর সমাপনী অনুষ্ঠান শুক্রবার, ব্যয় ৫ কোটি টাকা | কালবেলা",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "রেল সংযোগে পরীক্ষামূলক ট্রেন",
+      "source": "https://www.observerbd.com/news/435671",
+      "credit": "PM likely to open rail service through Padma Bridge Oct 10",
+      "url": "https://www.observerbd.com/2023/09/04/ob_1693760061.jpg",
+      "source_title": "PM likely to open rail service through Padma Bridge Oct 10",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

@@ -1,0 +1,38 @@
+{
+  "id": 28,
+  "slug": "maitri-setu",
+  "title": "মৈত্রী/বাংলাদেশ–ভারত সংযোগ সেতু",
+  "query": "Maitri Setu Feni river bridge",
+  "folder": "28-maitri-setu",
+  "photos": [
+    {
+      "url": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202103/indo-bangla_1200x768.jpeg?size=690%3A388",
+      "source": "https://www.indiatoday.in/india/story/pm-narendra-modi-maitri-setu-feni-river-india-bangladesh-sheikh-hasina-1777209-2021-03-09",
+      "source_title": "PM Narendra Modi inaugurates 'Maitri Setu' between India and Bangladesh - India Today",
+      "caption": "Maitri Setu Inauguration",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://swarajya.gumlet.io/swarajya/2023-08/9f85b084-a81c-478b-bfd9-6180c4f45c51/Maitri_Setu__2_.jpg",
+      "source": "https://swarajyamag.com/infrastructure/maitri-setu-india-bangladesh-friendship-bridge-set-to-be-operational-from-september-fostering-eastern-trade-relations",
+      "source_title": "Maitri Setu: India-Bangladesh Friendship Bridge Set To be Operational From September, Fostering Eastern Trade Relations",
+      "caption": "Maitri Setu Friendship Bridge",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/1200x630x1xxxxx1/uploads/dten/2022/10/13/maitri-setu.jpeg",
+      "source": "https://www.dhakatribune.com/world/south-asia/278015/indian-president-dhaka-delhi-connectivity",
+      "source_title": "Indian President: Dhaka, Delhi connectivity improved with Maitri Setu on Feni River",
+      "caption": "Maitri Setu Bridge over Feni River",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

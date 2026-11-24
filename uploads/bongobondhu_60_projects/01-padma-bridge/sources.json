@@ -1,0 +1,51 @@
+{
+  "id": 1,
+  "slug": "padma-bridge",
+  "title": "পদ্মা বহুমুখী সেতু",
+  "query": "Padma Bridge",
+  "folder": "01-padma-bridge",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "মাওয়া টোল প্লাজায় প্রথম টোল দিচ্ছেন শেখ হাসিনা",
+      "source": "https://bangla.bdnews24.com/bangladesh/article2081372.bdnews",
+      "credit": "টোল দিয়ে পদ্মা সেতুর প্রথম যাত্রী শেখ হাসিনা",
+      "url": "https://cdn.bdnews24.com/bdnews24/media/bdnews24-english/import/media/2022/06/25/sheikh-hasina-padma-bridge-toll-plazai-250622-01.jpg",
+      "source_title": "টোল দিয়ে পদ্মা সেতুর প্রথম যাত্রী শেখ হাসিনা",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "মাওয়া প্রান্তে উদ্বোধনী ফলক উন্মোচন",
+      "source": "https://en.prothomalo.com/bangladesh/pm-hasina-inaugurates-padma-bridge",
+      "credit": "PM Hasina inaugurates Padma Bridge | Prothom Alo",
+      "url": "https://media.prothomalo.com/prothomalo-english/2022-06/63e85771-eb5d-4016-8f54-a4b55bcb40f8/Padma.jpg?auto=format%2Ccompress&fit=max&h=675&w=1200",
+      "source_title": "PM Hasina inaugurates Padma Bridge | Prothom Alo",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "গোধূলিতে সেতুর দীর্ঘ দৃশ্য",
+      "source": "https://unsplash.com/s/photos/padma-bridge",
+      "credit": "Padma Bridge Pictures | Download Free Images on Unsplash",
+      "url": "https://images.unsplash.com/photo-1658522407908-9274685aef53?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFkbWElMjBicmlkZ2V8ZW58MHx8MHx8fDA%3D&ixlib=rb-4.1.0&q=60&w=3000",
+      "source_title": "Padma Bridge Pictures | Download Free Images on Unsplash",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "নদীর ওপর সেতুর প্রশস্ত দৃশ্য",
+      "source": "https://infra.economictimes.indiatimes.com/news/ports-shipping/indias-major-infrastructure-stakes-in-bangladesh-after-sheikh-hasinas-ouster/112651355",
+      "credit": "India’s major infrastructure stakes in Bangladesh after Sheikh Hasina’s ouster, ETInfra",
+      "url": "https://etimg.etb2bimg.com/photo/112650272.cms",
+      "source_title": "India’s major infrastructure stakes in Bangladesh after Sheikh Hasina’s ouster, ETInfra",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

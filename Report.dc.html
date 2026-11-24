@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>বেনামে অভিযোগ জানান · বঙ্গবন্ধু ও বাংলাদেশ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#f7f4ee;color:#1c1b18;font-family:'Anek Bangla',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:#1c1b18}a:hover{color:oklch(0.52 0.16 28)}
+input,textarea,select,button{font:inherit;color:inherit}
+@keyframes rin{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px max(20px,calc((100vw - 1180px)/2));border-bottom:1px solid #ddd7cb;background:#f7f4ee;position:sticky;top:0;z-index:5">
+    <a href="Homepage v2.html" style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none"><span style="width:10px;height:10px;background:oklch(0.52 0.16 28)"></span>বঙ্গবন্ধু ও বাংলাদেশ</a>
+    <a href="Homepage v2.html" style="font-weight:500;font-size:16px;text-decoration:none;min-height:44px;display:flex;align-items:center">← মূল পাতায় ফিরুন</a>
+  </header>
+
+  <section style="padding:72px max(20px,calc((100vw - 1180px)/2)) 40px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;justify-content:space-between;animation:up .8s cubic-bezier(.16,1,.3,1)">
+    <div style="flex:1 1 520px;max-width:760px">
+      <div style="font-weight:600;font-size:15px;color:#5f5b52;margin-bottom:14px">নিরাপদ অভিযোগ ফর্ম</div>
+      <h1 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(38px,5.6vw,76px);line-height:1.12;letter-spacing:-.01em;text-wrap:balance">কে, কার বিরুদ্ধে, কী অপরাধ করেছে — <span style="color:oklch(0.52 0.16 28)">বেনামে</span> জানান</h1>
+      <p style="color:#5f5b52;margin-top:18px;max-width:620px;text-wrap:pretty">হত্যা, হামলা, অগ্নিসংযোগ, লুটপাট, দখল, হুমকি বা অন্য কোনো অপরাধের তথ্য দিন, আর জড়িত ব্যক্তি বা গোষ্ঠীকে চিহ্নিত করুন। নাম না দিয়েও জমা দেওয়া যায়। প্রতিটি অভিযোগ যাচাই করা হয়; যাচাইয়ের আগে কারও নাম প্রকাশ হয় না।</p>
+    </div>
+    <ul style="list-style:none;padding:0;flex:0 1 340px;display:grid;gap:0">
+      <li style="padding:12px 0;border-top:1px solid #1c1b18;font-weight:500">নাম, ফোন বা ইমেইল ছাড়াই জমা দেওয়া যায়</li>
+      <li style="padding:12px 0;border-top:1px solid #ddd7cb;font-weight:500">অভিযোগ মানেই রায় নয় — আগে যাচাই</li>
+      <li style="padding:12px 0;border-top:1px solid #ddd7cb;font-weight:500">ট্র্যাকিং কোড দিয়ে পরে অবস্থা দেখা যাবে</li>
+    </ul>
+  </section>
+
+  <div style="margin:0 max(20px,calc((100vw - 1180px)/2));padding:14px 18px;border:1px solid oklch(0.52 0.16 28);border-radius:4px;font-size:16px;font-weight:500;color:oklch(0.42 0.15 28);background:#fff">এটি নথিভুক্তির ফর্ম, জরুরি সেবা নয়। এই মুহূর্তে বিপদে থাকলে ৯৯৯-এ ফোন করুন।</div>
+
+  <main style="flex:1;padding:40px max(20px,calc((100vw - 1180px)/2)) 90px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+    <aside style="flex:1 1 220px;position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">
+      <div style="height:3px;background:#ddd7cb;border-radius:3px;overflow:hidden"><div style="height:100%;background:oklch(0.52 0.16 28);width:{{ pct }};transition:width .6s cubic-bezier(.16,1,.3,1)"></div></div>
+      <ol style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;flex-direction:{{ stepDir }}">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <li><button type="button" onClick="{{ s.go }}" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;color:{{ s.fg }};transition:color .3s"><span style="flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.nfg }};transition:background .3s,border-color .3s">{{ s.n }}</span><span>{{ s.label }}</span></button></li>
+        </sc-for>
+      </ol>
+    </aside>
+
+    <form ref="{{ formRef }}" onSubmit="{{ noop }}" style="flex:999 1 520px;min-width:0;max-width:760px;background:#fff;border:1px solid #ddd7cb;border-radius:6px;box-shadow:0 30px 60px -44px rgba(28,27,24,.4)">
+      <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:clamp(22px,4vw,48px)">
+
+        <div style="display:{{ d0 }};flex-direction:column;gap:30px;animation:rin .5s cubic-bezier(.16,1,.3,1)">
+          <div><div style="font-size:14px;font-weight:600;color:#5f5b52">ধাপ ১ / ৫</div><h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3vw,36px);line-height:1.25">কী ঘটেছে?</h2></div>
+          <div><div style="font-size:15px;font-weight:600;margin-bottom:10px">অপরাধের ধরন * <span style="font-weight:400;color:#5f5b52">(একাধিক বাছতে পারেন)</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px"><sc-for list="{{ crimes }}" as="c" hint-placeholder-count="17"><button type="button" onClick="{{ c.toggle }}" style="display:flex;align-items:center;gap:12px;text-align:left;min-height:56px;padding:10px 14px;border-radius:6px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;font-size:16px;font-weight:500;line-height:1.35;transition:background .25s,color .25s,border-color .25s" style-hover="border-color:#1c1b18"><span style="flex:0 0 22px;height:22px;border-radius:4px;border:1.5px solid {{ c.boxBd }};background:{{ c.boxBg }};color:#1c1b18;display:grid;place-items:center;font-size:14px;font-weight:700;transition:background .25s">{{ c.tick }}</span><span style="text-wrap:pretty">{{ c.label }}</span></button></sc-for></div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:24px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">তারিখ</span><input name="date" type="date" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">বিভাগ</span><select name="division" style="border:0;border-bottom:1px solid #b9b3a6;padding:9px 0;background:none;outline:0;font-size:18px;border-radius:0"><option value="">বাছুন</option><option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option><option>রংপুর</option><option>ময়মনসিংহ</option></select></label>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:24px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">জেলা</span><input name="district" placeholder="যেমন: গোপালগঞ্জ" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">উপজেলা / এলাকা</span><input name="area" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">ঘটনার বিবরণ *</span><textarea name="desc" rows="6" placeholder="কী হয়েছিল, কখন, কারা ছিল — যতটা মনে আছে লিখুন" style="border:1px solid #b9b3a6;border-radius:4px;padding:14px;background:none;outline:0;font-size:18px;line-height:1.6;resize:vertical" style-focus="border-color:oklch(0.52 0.16 28);box-shadow:0 0 0 3px oklch(0.52 0.16 28 / .15)"></textarea></label>
+        </div>
+
+        <div style="display:{{ d1 }};flex-direction:column;gap:30px;animation:rin .5s cubic-bezier(.16,1,.3,1)">
+          <div><div style="font-size:14px;font-weight:600;color:#5f5b52">ধাপ ২ / ৫</div><h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3vw,36px);line-height:1.25">কার বিরুদ্ধে অপরাধ হয়েছে?</h2></div>
+          <div style="display:grid;gap:8px"><sc-for list="{{ victims }}" as="v" hint-placeholder-count="4"><button type="button" onClick="{{ v.pick }}" style="display:flex;align-items:center;gap:14px;text-align:left;min-height:52px;padding:12px 16px;border-radius:6px;border:1px solid {{ v.bd }};background:{{ v.bg }};cursor:pointer;font-size:17px;transition:background .25s,border-color .25s"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #1c1b18;box-shadow:inset 0 0 0 {{ v.dot }} #1c1b18;flex-shrink:0;transition:box-shadow .25s"></span>{{ v.label }}</button></sc-for></div>
+          <div style="display:flex;flex-wrap:wrap;gap:24px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">ভুক্তভোগীর সংখ্যা</span><input name="vcount" type="number" min="1" inputmode="numeric" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+            <label style="flex:2 1 260px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">ভুক্তভোগীর নাম <span style="font-weight:400;color:#5f5b52">(ঐচ্ছিক)</span></span><input name="vname" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+          </div>
+          <div><div style="font-size:15px;font-weight:600;margin-bottom:10px">কী ধরনের ক্ষতি হয়েছে?</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ harms }}" as="c" hint-placeholder-count="6"><button type="button" onClick="{{ c.toggle }}" style="min-height:42px;padding:6px 16px;border-radius:4px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;font-size:16px;transition:background .25s,color .25s">{{ c.label }}</button></sc-for></div></div>
+        </div>
+
+        <div style="display:{{ d2 }};flex-direction:column;gap:26px;animation:rin .5s cubic-bezier(.16,1,.3,1)">
+          <div><div style="font-size:14px;font-weight:600;color:#5f5b52">ধাপ ৩ / ৫</div><h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3vw,36px);line-height:1.25">কারা জড়িত?</h2><p style="color:#5f5b52;margin-top:6px">নাম না জানলে চেহারা, পোশাক বা পরিচয় দিয়ে বর্ণনা করুন। একাধিক জন যোগ করা যায়।</p></div>
+          <sc-for list="{{ accused }}" as="a" hint-placeholder-count="1">
+            <div style="border:1px solid #ddd7cb;border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:18px;animation:up .45s cubic-bezier(.16,1,.3,1)">
+              <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:19px">অভিযুক্ত {{ a.n }}</b><sc-if value="{{ a.canRemove }}"><button type="button" onClick="{{ a.remove }}" style="min-height:40px;padding:0 12px;border:0;background:none;color:#5f5b52;cursor:pointer;font-size:15px;text-decoration:underline">সরান</button></sc-if></div>
+              <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">নাম বা বর্ণনা</span><input value="{{ a.name }}" onChange="{{ a.setName }}" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+              <div style="display:flex;flex-wrap:wrap;gap:20px">
+                <label style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">পদ / পরিচয়</span><input value="{{ a.role }}" onChange="{{ a.setRole }}" placeholder="যেমন: স্থানীয় নেতা" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+                <label style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">দল / সংগঠন / বাহিনী</span><input value="{{ a.org }}" onChange="{{ a.setOrg }}" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end">
+                <label style="flex:0 0 auto;width:96px;height:96px;border-radius:6px;border:1.5px dashed #b9b3a6;display:grid;place-items:center;cursor:pointer;overflow:hidden;background:#f7f4ee;text-align:center;font-size:13px;color:#5f5b52;position:relative"><input type="file" accept="image/*" onChange="{{ a.pickPhoto }}" style="display:none"><sc-if value="{{ a.hasPhoto }}"><img src="{{ a.photo }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if><sc-if value="{{ a.noPhoto }}"><span style="padding:6px;line-height:1.3">+ ছবি দিন</span></sc-if></label>
+                <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:16px">
+                  <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">ফেসবুক প্রোফাইল লিংক</span><input type="url" value="{{ a.fb }}" onChange="{{ a.setFb }}" placeholder="https://facebook.com/..." style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+                  <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">ছবির লিংক <span style="font-weight:400;color:#5f5b52">(ফাইল না থাকলে)</span></span><input type="url" value="{{ a.photoUrl }}" onChange="{{ a.setPhotoUrl }}" placeholder="https://..." style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label>
+                </div>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">আপনি কীভাবে জানেন?</span><select value="{{ a.how }}" onChange="{{ a.setHow }}" style="border:0;border-bottom:1px solid #b9b3a6;padding:9px 0;background:none;outline:0;font-size:18px;border-radius:0"><option value="">বাছুন</option><option>নিজে দেখেছি</option><option>ছবি বা ভিডিওতে দেখেছি</option><option>ভুক্তভোগী জানিয়েছেন</option><option>অন্যের কাছে শুনেছি</option></select></label>
+            </div>
+          </sc-for>
+          <button type="button" onClick="{{ addAccused }}" style="align-self:flex-start;min-height:46px;padding:0 20px;border:1px dashed #1c1b18;border-radius:4px;background:none;cursor:pointer;font-weight:600;font-size:16px" style-hover="background:#1c1b18;color:#fff">+ আরেকজন যোগ করুন</button>
+        </div>
+
+        <div style="display:{{ d3 }};flex-direction:column;gap:28px;animation:rin .5s cubic-bezier(.16,1,.3,1)">
+          <div><div style="font-size:14px;font-weight:600;color:#5f5b52">ধাপ ৪ / ৫</div><h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3vw,36px);line-height:1.25">প্রমাণ আছে?</h2><p style="color:#5f5b52;margin-top:6px">ঐচ্ছিক। ছবি বা ভিডিও থেকে মুখ, লোকেশন ইত্যাদি তথ্য প্রকাশের আগে সরানো হবে।</p></div>
+          <label onDragOver="{{ dragOver }}" onDragLeave="{{ dragLeave }}" onDrop="{{ drop }}" style="display:block;text-align:center;padding:36px 20px;border:1.5px dashed {{ dropBd }};border-radius:6px;cursor:pointer;background:{{ dropBg }};transition:background .3s,border-color .3s"><input type="file" multiple accept="image/*,video/*,audio/*,application/pdf" onChange="{{ pickFiles }}" style="display:none"><b style="display:block;font-size:18px">ফাইল এখানে ছেড়ে দিন, বা চাপ দিয়ে বাছুন</b><span style="color:#5f5b52;font-size:15px">ছবি, ভিডিও, অডিও বা PDF</span></label>
+          <sc-if value="{{ hasFiles }}"><div style="display:grid;gap:6px"><sc-for list="{{ files }}" as="f"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 12px;background:#f7f4ee;border-radius:4px;font-size:15px;animation:up .35s"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span><button type="button" onClick="{{ f.remove }}" style="width:36px;height:36px;border:0;background:none;cursor:pointer;font-size:20px">×</button></div></sc-for></div></sc-if>
+          <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">লিংক (ভিডিও, সংবাদ, পোস্ট)</span><textarea name="links" rows="3" placeholder="প্রতি লাইনে একটি লিংক" style="border:1px solid #b9b3a6;border-radius:4px;padding:12px;background:none;outline:0;font-size:17px;resize:vertical" style-focus="border-color:oklch(0.52 0.16 28)"></textarea></label>
+          <div style="display:flex;flex-wrap:wrap;gap:24px">
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">সাক্ষী আছে?</span><select name="witness" style="border:0;border-bottom:1px solid #b9b3a6;padding:9px 0;background:none;outline:0;font-size:18px;border-radius:0"><option value="">বাছুন</option><option>হ্যাঁ</option><option>না</option><option>জানি না</option></select></label>
+            <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">থানায় মামলা বা জিডি হয়েছে?</span><select name="case" style="border:0;border-bottom:1px solid #b9b3a6;padding:9px 0;background:none;outline:0;font-size:18px;border-radius:0"><option value="">বাছুন</option><option>হ্যাঁ</option><option>না</option><option>নিতে চায়নি</option></select></label>
+          </div>
+        </div>
+
+        <div style="display:{{ d4 }};flex-direction:column;gap:26px;animation:rin .5s cubic-bezier(.16,1,.3,1)">
+          <div><div style="font-size:14px;font-weight:600;color:#5f5b52">ধাপ ৫ / ৫</div><h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3vw,36px);line-height:1.25">আপনার নিরাপত্তা</h2></div>
+          <div style="display:grid;gap:8px"><sc-for list="{{ idOpts }}" as="v" hint-placeholder-count="2"><button type="button" onClick="{{ v.pick }}" style="display:flex;align-items:flex-start;gap:14px;text-align:left;padding:14px 16px;border-radius:6px;border:1px solid {{ v.bd }};background:{{ v.bg }};cursor:pointer;transition:background .25s,border-color .25s"><span style="width:18px;height:18px;margin-top:4px;border-radius:50%;border:2px solid #1c1b18;box-shadow:inset 0 0 0 {{ v.dot }} #1c1b18;flex-shrink:0;transition:box-shadow .25s"></span><span><span style="display:block;font-size:17px;font-weight:600">{{ v.label }}</span><span style="display:block;font-size:15px;color:#5f5b52">{{ v.sub }}</span></span></button></sc-for></div>
+          <sc-if value="{{ showContact }}"><label style="display:flex;flex-direction:column;gap:6px;animation:up .4s"><span style="font-size:15px;font-weight:600">নিরাপদ যোগাযোগ (ইমেইল, ফোন বা সিগন্যাল)</span><input name="contact" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.52 0.16 28)"></label></sc-if>
+          <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:16px"><input type="checkbox" checked="{{ ok }}" onChange="{{ toggleOk }}" style="width:20px;height:20px;accent-color:#1c1b18;margin-top:3px;flex-shrink:0"><span>আমার জানামতে দেওয়া তথ্য সত্য। আমি বুঝি যে মিথ্যা অভিযোগ অন্য মানুষের ক্ষতি করতে পারে, এবং যাচাই ছাড়া কোনো নাম প্রকাশ হবে না। *</span></label>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px clamp(22px,4vw,48px) 22px;border-top:1px solid #ddd7cb">
+        <button type="button" onClick="{{ back }}" style="visibility:{{ backVis }};min-height:48px;padding:0 20px;border:1px solid #1c1b18;border-radius:4px;background:none;cursor:pointer;font-weight:600;font-size:16px">← পেছনে</button>
+        <span style="flex:1;color:oklch(0.5 0.2 27);font-size:15px;font-weight:500">{{ err }}</span>
+        <button type="button" onClick="{{ next }}" style="min-height:48px;padding:0 24px;border:0;border-radius:4px;background:#1c1b18;color:#fff;cursor:pointer;font-weight:600;font-size:16px;transition:background .3s" style-hover="background:oklch(0.52 0.16 28)">{{ nextLabel }} →</button>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ done }}">
+        <div style="padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;align-items:flex-start;gap:18px;animation:up .6s cubic-bezier(.16,1,.3,1)">
+          <svg width="76" height="76" viewBox="0 0 80 80" fill="none" stroke="oklch(0.52 0.16 28)" stroke-width="3" stroke-linecap="round"><circle cx="40" cy="40" r="36" stroke-dasharray="240" stroke-dashoffset="240" style="animation:draw .7s .1s forwards"></circle><path d="M24 41l11 11 22-24" stroke-dasharray="60" stroke-dashoffset="60" style="animation:draw .5s .7s forwards"></path></svg>
+          <h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(28px,3.4vw,40px)">অভিযোগটি জমা হয়েছে</h2>
+          <p style="color:#5f5b52;max-width:560px">নিচের ট্র্যাকিং কোড ও গোপন শব্দটি লিখে রাখুন। এগুলো দিয়ে পরে অভিযোগের অবস্থা দেখা ও নতুন তথ্য যোগ করা যাবে। হারিয়ে গেলে আর খুঁজে পাওয়া যাবে না, কারণ আপনার পরিচয় আমরা রাখিনি।</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            <div style="padding:12px 18px;border:1px dashed #1c1b18;border-radius:4px"><div style="font-size:13px;color:#5f5b52">ট্র্যাকিং কোড</div><div style="font-size:24px;font-weight:700;letter-spacing:.06em">{{ code }}</div></div>
+            <div style="padding:12px 18px;border:1px dashed #1c1b18;border-radius:4px"><div style="font-size:13px;color:#5f5b52">গোপন শব্দ</div><div style="font-size:24px;font-weight:700;letter-spacing:.06em">{{ secret }}</div></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+            <button type="button" onClick="{{ reset }}" style="min-height:48px;padding:0 20px;border:1px solid #1c1b18;border-radius:4px;background:none;cursor:pointer;font-weight:600;font-size:16px">আরেকটি অভিযোগ</button>
+            <a href="Homepage v2.html" style="min-height:48px;padding:0 20px;border-radius:4px;background:#1c1b18;color:#fff;display:flex;align-items:center;font-weight:600;font-size:16px;text-decoration:none">মূল পাতায় ফিরুন →</a>
+          </div>
+        </div>
+      </sc-if>
+    </form>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 0, crimes: [], harms: [], victim: null, accused: [{}], files: [], idMode: 'anon', ok: false, err: '', done: false, over: false, code: '', secret: '', narrow: false };
+  formRef = React.createRef();
+  componentDidMount() { this.onR = () => this.setState({ narrow: innerWidth < 760 }); this.onR(); addEventListener('resize', this.onR); }
+  componentWillUnmount() { removeEventListener('resize', this.onR); }
+  tog(key, i) { this.setState(s => ({ [key]: s[key].includes(i) ? s[key].filter(x => x !== i) : [...s[key], i], err: '' })); }
+  setAcc(i, k, v) { this.setState(s => ({ accused: s.accused.map((a, j) => j === i ? { ...a, [k]: v } : a) })); }
+  addFiles(list) { const f = [...list].slice(0, 15 - this.state.files.length).map(x => ({ name: x.name, size: x.size })); this.setState(s => ({ files: [...s.files, ...f] })); }
+  go(n) { if (n > this.state.step && !this.valid()) return; this.setState({ step: n, err: '' }); const f = this.formRef.current; if (f && f.getBoundingClientRect().top < 0) scrollTo({ top: f.getBoundingClientRect().top + scrollY - 90, behavior: 'smooth' }); }
+  valid() {
+    const s = this.state, f = this.formRef.current;
+    if (s.step >= 0 && !s.crimes.length) { this.setState({ err: 'অন্তত একটি অপরাধের ধরন বাছুন।', step: 0 }); return false; }
+    if (s.step >= 0 && f && !String(f.desc.value).trim()) { this.setState({ err: 'ঘটনার বিবরণ লিখুন।', step: 0 }); return false; }
+    return true;
+  }
+  submit() {
+    if (!this.valid()) return;
+    if (!this.state.ok) { this.setState({ err: 'নিশ্চিতকরণ ঘরে টিক দিন।' }); return; }
+    const r = n => Array.from(crypto.getRandomValues(new Uint8Array(n)), b => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
+    const code = r(4) + '-' + r(4), secret = r(6);
+    const f = this.formRef.current, d = Object.fromEntries(new FormData(f));
+    const s = this.state;
+    try { const a = JSON.parse(localStorage.getItem('bb-reports') || '[]'); a.push({ code, at: new Date().toISOString(), crimes: s.crimes.map(i => this.CR[i]), harms: s.harms.map(i => this.HA[i]), victim: this.VI[s.victim], accused: s.accused, files: s.files.map(x => x.name), idMode: s.idMode, ...d }); localStorage.setItem('bb-reports', JSON.stringify(a)); } catch (e) {}
+    this.setState({ done: true, code, secret, err: '' }); scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  CR = ['জুলাই জঙ্গি সন্ত্রাসী', 'মব সৃষ্টি', 'বাড়িঘর লুটপাট', 'অগ্নিসংযোগ', 'জয় বাংলা স্লোগানের জন্য মারধর ও নির্যাতন', 'প্রশাসনের জড়িত ব্যক্তি', 'জেলে হত্যা ও নির্যাতন', 'জামিনে বাধা', 'শিক্ষা প্রতিষ্ঠানে বাধা ও মব', 'খুন / অপহরণ', 'হত্যাচেষ্টা', 'হত্যা ও নির্যাতন', 'মিথ্যা মামলা', 'হুমকি ও চাঁদাবাজি', 'বাড়ি বা জমি দখল', 'শিশু নির্যাতন', 'অন্যান্য'];
+  HA = ['মৃত্যু', 'শারীরিক আঘাত', 'সম্পদের ক্ষতি', 'ঘরছাড়া হওয়া', 'চাকরি বা ব্যবসা হারানো', 'মানসিক আঘাত'];
+  VI = ['আমি নিজে', 'আমার পরিবারের কেউ', 'অন্য কোনো ব্যক্তি', 'একাধিক মানুষ / একটি এলাকা'];
+  renderVals() {
+    const s = this.state, A = 'oklch(0.52 0.16 28)', INK = '#1c1b18', LN = '#ddd7cb';
+    const LBL = ['ঘটনা', 'ভুক্তভোগী', 'অভিযুক্ত', 'প্রমাণ', 'নিরাপত্তা'], BN = '১২৩৪৫';
+    const chip = (arr, key) => arr.map((label, i) => { const on = s[key].includes(i); return { label, toggle: () => this.tog(key, i), bg: on ? INK : '#fff', fg: on ? '#fff' : INK, bd: on ? INK : LN }; });
+    const radio = (on) => ({ bd: on ? INK : LN, bg: on ? '#f7f4ee' : '#fff', dot: on ? '5px' : '0' });
+    const disp = i => s.step === i ? 'flex' : 'none';
+    return {
+      formRef: this.formRef, noop: e => e.preventDefault(),
+      pct: ((s.step + 1) / 5 * 100) + '%', stepDir: s.narrow ? 'row' : 'column',
+      steps: LBL.map((label, i) => { const on = i === s.step, dn = i < s.step || s.done; return { n: dn && !on ? '✓' : BN[i], label: s.narrow && !on ? '' : label, go: () => !s.done && this.go(i), fg: on ? INK : dn ? INK : '#8f8b80', bd: on ? A : dn ? INK : '#b9b3a6', bg: on ? A : dn ? INK : 'transparent', nfg: on || dn ? '#fff' : '#8f8b80' }; }),
+      d0: disp(0), d1: disp(1), d2: disp(2), d3: disp(3), d4: disp(4),
+      crimes: this.CR.map((label, i) => { const on = s.crimes.includes(i); return { label, toggle: () => this.tog('crimes', i), bg: on ? INK : '#fff', fg: on ? '#fff' : INK, bd: on ? INK : LN, boxBd: on ? '#fff' : '#b9b3a6', boxBg: on ? '#fff' : 'transparent', tick: on ? '✓' : '' }; }), harms: chip(this.HA, 'harms'),
+      victims: this.VI.map((label, i) => ({ label, pick: () => this.setState({ victim: i }), ...radio(s.victim === i) })),
+      accused: s.accused.map((a, i) => ({ n: BN[i] || i + 1, name: a.name || '', role: a.role || '', org: a.org || '', how: a.how || '', canRemove: s.accused.length > 1,
+        setName: e => this.setAcc(i, 'name', e.target.value), setRole: e => this.setAcc(i, 'role', e.target.value), setOrg: e => this.setAcc(i, 'org', e.target.value), setHow: e => this.setAcc(i, 'how', e.target.value),
+        fb: a.fb || '', setFb: e => this.setAcc(i, 'fb', e.target.value), photoUrl: a.photoUrl || '', setPhotoUrl: e => this.setAcc(i, 'photoUrl', e.target.value),
+        photo: a.photo || a.photoUrl || '', hasPhoto: !!(a.photo || a.photoUrl), noPhoto: !(a.photo || a.photoUrl),
+        pickPhoto: e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAcc(i, 'photo', r.result); r.readAsDataURL(f); e.target.value = ''; },
+        remove: () => this.setState(st => ({ accused: st.accused.filter((_, j) => j !== i) })) })),
+      addAccused: () => this.setState(st => ({ accused: [...st.accused, {}] })),
+      dropBd: s.over ? A : '#b9b3a6', dropBg: s.over ? 'oklch(0.52 0.16 28 / .06)' : 'transparent',
+      dragOver: e => { e.preventDefault(); if (!s.over) this.setState({ over: true }); }, dragLeave: () => this.setState({ over: false }),
+      drop: e => { e.preventDefault(); this.setState({ over: false }); this.addFiles(e.dataTransfer.files); },
+      pickFiles: e => { this.addFiles(e.target.files); e.target.value = ''; },
+      hasFiles: s.files.length > 0, files: s.files.map((f, i) => ({ name: f.name, remove: e => { e.preventDefault(); this.setState(st => ({ files: st.files.filter((_, j) => j !== i) })); } })),
+      idOpts: [['anon', 'সম্পূর্ণ বেনামে', 'কোনো যোগাযোগের তথ্য রাখা হবে না। শুধু ট্র্যাকিং কোড দিয়ে খোঁজ নিতে পারবেন।'], ['contact', 'যাচাইকারী দল যোগাযোগ করতে পারবে', 'আপনার পরিচয় প্রকাশ হবে না; শুধু যাচাইয়ের জন্য যোগাযোগ করা হবে।']].map(([k, label, sub]) => ({ label, sub, pick: () => this.setState({ idMode: k }), ...radio(s.idMode === k) })),
+      showContact: s.idMode === 'contact', ok: s.ok, toggleOk: e => this.setState({ ok: e.target.checked, err: '' }),
+      notDone: !s.done, done: s.done, err: s.err,
+      backVis: s.step ? 'visible' : 'hidden', back: () => this.go(Math.max(0, s.step - 1)),
+      nextLabel: s.step === 4 ? 'জমা দিন' : 'পরের ধাপ', next: () => s.step === 4 ? this.submit() : this.go(s.step + 1),
+      code: s.code, secret: s.secret,
+      reset: () => { this.formRef.current && this.formRef.current.reset(); this.setState({ step: 0, crimes: [], harms: [], victim: null, accused: [{}], files: [], idMode: 'anon', ok: false, err: '', done: false }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

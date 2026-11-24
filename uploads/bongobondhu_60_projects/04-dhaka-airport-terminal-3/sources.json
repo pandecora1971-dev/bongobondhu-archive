@@ -1,0 +1,51 @@
+{
+  "id": 4,
+  "slug": "dhaka-airport-terminal-3",
+  "title": "হযরত শাহজালাল বিমানবন্দরের তৃতীয় টার্মিনাল",
+  "query": "Hazrat Shahjalal Airport terminal 3",
+  "folder": "04-dhaka-airport-terminal-3",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "সফট ওপেনিংয়ে টার্মিনালের ভেতরে শেখ হাসিনা",
+      "source": "https://www.myanmaritv.com/news/pm-hasina-opens-hsias-3rd-terminal",
+      "credit": "PM Hasina opens HSIA's 3rd terminal | Myanmar International TV",
+      "url": "https://www.myanmaritv.com/sites/default/files/styles/news_detail_image/public/4%20%284%29_128.jpg?itok=G7K7Rerf",
+      "source_title": "PM Hasina opens HSIA's 3rd terminal | Myanmar International TV",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "টার্মিনাল ৩-এর সফট ওপেনিং",
+      "source": "https://www.observerbd.com/news/440459",
+      "credit": "Soft opening of Dhaka airport's 3rd terminal",
+      "url": "https://www.observerbd.com/2023/10/07/ob_1696659899.JPG",
+      "source_title": "Soft opening of Dhaka airport's 3rd terminal",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "তৃতীয় টার্মিনালের স্থাপত্য",
+      "source": "https://www.thedailystar.net/news/bangladesh/news/dhaka-airport-pm-opens-iconic-third-terminal-3436791",
+      "credit": "Dhaka airport: PM opens iconic third terminal | The Daily Star",
+      "url": "https://www.thedailystar.net/sites/default/files/images/2023/10/06/airport-3rd-tarminal13.jpg",
+      "source_title": "Dhaka airport: PM opens iconic third terminal | The Daily Star",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "টার্মিনালের ভেতরের দৃশ্য",
+      "source": "https://www.dhakatribune.com/bangladesh/327296/caab-chairman",
+      "credit": "CAAB Chairman: Third terminal of Dhaka airport a new chapter for Bangladesh",
+      "url": "https://ecdn.dhakatribune.net/contents/cache/images/800x450x1/uploads/media/2023/10/06/third-terminal-2-279ffeabae32d079e0e80eb2a140f887.jpg?jadewits_media_id=6105",
+      "source_title": "CAAB Chairman: Third terminal of Dhaka airport a new chapter for Bangladesh",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

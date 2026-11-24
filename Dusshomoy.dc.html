@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>দুঃসময়ের গল্প · বঙ্গবন্ধু ও বাংলাদেশ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#f7f4ee;color:#1c1b18;font-family:'Anek Bangla',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:#1c1b18}a:hover{color:oklch(0.52 0.16 28)}
+input,textarea,select,button{font:inherit;color:inherit}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px max(20px,calc((100vw - 1180px)/2));border-bottom:1px solid #ddd7cb;background:#f7f4ee;position:sticky;top:0;z-index:5">
+    <a href="Homepage v2.html" style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none"><span style="width:10px;height:10px;background:oklch(0.52 0.16 28)"></span>বঙ্গবন্ধু ও বাংলাদেশ</a>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="#post" style="white-space:nowrap;flex-shrink:0;min-height:44px;padding:0 18px;border-radius:4px;background:#1c1b18;color:#fff;display:flex;align-items:center;font-weight:600;font-size:16px;text-decoration:none">কার্যক্রম জমা দিন</a>
+      <a href="Homepage v2.html" style="font-weight:500;font-size:16px;text-decoration:none;min-height:44px;display:flex;align-items:center;padding:0 8px;white-space:nowrap;flex-shrink:0">← মূল পাতা</a>
+    </div>
+  </header>
+
+  <section style="padding:72px max(20px,calc((100vw - 1180px)/2)) 48px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;justify-content:space-between;animation:up .8s cubic-bezier(.16,1,.3,1)">
+    <div style="flex:1 1 560px;max-width:780px">
+      <div style="font-weight:600;font-size:15px;color:oklch(0.42 0.1 160);margin-bottom:14px">আওয়ামী লীগ ও সহযোগী সংগঠন</div>
+      <h1 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(42px,6.4vw,88px);line-height:1.08;letter-spacing:-.01em;text-wrap:balance">দুঃসময়ের <span style="color:oklch(0.52 0.16 28)">গল্প</span></h1>
+      <p style="color:#5f5b52;margin-top:20px;max-width:640px;text-wrap:pretty">ক্ষমতার বাইরে থেকেও যুবলীগ, ছাত্রলীগ, স্বেচ্ছাসেবক লীগসহ সহযোগী সংগঠনের নেতাকর্মীরা মাঠে আছেন। মিটিং, মিছিল, মানববন্ধন, ত্রাণ বা প্রচারণা — আপনার ইউনিটের কার্যক্রম ছবিসহ এখানে তুলে ধরুন।</p>
+    </div>
+    <div style="flex:0 0 auto;display:flex;gap:40px">
+      <div><div style="font-family:'Noto Serif Bengali',serif;font-size:52px;font-weight:600;line-height:1.15">{{ totalBn }}</div><div style="font-size:15px;color:#5f5b52;margin-top:8px;white-space:nowrap">কার্যক্রম প্রকাশিত</div></div>
+      <div><div style="font-family:'Noto Serif Bengali',serif;font-size:52px;font-weight:600;line-height:1.15">{{ placesBn }}</div><div style="font-size:15px;color:#5f5b52;margin-top:8px;white-space:nowrap">থানা / উপজেলা</div></div>
+    </div>
+  </section>
+
+  <section style="padding:0 max(20px,calc((100vw - 1180px)/2)) 80px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;padding:18px 0;border-top:1px solid #1c1b18;position:sticky;top:77px;background:#f7f4ee;z-index:3">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+        <button type="button" onClick="{{ f.pick }}" style="min-height:42px;padding:6px 16px;border-radius:40px;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};cursor:pointer;font-size:16px;display:flex;align-items:center;gap:8px;transition:background .25s,color .25s">{{ f.label }}<span style="font-size:13px;opacity:.7">{{ f.n }}</span></button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:80px 20px;text-align:center;border:1.5px dashed #b9b3a6;border-radius:6px;margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="font-family:'Noto Serif Bengali',serif;font-size:28px;font-weight:600">{{ emptyTitle }}</div>
+        <p style="color:#5f5b52;max-width:460px">আপনার সংগঠনের সাম্প্রতিক কার্যক্রম প্রথম জমা দিন। জমা দেওয়ার পর এখানে ছবিসহ দেখা যাবে।</p>
+        <a href="#post" style="min-height:48px;padding:0 22px;border-radius:4px;background:#1c1b18;color:#fff;display:flex;align-items:center;font-weight:600;font-size:16px;text-decoration:none">কার্যক্রম জমা দিন →</a>
+      </div>
+    </sc-if>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:12px">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="0">
+        <article onClick="{{ p.open }}" style="background:#fff;border:1px solid #ddd7cb;border-radius:6px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;animation:up .5s cubic-bezier(.16,1,.3,1);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" style-hover="transform:translateY(-4px);box-shadow:0 30px 50px -36px rgba(28,27,24,.5)">
+          <sc-if value="{{ p.hasImg }}"><div style="aspect-ratio:4/3;background:#e9e4d9;position:relative;overflow:hidden"><img src="{{ p.img }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"><sc-if value="{{ p.more }}"><span style="position:absolute;right:10px;bottom:10px;padding:2px 10px;border-radius:30px;background:rgba(28,27,24,.78);color:#fff;font-size:14px;font-weight:600">{{ p.moreTx }}</span></sc-if></div></sc-if>
+          <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+              <span style="padding:2px 10px;border-radius:3px;background:oklch(0.42 0.1 160);color:#fff;font-size:14px;font-weight:600">{{ p.org }}</span>
+              <span style="padding:2px 10px;border-radius:3px;border:1px solid #ddd7cb;font-size:14px;font-weight:500">{{ p.type }}</span>
+            </div>
+            <h3 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:21px;line-height:1.35;text-wrap:pretty">{{ p.title }}</h3>
+            <p style="color:#5f5b52;font-size:16px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ p.desc }}</p>
+            <div style="margin-top:auto;padding-top:10px;border-top:1px solid #eee9df;font-size:14px;color:#5f5b52;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span style="font-weight:600;color:#1c1b18">{{ p.place }}</span><span>{{ p.date }}</span></div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="post" style="background:#1c1b18;color:#f7f4ee;padding:80px max(20px,calc((100vw - 1180px)/2)) 100px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+    <div style="flex:1 1 300px;position:sticky;top:110px">
+      <div style="font-weight:600;font-size:15px;color:oklch(0.78 0.1 160);margin-bottom:12px">কার্যক্রম জমা দিন</div>
+      <h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1.15;text-wrap:balance">আপনার ইউনিট কী করছে, জানান</h2>
+      <p style="color:#bdb7aa;margin-top:16px;max-width:420px;text-wrap:pretty">সংগঠন, থানা ও কার্যক্রমের তথ্য দিন। ছবি আপলোড করুন বা লিংক দিন। নাম না দিয়েও জমা দেওয়া যায়।</p>
+    </div>
+
+    <form ref="{{ formRef }}" onSubmit="{{ submit }}" style="flex:999 1 540px;min-width:0;max-width:760px;background:#fff;color:#1c1b18;border-radius:6px;padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;gap:30px">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:30px">
+        <div><div style="font-size:15px;font-weight:600;margin-bottom:10px">সংগঠন *</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ orgOpts }}" as="c" hint-placeholder-count="12"><button type="button" onClick="{{ c.pick }}" style="min-height:42px;padding:6px 16px;border-radius:4px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;font-size:16px;transition:background .25s,color .25s">{{ c.label }}</button></sc-for></div></div>
+
+        <div><div style="font-size:15px;font-weight:600;margin-bottom:10px">কার্যক্রমের ধরন *</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ typeOpts }}" as="c" hint-placeholder-count="10"><button type="button" onClick="{{ c.pick }}" style="min-height:42px;padding:6px 16px;border-radius:4px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;font-size:16px;transition:background .25s,color .25s">{{ c.label }}</button></sc-for></div></div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:24px">
+          <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">কমিটির স্তর</span><select name="level" style="border:0;border-bottom:1px solid #b9b3a6;padding:9px 0;background:none;outline:0;font-size:18px;border-radius:0"><option value="">বাছুন</option><option>কেন্দ্রীয়</option><option>মহানগর</option><option>জেলা</option><option>উপজেলা / থানা</option><option>পৌরসভা</option><option>ইউনিয়ন</option><option>ওয়ার্ড</option><option>কলেজ / বিশ্ববিদ্যালয় শাখা</option><option>প্রবাসী শাখা</option></select></label>
+          <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">তারিখ</span><input name="date" type="date" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px">
+          <label style="flex:1 1 160px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">বিভাগ</span><select name="division" style="border:0;border-bottom:1px solid #b9b3a6;padding:9px 0;background:none;outline:0;font-size:18px;border-radius:0"><option value="">বাছুন</option><option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option><option>রংপুর</option><option>ময়মনসিংহ</option><option>প্রবাস</option></select></label>
+          <label style="flex:1 1 160px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">জেলা *</span><input name="district" placeholder="যেমন: গোপালগঞ্জ" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+          <label style="flex:1 1 160px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">থানা / উপজেলা *</span><input name="thana" placeholder="যেমন: টুঙ্গিপাড়া" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px">
+          <label style="flex:2 1 260px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">স্থান / ইউনিয়ন / ওয়ার্ড</span><input name="place" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+          <label style="flex:1 1 160px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">আনুমানিক অংশগ্রহণকারী</span><input name="people" type="number" min="1" inputmode="numeric" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">শিরোনাম *</span><input name="title" placeholder="যেমন: টুঙ্গিপাড়ায় যুবলীগের শীতবস্ত্র বিতরণ" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+        <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">বিস্তারিত লিখুন</span><textarea name="desc" rows="5" placeholder="কী হয়েছে, কারা ছিলেন, কী বার্তা দেওয়া হয়েছে" style="border:1px solid #b9b3a6;border-radius:4px;padding:14px;background:none;outline:0;font-size:18px;line-height:1.6;resize:vertical" style-focus="border-color:oklch(0.42 0.1 160);box-shadow:0 0 0 3px oklch(0.42 0.1 160 / .15)"></textarea></label>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:15px;font-weight:600">ছবি <span style="font-weight:400;color:#5f5b52">(সর্বোচ্চ ৬টি)</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">
+            <sc-for list="{{ photos }}" as="ph" hint-placeholder-count="0"><div style="aspect-ratio:1;border-radius:4px;overflow:hidden;position:relative;background:#e9e4d9;animation:fade .3s"><img src="{{ ph.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><button type="button" onClick="{{ ph.remove }}" style="position:absolute;top:4px;right:4px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(28,27,24,.75);color:#fff;cursor:pointer;font-size:17px;line-height:1">×</button></div></sc-for>
+            <sc-if value="{{ canAdd }}"><label onDragOver="{{ dragOver }}" onDragLeave="{{ dragLeave }}" onDrop="{{ drop }}" style="aspect-ratio:1;border-radius:4px;border:1.5px dashed {{ dropBd }};background:{{ dropBg }};display:grid;place-items:center;text-align:center;cursor:pointer;font-size:14px;color:#5f5b52;padding:6px;line-height:1.3;transition:background .3s,border-color .3s"><input type="file" multiple accept="image/*" onChange="{{ pickFiles }}" style="display:none">+ ছবি যোগ<br>বা টেনে আনুন</label></sc-if>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px;margin-top:6px"><span style="font-size:15px;font-weight:600">ছবি / পোস্ট / ভিডিওর লিংক</span><textarea name="links" rows="3" placeholder="প্রতি লাইনে একটি লিংক (ফেসবুক পোস্ট, ছবির লিংক ইত্যাদি)" style="border:1px solid #b9b3a6;border-radius:4px;padding:12px;background:none;outline:0;font-size:17px;resize:vertical" style-focus="border-color:oklch(0.42 0.1 160)"></textarea></label>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:24px;padding-top:24px;border-top:1px solid #ddd7cb">
+          <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">আপনার নাম <span style="font-weight:400;color:#5f5b52">(ঐচ্ছিক)</span></span><input name="name" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+          <label style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">পদ <span style="font-weight:400;color:#5f5b52">(ঐচ্ছিক)</span></span><input name="role" placeholder="যেমন: সাধারণ সম্পাদক" style="border:0;border-bottom:1px solid #b9b3a6;padding:8px 0;background:none;outline:0;font-size:18px;border-radius:0" style-focus="border-bottom:2px solid oklch(0.42 0.1 160)"></label>
+        </div>
+        <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:16px"><input type="checkbox" checked="{{ anon }}" onChange="{{ toggleAnon }}" style="width:20px;height:20px;accent-color:#1c1b18;margin-top:3px;flex-shrink:0"><span>আমার নাম প্রকাশ করবেন না</span></label>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <button type="submit" style="min-height:52px;padding:0 28px;border:0;border-radius:4px;background:#1c1b18;color:#fff;cursor:pointer;font-weight:600;font-size:17px;transition:background .3s" style-hover="background:oklch(0.42 0.1 160)">প্রকাশ করুন →</button>
+          <span style="flex:1;color:oklch(0.5 0.2 27);font-size:15px;font-weight:500">{{ err }}</span>
+        </div>
+      </div>
+      </sc-if>
+      <sc-if value="{{ sent }}">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:20px 0;animation:up .6s cubic-bezier(.16,1,.3,1)">
+          <h3 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3vw,36px)">কার্যক্রমটি প্রকাশিত হয়েছে</h3>
+          <p style="color:#5f5b52">উপরের তালিকায় এটি এখন দেখা যাচ্ছে।</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <button type="button" onClick="{{ again }}" style="min-height:48px;padding:0 20px;border:1px solid #1c1b18;border-radius:4px;background:none;cursor:pointer;font-weight:600;font-size:16px">আরেকটি জমা দিন</button>
+            <button type="button" onClick="{{ viewTop }}" style="min-height:48px;padding:0 20px;border:0;border-radius:4px;background:#1c1b18;color:#fff;cursor:pointer;font-weight:600;font-size:16px">তালিকায় দেখুন ↑</button>
+          </div>
+        </div>
+      </sc-if>
+    </form>
+  </section>
+
+  <sc-if value="{{ hasOpen }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:20;background:rgba(20,19,17,.72);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;animation:fade .25s">
+      <div onClick="{{ stop }}" style="background:#fff;border-radius:6px;max-width:860px;width:100%;overflow:hidden;animation:up .4s cubic-bezier(.16,1,.3,1)">
+        <sc-if value="{{ o.hasImg }}"><div style="background:#1c1b18;aspect-ratio:16/10"><img src="{{ o.cur }}" alt="" style="width:100%;height:100%;object-fit:contain;display:block"></div></sc-if>
+        <sc-if value="{{ o.multi }}"><div style="display:flex;gap:6px;padding:8px;background:#1c1b18;overflow-x:auto"><sc-for list="{{ o.thumbs }}" as="t" hint-placeholder-count="0"><button type="button" onClick="{{ t.pick }}" style="flex:0 0 72px;height:54px;padding:0;border:2px solid {{ t.bd }};border-radius:3px;overflow:hidden;cursor:pointer;background:none"><img src="{{ t.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button></sc-for></div></sc-if>
+        <div style="padding:clamp(22px,4vw,40px);display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:2px 10px;border-radius:3px;background:oklch(0.42 0.1 160);color:#fff;font-size:14px;font-weight:600">{{ o.org }}</span><span style="padding:2px 10px;border-radius:3px;border:1px solid #ddd7cb;font-size:14px;font-weight:500">{{ o.type }}</span><span style="padding:2px 10px;border-radius:3px;border:1px solid #ddd7cb;font-size:14px;font-weight:500">{{ o.level }}</span></div>
+          <h2 style="font-family:'Noto Serif Bengali',serif;font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1.25">{{ o.title }}</h2>
+          <div style="font-size:15px;color:#5f5b52">{{ o.meta }}</div>
+          <p style="white-space:pre-wrap;text-wrap:pretty">{{ o.desc }}</p>
+          <sc-if value="{{ o.hasLinks }}"><div style="display:flex;flex-direction:column;gap:4px;padding-top:12px;border-top:1px solid #eee9df"><sc-for list="{{ o.links }}" as="l" hint-placeholder-count="0"><a href="{{ l.href }}" target="_blank" rel="noopener" style="font-size:15px;word-break:break-all">{{ l.href }}</a></sc-for></div></sc-if>
+          <div style="font-size:15px;color:#5f5b52;padding-top:12px;border-top:1px solid #eee9df">{{ o.by }}</div>
+          <button type="button" onClick="{{ close }}" style="align-self:flex-start;min-height:46px;padding:0 20px;border:1px solid #1c1b18;border-radius:4px;background:none;cursor:pointer;font-weight:600;font-size:16px">বন্ধ করুন</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  ORGS = ['আওয়ামী লীগ', 'যুবলীগ', 'ছাত্রলীগ', 'স্বেচ্ছাসেবক লীগ', 'কৃষক লীগ', 'শ্রমিক লীগ', 'মহিলা আওয়ামী লীগ', 'যুব মহিলা লীগ', 'তাঁতী লীগ', 'মৎস্যজীবী লীগ', 'আইনজীবী পরিষদ', 'বঙ্গবন্ধু পরিষদ', 'প্রবাসী শাখা', 'অন্যান্য'];
+  TYPES = ['মিটিং / সভা', 'মিছিল', 'মানববন্ধন', 'বিক্ষোভ / প্রতিবাদ', 'ত্রাণ / সেবা', 'দোয়া / মিলাদ', 'জনসংযোগ', 'অনলাইন প্রচারণা', 'আইনি সহায়তা', 'আহত বা বন্দি কর্মীর পাশে', 'অন্যান্য'];
+  state = { posts: [], filter: -1, org: null, type: null, photos: [], anon: true, err: '', sent: false, over: false, open: null, cur: 0 };
+  formRef = React.createRef();
+  componentDidMount() {
+    try { this.setState({ posts: JSON.parse(localStorage.getItem('dk-posts') || '[]') }); } catch (e) {}
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ open: null }); };
+    addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { removeEventListener('keydown', this.onKey); }
+  bn(n) { return String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]); }
+  fmtDate(d) { if (!d) return ''; const [y, m, dd] = d.split('-'); const M = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']; return this.bn(+dd) + ' ' + M[+m - 1] + ' ' + this.bn(y); }
+  shrink(file) {
+    return new Promise(res => { const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { const k = Math.min(1, 1000 / Math.max(im.width, im.height)); const c = document.createElement('canvas'); c.width = im.width * k; c.height = im.height * k; c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', .72)); }; im.onerror = () => res(null); im.src = r.result; }; r.readAsDataURL(file); });
+  }
+  async addFiles(list) {
+    const room = 6 - this.state.photos.length; const fs = [...list].filter(f => f.type.startsWith('image/')).slice(0, room);
+    const out = (await Promise.all(fs.map(f => this.shrink(f)))).filter(Boolean);
+    this.setState(s => ({ photos: [...s.photos, ...out].slice(0, 6) }));
+  }
+  submit(e) {
+    e.preventDefault();
+    const s = this.state, f = this.formRef.current, d = Object.fromEntries(new FormData(f));
+    if (s.org == null) return this.setState({ err: 'সংগঠন বাছুন।' });
+    if (s.type == null) return this.setState({ err: 'কার্যক্রমের ধরন বাছুন।' });
+    if (!d.district.trim() || !d.thana.trim()) return this.setState({ err: 'জেলা ও থানা লিখুন।' });
+    if (!d.title.trim()) return this.setState({ err: 'শিরোনাম লিখুন।' });
+    const links = String(d.links || '').split(/\s+/).filter(x => /^https?:\/\//.test(x));
+    const imgLinks = links.filter(x => /\.(jpe?g|png|webp|gif)(\?|$)/i.test(x));
+    const p = { id: Date.now(), at: new Date().toISOString(), org: this.ORGS[s.org], type: this.TYPES[s.type], ...d, links, imgs: [...s.photos, ...imgLinks], anon: s.anon };
+    const posts = [p, ...s.posts];
+    try { localStorage.setItem('dk-posts', JSON.stringify(posts)); } catch (er) { try { localStorage.setItem('dk-posts', JSON.stringify(posts.map((x, i) => i ? x : { ...x, imgs: imgLinks }))); } catch (e2) {} }
+    this.setState({ posts, sent: true, err: '', filter: -1 });
+  }
+  renderVals() {
+    const s = this.state, INK = '#1c1b18', LN = '#ddd7cb', G = 'oklch(0.42 0.1 160)';
+    const counts = {}; s.posts.forEach(p => counts[p.org] = (counts[p.org] || 0) + 1);
+    const usedOrgs = this.ORGS.filter(o => counts[o]);
+    const fOrg = s.filter >= 0 ? usedOrgs[s.filter] : null;
+    const shown = fOrg ? s.posts.filter(p => p.org === fOrg) : s.posts;
+    const chip = (on) => ({ bg: on ? INK : '#fff', fg: on ? '#fff' : INK, bd: on ? INK : LN });
+    const place = p => [p.thana, p.district].filter(Boolean).join(', ');
+    const op = s.open != null ? s.posts.find(p => p.id === s.open) : null;
+    return {
+      formRef: this.formRef,
+      totalBn: this.bn(s.posts.length), placesBn: this.bn(new Set(s.posts.map(p => p.thana + p.district)).size),
+      filters: [{ label: 'সব', n: this.bn(s.posts.length), pick: () => this.setState({ filter: -1 }), ...chip(s.filter < 0) }, ...usedOrgs.map((o, i) => ({ label: o, n: this.bn(counts[o]), pick: () => this.setState({ filter: i }), ...chip(s.filter === i) }))],
+      empty: shown.length === 0, emptyTitle: 'এখনো কোনো কার্যক্রম জমা পড়েনি',
+      posts: shown.map(p => ({ org: p.org, type: p.type, title: p.title, desc: p.desc || '', place: place(p), date: this.fmtDate(p.date), hasImg: p.imgs.length > 0, img: p.imgs[0], more: p.imgs.length > 1, moreTx: '+' + this.bn(p.imgs.length - 1), open: () => this.setState({ open: p.id, cur: 0 }) })),
+      orgOpts: this.ORGS.map((label, i) => ({ label, pick: () => this.setState({ org: i, err: '' }), ...chip(s.org === i) })),
+      typeOpts: this.TYPES.map((label, i) => ({ label, pick: () => this.setState({ type: i, err: '' }), ...chip(s.type === i) })),
+      photos: s.photos.map((src, i) => ({ src, remove: () => this.setState(st => ({ photos: st.photos.filter((_, j) => j !== i) })) })),
+      canAdd: s.photos.length < 6,
+      dropBd: s.over ? G : '#b9b3a6', dropBg: s.over ? 'oklch(0.42 0.1 160 / .08)' : '#f7f4ee',
+      dragOver: e => { e.preventDefault(); if (!s.over) this.setState({ over: true }); }, dragLeave: () => this.setState({ over: false }),
+      drop: e => { e.preventDefault(); this.setState({ over: false }); this.addFiles(e.dataTransfer.files); },
+      pickFiles: e => { this.addFiles(e.target.files); e.target.value = ''; },
+      anon: s.anon, toggleAnon: e => this.setState({ anon: e.target.checked }),
+      submit: e => this.submit(e), err: s.err, notSent: !s.sent, sent: s.sent,
+      again: () => { this.setState({ sent: false, org: null, type: null, photos: [], anon: true }); },
+      viewTop: () => scrollTo({ top: 0, behavior: 'smooth' }),
+      hasOpen: !!op, close: () => this.setState({ open: null }), stop: e => e.stopPropagation(),
+      o: op ? {
+        org: op.org, type: op.type, level: op.level || 'স্তর উল্লেখ নেই', title: op.title, desc: op.desc || '',
+        meta: [op.place, place(op), op.division, this.fmtDate(op.date), op.people ? 'প্রায় ' + this.bn(op.people) + ' জন' : ''].filter(Boolean).join(' · '),
+        hasImg: op.imgs.length > 0, cur: op.imgs[s.cur], multi: op.imgs.length > 1,
+        thumbs: op.imgs.map((src, i) => ({ src, bd: i === s.cur ? '#fff' : 'transparent', pick: () => this.setState({ cur: i }) })),
+        hasLinks: op.links.length > 0, links: op.links.map(href => ({ href })),
+        by: op.anon || !op.name ? 'জমাদাতা: বেনামে' : 'জমাদাতা: ' + op.name + (op.role ? ', ' + op.role : '')
+      } : {}
+    };
+  }
+}
+</script>
+</body>
+</html>

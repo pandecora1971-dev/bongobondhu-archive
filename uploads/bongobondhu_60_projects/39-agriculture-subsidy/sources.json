@@ -1,0 +1,38 @@
+{
+  "id": 39,
+  "slug": "agriculture-subsidy",
+  "title": "কৃষি ভর্তুকি",
+  "query": "Bangladesh agriculture subsidy machinery",
+  "folder": "39-agriculture-subsidy",
+  "photos": [
+    {
+      "url": "https://cdn.jagonews24.com/media/PhotoGalleryNew/BG/2019November/daily-pic-1-20230223191239.jpg",
+      "source": "https://www.jagonews24.com/photo/bangladesh/news/10435",
+      "source_title": "আজকের আলোচিত ছবি: ২৩ ফেব্রুয়ারি ২০২৩",
+      "caption": "BRRI 50th Anniversary Celebration and Trudeau Centre Inauguration",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.bssnews.net/bangla/assets/news_photos/2023/12/17/image-118594-1702806340.jpg",
+      "source": "https://www.bssnews.net/bangla/national/118594",
+      "source_title": "শরীয়তপুরে ভর্তুকি মূল্যে কৃষকের কাছে কম্বাইন্ড হারভেস্টার মেশিন হস্তান্তর | জাতীয়",
+      "caption": "Subsidized Harvester Handover in Shariatpur",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.shomoyeralo.com/2024/05/14/sa_1715675899.jpg",
+      "source": "https://www.shomoyeralo.com/news/270028",
+      "source_title": "সিংড়ায় ভর্তুকি মূল্যে কৃষি যন্ত্র বিতরণ",
+      "caption": "Subsidized Agricultural Machinery Distribution in Singra",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "কৃষি গবেষণা পরিদর্শন ও ভর্তুকির যন্ত্র বিতরণের দৃশ্য আলাদাভাবে চিহ্নিত করতে হবে।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

@@ -1,0 +1,1645 @@
+{
+ "slides": [
+  [
+   "৭ মার্চ ১৯৭১, রেসকোর্স ময়দান",
+   "7 March 1971, Racecourse Ground"
+  ],
+  [
+   "১০ জানুয়ারি ১৯৭২, স্বদেশ প্রত্যাবর্তন",
+   "10 January 1972, the homecoming"
+  ],
+  [
+   "ঢাকা, আজকের রাজধানী",
+   "Dhaka, the capital today"
+  ]
+ ],
+ "domains": [
+  [
+   "বঙ্গবন্ধুর ইতিহাস",
+   "Bangabandhu History",
+   "১৯৪৮–১৯৭৫: আন্দোলন, ভাষণ, দলিল ও রাষ্ট্রগঠন।",
+   "1948–1975: movements, speeches, documents and state-building.",
+   "#history"
+  ],
+  [
+   "উন্নয়ন ও শাসন",
+   "Development & Governance",
+   "১৯৯৬–২০০১ ও ২০০৯–২০২৪: প্রকল্প, নীতি ও বাস্তবায়নের অবস্থা।",
+   "1996–2001 and 2009–2024: projects, policy and implementation status.",
+   "#dev"
+  ],
+  [
+   "ঘটনা নথিভুক্তি",
+   "Incident Documentation",
+   "নিরাপদ রিপোর্টিং, প্রমাণ সংরক্ষণ ও যাচাই করা রেকর্ড।",
+   "Secure reporting, evidence and reviewed records.",
+   "#incident"
+  ],
+  [
+   "বাংলাদেশ অ্যাটলাস",
+   "Bangladesh Atlas",
+   "৮ বিভাগ ও ৬৪ জেলার মানচিত্রে ইতিহাস ও উন্নয়ন।",
+   "History and development across 8 divisions and 64 districts.",
+   "#atlas"
+  ]
+ ],
+ "chapters": [
+  {
+   "y": [
+    "১৯৪৮–১৯৫২",
+    "1948–1952"
+   ],
+   "b": "ভাষা আন্দোলন ও প্রারম্ভিক রাজনীতি",
+   "e": "Language movement and early politics",
+   "db": "রাষ্ট্রভাষা বাংলার দাবি, ছাত্র সংগঠন, কারাবরণ এবং নতুন রাজনৈতিক দলের সূচনা।",
+   "de": "The demand for Bangla as a state language, student organising, imprisonment and a new political party.",
+   "ev": [
+    [
+     "৪ জানুয়ারি ১৯৪৮",
+     "4 Jan 1948",
+     "পূর্ব পাকিস্তান মুসলিম ছাত্রলীগ প্রতিষ্ঠায় ভূমিকা।",
+     "Role in founding the East Pakistan Muslim Students’ League."
+    ],
+    [
+     "১১ মার্চ ১৯৪৮",
+     "11 Mar 1948",
+     "ভাষা আন্দোলনের কর্মসূচিতে গ্রেপ্তার; ১৫ মার্চ মুক্তি।",
+     "Arrested during the language movement programme; released on 15 March."
+    ],
+    [
+     "১৬ মার্চ ১৯৪৮",
+     "16 Mar 1948",
+     "ঢাকা বিশ্ববিদ্যালয়ে ভাষা আন্দোলন-সংক্রান্ত সমাবেশে সভাপতিত্ব।",
+     "Presided over a language movement rally at Dhaka University."
+    ],
+    [
+     "১৯৪৮–৪৯",
+     "1948–49",
+     "ভাষার অধিকার ও বিভিন্ন রাজনৈতিক দাবিতে আন্দোলন; একাধিকবার কারাবরণ।",
+     "Campaigns for language rights and political demands; jailed several times."
+    ],
+    [
+     "১৯৪৯",
+     "1949",
+     "ঢাকা বিশ্ববিদ্যালয়ের চতুর্থ শ্রেণির কর্মচারীদের অধিকার আন্দোলনে সমর্থন।",
+     "Supported the rights movement of Dhaka University’s fourth-class employees."
+    ],
+    [
+     "২৩ জুন ১৯৪৯",
+     "23 Jun 1949",
+     "আওয়ামী মুসলিম লীগের যুগ্ম সাধারণ সম্পাদক নির্বাচিত।",
+     "Elected joint general secretary of the Awami Muslim League."
+    ],
+    [
+     "১৯৫০–৫২",
+     "1950–52",
+     "কারাবন্দি অবস্থায় ভাষা আন্দোলনের নেতাদের সঙ্গে যোগাযোগ ও আন্দোলনের পক্ষে ভূমিকা।",
+     "Kept contact with language movement leaders from prison."
+    ],
+    [
+     "১৯৫২",
+     "1952",
+     "কারাগারে অনশন; রাষ্ট্রভাষা বাংলার দাবিতে রাজনৈতিক অবস্থান অব্যাহত।",
+     "Hunger strike in jail; continued to press for Bangla as a state language."
+    ]
+   ]
+  },
+  {
+   "y": [
+    "১৯৫৩–১৯৫৮",
+    "1953–1958"
+   ],
+   "b": "আওয়ামী লীগের নেতৃত্ব ও যুক্তফ্রন্ট",
+   "e": "Awami League leadership and the United Front",
+   "db": "দলের সাধারণ সম্পাদক থেকে প্রাদেশিক মন্ত্রী, তারপর সংগঠনের জন্য মন্ত্রিত্ব ত্যাগ।",
+   "de": "From general secretary to provincial minister, then leaving office to build the party.",
+   "ev": [
+    [
+     "১৯৫৩",
+     "1953",
+     "আওয়ামী মুসলিম লীগের সাধারণ সম্পাদক নির্বাচিত।",
+     "Elected general secretary of the Awami Muslim League."
+    ],
+    [
+     "১৯৫৪",
+     "1954",
+     "যুক্তফ্রন্টের নির্বাচনী প্রচার ও সাংগঠনিক কার্যক্রমে অংশগ্রহণ।",
+     "Campaigned and organised for the United Front."
+    ],
+    [
+     "১৯৫৪",
+     "1954",
+     "পূর্ববাংলা আইনসভার সদস্য নির্বাচিত এবং যুক্তফ্রন্ট মন্ত্রিসভায় দায়িত্ব গ্রহণ।",
+     "Elected to the East Bengal legislature and joined the United Front cabinet."
+    ],
+    [
+     "১৯৫৫",
+     "1955",
+     "আওয়ামী লীগের অসাম্প্রদায়িক সাংগঠনিক রূপান্তরের সময় গুরুত্বপূর্ণ নেতৃত্ব।",
+     "A leading role as the Awami League became a non-communal party."
+    ],
+    [
+     "১৯৫৬",
+     "1956",
+     "পূর্ব পাকিস্তানের প্রাদেশিক মন্ত্রিসভায় দায়িত্ব পালন।",
+     "Served in the East Pakistan provincial cabinet."
+    ],
+    [
+     "১৯৫৭",
+     "1957",
+     "দলীয় সাংগঠনিক কাজে বেশি মনোযোগ দেওয়ার জন্য মন্ত্রিত্ব ত্যাগ।",
+     "Resigned as minister to focus on party organisation."
+    ],
+    [
+     "১৯৫৮",
+     "1958",
+     "সামরিক শাসন ও রাজনৈতিক দমননীতির প্রেক্ষাপটে গ্রেপ্তার।",
+     "Arrested after martial law was imposed."
+    ]
+   ]
+  },
+  {
+   "y": [
+    "১৯৫৯–১৯৬৫",
+    "1959–1965"
+   ],
+   "b": "সামরিক শাসন ও স্বায়ত্তশাসনের দাবি",
+   "e": "Military rule and the call for autonomy",
+   "db": "আইয়ুব খানের সামরিক শাসনের বিরুদ্ধে রাজনীতি এবং আওয়ামী লীগের পুনর্গঠন।",
+   "de": "Politics against Ayub Khan’s military rule and the rebuilding of the Awami League.",
+   "ev": [
+    [
+     "১৯৫৮–৬২",
+     "1958–62",
+     "সামরিক শাসনে রাজনৈতিক দমননীতি ও কারাবরণ।",
+     "Political repression and imprisonment under martial law."
+    ],
+    [
+     "১৯৬২",
+     "1962",
+     "আইয়ুব খানের সামরিক শাসনবিরোধী রাজনৈতিক কার্যক্রমে অংশগ্রহণ।",
+     "Took part in political activity against Ayub Khan’s military rule."
+    ],
+    [
+     "১৯৬৪",
+     "1964",
+     "আওয়ামী লীগ পুনর্গঠনে অংশগ্রহণ এবং রাজনৈতিক প্রচার চালানো।",
+     "Helped reorganise the Awami League and campaigned politically."
+    ]
+   ]
+  },
+  {
+   "y": [
+    "১৯৬৬–১৯৬৯",
+    "1966–1969"
+   ],
+   "b": "ছয় দফা, আগরতলা মামলা, গণঅভ্যুত্থান",
+   "e": "Six Points, Agartala Case, mass uprising",
+   "db": "ছয় দফা থেকে গণঅভ্যুত্থান — এই সময়েই তিনি ‘বঙ্গবন্ধু’।",
+   "de": "From the Six Points to the mass uprising — the years he became “Bangabandhu”.",
+   "ev": [
+    [
+     "১৯৬৬",
+     "1966",
+     "ঐতিহাসিক ছয় দফা কর্মসূচি উত্থাপন।",
+     "Presented the historic Six-Point programme."
+    ],
+    [
+     "১৯৬৬",
+     "1966",
+     "আওয়ামী লীগের সভাপতি নির্বাচিত; ছয় দফার পক্ষে দেশব্যাপী প্রচার।",
+     "Elected Awami League president; nationwide campaign for the Six Points."
+    ],
+    [
+     "১৯৬৬",
+     "1966",
+     "ছয় দফা আন্দোলনের কারণে পুনরায় কারাবরণ।",
+     "Jailed again over the Six-Point movement."
+    ],
+    [
+     "১৯৬৮",
+     "1968",
+     "আগরতলা ষড়যন্ত্র মামলায় অভিযুক্ত।",
+     "Accused in the Agartala Conspiracy Case."
+    ],
+    [
+     "২২ ফেব্রুয়ারি ১৯৬৯",
+     "22 Feb 1969",
+     "গণঅভ্যুত্থানের প্রেক্ষাপটে মামলা প্রত্যাহার এবং মুক্তি।",
+     "Case withdrawn amid the mass uprising; released."
+    ],
+    [
+     "২৩ ফেব্রুয়ারি ১৯৬৯",
+     "23 Feb 1969",
+     "জনসমাবেশে ‘বঙ্গবন্ধু’ উপাধিতে ভূষিত।",
+     "Given the title “Bangabandhu” at a public rally."
+    ],
+    [
+     "১৯৬৯",
+     "1969",
+     "পূর্ব পাকিস্তানের স্বায়ত্তশাসন ও বাঙালির রাজনৈতিক অধিকারের দাবিতে নেতৃত্ব।",
+     "Led the demand for autonomy and Bengali political rights."
+    ]
+   ]
+  },
+  {
+   "y": [
+    "১৯৭০–১৯৭১",
+    "1970–1971"
+   ],
+   "b": "নির্বাচন, ৭ মার্চ ও স্বাধীনতা",
+   "e": "Election, 7 March and independence",
+   "db": "নির্বাচনী বিজয়, অসহযোগ আন্দোলন, ঐতিহাসিক ভাষণ এবং মুক্তিযুদ্ধ।",
+   "de": "Election victory, non-cooperation, the historic speech and the Liberation War.",
+   "ev": [
+    [
+     "১৯৭০",
+     "1970",
+     "আওয়ামী লীগের নির্বাচনী কর্মসূচি ও ছয় দফার ভিত্তিতে প্রচার।",
+     "Campaigned on the Awami League manifesto and the Six Points."
+    ],
+    [
+     "১৯৭০",
+     "1970",
+     "সাধারণ নির্বাচনে পাকিস্তানের জাতীয় পরিষদে সংখ্যাগরিষ্ঠতা অর্জনে নেতৃত্ব।",
+     "Led the party to a majority in Pakistan’s National Assembly."
+    ],
+    [
+     "১ মার্চ ১৯৭১",
+     "1 Mar 1971",
+     "জাতীয় পরিষদের অধিবেশন স্থগিতের পর অসহযোগ আন্দোলনে নেতৃত্ব।",
+     "Led non-cooperation after the Assembly session was postponed."
+    ],
+    [
+     "৭ মার্চ ১৯৭১",
+     "7 Mar 1971",
+     "রেসকোর্স ময়দানে ঐতিহাসিক ভাষণ প্রদান।",
+     "Delivered the historic speech at the Racecourse Ground."
+    ],
+    [
+     "৭–২৫ মার্চ ১৯৭১",
+     "7–25 Mar 1971",
+     "পূর্ব পাকিস্তানে অসহযোগ আন্দোলন ও রাজনৈতিক নির্দেশনা।",
+     "Non-cooperation movement and political directives in East Pakistan."
+    ],
+    [
+     "২৫ মার্চ ১৯৭১",
+     "25 Mar 1971",
+     "স্বাধীনতার ঘোষণা-সংক্রান্ত ঐতিহাসিক ঘটনা; রাতে পাকিস্তানি বাহিনীর হাতে গ্রেপ্তার।",
+     "The events of the declaration of independence; arrested that night by Pakistani forces."
+    ],
+    [
+     "১৯৭১",
+     "1971",
+     "পাকিস্তানে বন্দি; তাঁর অনুপস্থিতিতে মুজিবনগর সরকারের নেতৃত্বে যুদ্ধ পরিচালিত হয়।",
+     "Held in Pakistan; the Mujibnagar government led the war in his absence."
+    ]
+   ]
+  },
+  {
+   "y": [
+    "১৯৭২–১৯৭৫",
+    "1972–1975"
+   ],
+   "b": "সংবিধান ও রাষ্ট্রগঠন",
+   "e": "Constitution and state-building",
+   "db": "যুদ্ধবিধ্বস্ত দেশের পুনর্গঠন, সংবিধান, কূটনীতি — এবং সংকট ও বিতর্কের বছরগুলো।",
+   "de": "Rebuilding a war-torn country, the constitution, diplomacy — and years of crisis and controversy.",
+   "ev": [
+    [
+     "১০ জানুয়ারি ১৯৭২",
+     "10 Jan 1972",
+     "পাকিস্তানের কারাগার থেকে মুক্ত হয়ে স্বদেশ প্রত্যাবর্তন।",
+     "Returned home after release from prison in Pakistan."
+    ],
+    [
+     "১২ জানুয়ারি ১৯৭২",
+     "12 Jan 1972",
+     "প্রধানমন্ত্রীর দায়িত্ব গ্রহণ।",
+     "Took office as prime minister."
+    ],
+    [
+     "১৯৭২",
+     "1972",
+     "যুদ্ধবিধ্বস্ত দেশ পুনর্গঠন ও শরণার্থী পুনর্বাসন।",
+     "Reconstruction of the war-torn country and resettlement of refugees."
+    ],
+    [
+     "১৯৭২",
+     "1972",
+     "ব্যাংক ও গুরুত্বপূর্ণ শিল্পপ্রতিষ্ঠান জাতীয়করণ।",
+     "Nationalisation of banks and key industries."
+    ],
+    [
+     "১৯৭২",
+     "1972",
+     "পরিকল্পনা কমিশন ও কুদরাত-এ-খুদা শিক্ষা কমিশন গঠন।",
+     "Planning Commission and the Qudrat-e-Khuda Education Commission formed."
+    ],
+    [
+     "৪ নভেম্বর ১৯৭২",
+     "4 Nov 1972",
+     "গণপরিষদে সংবিধান গৃহীত; ১৬ ডিসেম্বর কার্যকর।",
+     "Constitution adopted; in force from 16 December."
+    ],
+    [
+     "১৯৭৩",
+     "1973",
+     "নতুন সংবিধানের অধীনে প্রথম জাতীয় সংসদ নির্বাচন।",
+     "First parliamentary election under the new constitution."
+    ],
+    [
+     "১৯৭৩",
+     "1973",
+     "প্রথম পঞ্চবার্ষিক পরিকল্পনা (১৯৭৩–১৯৭৮) প্রণয়ন।",
+     "First Five-Year Plan (1973–1978) prepared."
+    ],
+    [
+     "১৯৭৩",
+     "1973",
+     "প্রায় ৩৬ হাজার প্রাথমিক বিদ্যালয় জাতীয়করণ।",
+     "About 36,000 primary schools nationalised."
+    ],
+    [
+     "১৯৭৪",
+     "1974",
+     "বাংলাদেশ-ভারত স্থলসীমান্ত চুক্তি স্বাক্ষর।",
+     "Bangladesh–India Land Boundary Agreement signed."
+    ],
+    [
+     "১৭ সেপ্টেম্বর ১৯৭৪",
+     "17 Sep 1974",
+     "বাংলাদেশ জাতিসংঘে যোগ দেয়।",
+     "Bangladesh joins the United Nations."
+    ],
+    [
+     "২৫ সেপ্টেম্বর ১৯৭৪",
+     "25 Sep 1974",
+     "জাতিসংঘ সাধারণ পরিষদে বাংলায় ভাষণ।",
+     "Address to the UN General Assembly in Bangla."
+    ],
+    [
+     "১৯৭৪",
+     "1974",
+     "দুর্ভিক্ষ ও খাদ্যসংকট; বিশেষ ক্ষমতা আইন ও জরুরি অবস্থা নিয়ে বিতর্ক।",
+     "Famine and food crisis; debate over the Special Powers Act and the emergency."
+    ],
+    [
+     "১৯৭৫",
+     "1975",
+     "চতুর্থ সংশোধনী ও বাকশাল: একদলীয় কাঠামো, সংবাদপত্রে বিধিনিষেধ।",
+     "Fourth Amendment and BAKSAL: a one-party structure and press restrictions."
+    ]
+   ]
+  }
+ ],
+ "stops": [
+  {
+   "ll": [
+    89.9,
+    22.9
+   ],
+   "y": [
+    "সূচনা",
+    "Origin"
+   ],
+   "b": "টুঙ্গিপাড়া, গোপালগঞ্জ",
+   "e": "Tungipara, Gopalganj",
+   "db": "এই গ্রামেই শেখ মুজিবুর রহমানের জন্ম ও বেড়ে ওঠা; এখানেই তাঁর সমাধি।",
+   "de": "The village where Sheikh Mujibur Rahman was born and raised, and where he is buried."
+  },
+  {
+   "ll": [
+    90.39,
+    23.727
+   ],
+   "y": [
+    "১৯৪৮–১৯৫২",
+    "1948–1952"
+   ],
+   "b": "ঢাকা: ভাষা আন্দোলন",
+   "e": "Dhaka: the language movement",
+   "db": "ঢাকা বিশ্ববিদ্যালয় এলাকায় রাষ্ট্রভাষা বাংলার দাবিতে আন্দোলন; আজকের শহীদ মিনার।",
+   "de": "Protests around Dhaka University for Bangla as a state language; today’s Shaheed Minar."
+  },
+  {
+   "ll": [
+    90.398,
+    23.734
+   ],
+   "y": [
+    "৭ মার্চ ১৯৭১",
+    "7 March 1971"
+   ],
+   "b": "ঢাকা: রেসকোর্স ময়দান",
+   "e": "Dhaka: Racecourse Ground",
+   "db": "“এবারের সংগ্রাম আমাদের মুক্তির সংগ্রাম, এবারের সংগ্রাম স্বাধীনতার সংগ্রাম।”",
+   "de": "“The struggle this time is the struggle for our emancipation, the struggle for independence.”"
+  },
+  {
+   "ll": [
+    91.85,
+    22.39
+   ],
+   "y": [
+    "মার্চ ১৯৭১",
+    "March 1971"
+   ],
+   "b": "চট্টগ্রাম: কালুরঘাট বেতার কেন্দ্র",
+   "e": "Chattogram: Kalurghat radio station",
+   "db": "স্বাধীনতার ঘোষণা এখান থেকে বেতারে প্রচারিত হয়।",
+   "de": "The declaration of independence was broadcast by radio from here."
+  },
+  {
+   "ll": [
+    88.6,
+    23.65
+   ],
+   "y": [
+    "১৭ এপ্রিল ১৯৭১",
+    "17 April 1971"
+   ],
+   "b": "মুজিবনগর, মেহেরপুর",
+   "e": "Mujibnagar, Meherpur",
+   "db": "বাংলাদেশের প্রথম সরকারের শপথ; তাঁর অনুপস্থিতিতে এই সরকারই যুদ্ধ পরিচালনা করে।",
+   "de": "The first government of Bangladesh is sworn in and leads the war in his absence."
+  },
+  {
+   "ll": [
+    90.4,
+    23.78
+   ],
+   "y": [
+    "১০ জানুয়ারি ১৯৭২",
+    "10 January 1972"
+   ],
+   "b": "ঢাকা: স্বদেশ প্রত্যাবর্তন",
+   "e": "Dhaka: the homecoming",
+   "db": "পাকিস্তানের কারাগার থেকে মুক্ত হয়ে স্বাধীন দেশে ফিরে আসা।",
+   "de": "Return to an independent country after release from prison in Pakistan."
+  }
+ ],
+ "status": {
+  "D": [
+   "চালু / সম্পন্ন",
+   "Operational / done"
+  ],
+  "P": [
+   "আংশিক",
+   "Partial"
+  ],
+  "O": [
+   "চলমান",
+   "Ongoing"
+  ],
+  "L": [
+   "নীতি / পরিকল্পনা",
+   "Policy / plan"
+  ],
+  "A": [
+   "নথিভুক্তির বিষয়",
+   "For documentation"
+  ]
+ },
+ "projects": [
+  {
+   "ll": [
+    90.26,
+    23.44
+   ],
+   "s": "D",
+   "b": "পদ্মা বহুমুখী সেতু",
+   "e": "Padma Multipurpose Bridge",
+   "l": [
+    "মুন্সীগঞ্জ – শরীয়তপুর",
+    "Munshiganj – Shariatpur"
+   ],
+   "y": [
+    "সড়ক অংশ চালু: ২৫ জুন ২০২২",
+    "Road deck opened: 25 June 2022"
+   ],
+   "db": "সড়ক অংশ ২০২২ সালে চালু। রেল সংযোগের ঢাকা–ভাঙ্গা অংশ ২০২৩-এ চালু; পুরো রেল প্রকল্প তখনো সম্পন্ন নয়।",
+   "de": "Road deck opened in 2022. The Dhaka–Bhanga rail section opened in 2023; the full rail link was not yet complete."
+  },
+  {
+   "ll": [
+    90.37,
+    23.82
+   ],
+   "s": "D",
+   "b": "মেট্রোরেল (এমআরটি লাইন-৬)",
+   "e": "Metro Rail (MRT Line-6)",
+   "l": [
+    "উত্তরা – মতিঝিল, ঢাকা",
+    "Uttara – Motijheel, Dhaka"
+   ],
+   "y": [
+    "২০২২–২৩ সালে পর্যায়ক্রমে চালু",
+    "Opened in phases, 2022–23"
+   ],
+   "db": "উত্তরা–আগারগাঁও ২০২২ ও আগারগাঁও–মতিঝিল ২০২৩ সালে চালু। মতিঝিল–কমলাপুর সম্প্রসারণ চলমান ছিল।",
+   "de": "Uttara–Agargaon opened in 2022 and Agargaon–Motijheel in 2023. The Kamalapur extension was still under way."
+  },
+  {
+   "ll": [
+    91.8,
+    22.23
+   ],
+   "s": "D",
+   "b": "কর্ণফুলী টানেল",
+   "e": "Karnaphuli Tunnel",
+   "l": [
+    "চট্টগ্রাম",
+    "Chattogram"
+   ],
+   "y": [
+    "উদ্বোধন: ২৮ অক্টোবর ২০২৩",
+    "Opened: 28 October 2023"
+   ],
+   "db": "কর্ণফুলী নদীর তলদেশে নির্মিত সড়ক টানেল।",
+   "de": "A road tunnel built under the Karnaphuli river."
+  },
+  {
+   "ll": [
+    90.42,
+    23.77
+   ],
+   "s": "P",
+   "b": "ঢাকা এলিভেটেড এক্সপ্রেসওয়ে",
+   "e": "Dhaka Elevated Expressway",
+   "l": [
+    "ঢাকা",
+    "Dhaka"
+   ],
+   "y": [
+    "আংশিক চালু: ২০২৩",
+    "Partly opened: 2023"
+   ],
+   "db": "শুধু একটি অংশ চালু; বাকি অংশ নির্মাণাধীন ছিল।",
+   "de": "Only one section was open; the rest was under construction."
+  },
+  {
+   "ll": [
+    90.405,
+    23.85
+   ],
+   "s": "P",
+   "b": "শাহজালাল বিমানবন্দর: তৃতীয় টার্মিনাল",
+   "e": "Shahjalal Airport: Third Terminal",
+   "l": [
+    "ঢাকা",
+    "Dhaka"
+   ],
+   "y": [
+    "সফট ওপেনিং: ২০২৩",
+    "Soft opening: 2023"
+   ],
+   "db": "২০২৩-এ সফট ওপেনিং হলেও পূর্ণ বাণিজ্যিক কার্যক্রম শুরু হয়নি।",
+   "de": "A soft opening in 2023; full commercial operation had not begun."
+  },
+  {
+   "ll": [
+    89.05,
+    24.07
+   ],
+   "s": "O",
+   "b": "রূপপুর পারমাণবিক বিদ্যুৎকেন্দ্র",
+   "e": "Rooppur Nuclear Power Plant",
+   "l": [
+    "ঈশ্বরদী, পাবনা",
+    "Ishwardi, Pabna"
+   ],
+   "y": [
+    "নির্মাণ ও কমিশনিং চলমান",
+    "Construction and commissioning under way"
+   ],
+   "db": "আগস্ট ২০২৪ পর্যন্ত বাণিজ্যিক বিদ্যুৎ উৎপাদন শুরু হয়নি।",
+   "de": "Commercial generation had not started by August 2024."
+  },
+  {
+   "ll": [
+    89.78,
+    24.4
+   ],
+   "s": "D",
+   "b": "যমুনা বহুমুখী সেতু",
+   "e": "Jamuna Multipurpose Bridge",
+   "l": [
+    "টাঙ্গাইল – সিরাজগঞ্জ",
+    "Tangail – Sirajganj"
+   ],
+   "y": [
+    "উদ্বোধন: ১৯৯৮",
+    "Opened: 1998"
+   ],
+   "db": "১৯৯৮ সালে উদ্বোধন; নির্মাণ ও অর্থায়ন আগের সরকারগুলোর সময়েও চলেছিল। পৃথক রেলসেতু ২০২৪-এ নির্মাণাধীন।",
+   "de": "Opened in 1998; construction and financing also ran under earlier governments. A separate rail bridge was under construction in 2024."
+  },
+  {
+   "ll": [
+    90.42,
+    24.02
+   ],
+   "s": "D",
+   "b": "বাংলাদেশ স্যাটেলাইট-১",
+   "e": "Bangladesh Satellite-1",
+   "l": [
+    "গ্রাউন্ড স্টেশন: গাজীপুর",
+    "Ground station: Gazipur"
+   ],
+   "y": [
+    "উৎক্ষেপণ: ২০১৮",
+    "Launched: 2018"
+   ],
+   "db": "দেশের প্রথম যোগাযোগ উপগ্রহের উৎক্ষেপণ সম্পন্ন।",
+   "de": "Launch of the country’s first communications satellite."
+  },
+  {
+   "ll": [
+    90.27,
+    21.99
+   ],
+   "s": "P",
+   "b": "পায়রা সমুদ্রবন্দর",
+   "e": "Payra Sea Port",
+   "l": [
+    "কলাপাড়া, পটুয়াখালী",
+    "Kalapara, Patuakhali"
+   ],
+   "y": [
+    "আংশিক কার্যক্রম চালু",
+    "Partly operational"
+   ],
+   "db": "প্রাথমিক অবকাঠামো ও আংশিক কার্যক্রম চালু; সম্প্রসারণ চলমান। পায়রা ১,৩২০ মেগাওয়াট বিদ্যুৎকেন্দ্র চালু।",
+   "de": "Initial infrastructure and partial operations; expansion ongoing. The 1,320 MW Payra power plant is operating."
+  },
+  {
+   "ll": [
+    91.88,
+    21.72
+   ],
+   "s": "O",
+   "b": "মাতারবাড়ী গভীর সমুদ্রবন্দর",
+   "e": "Matarbari Deep Sea Port",
+   "l": [
+    "মহেশখালী, কক্সবাজার",
+    "Maheshkhali, Cox’s Bazar"
+   ],
+   "y": [
+    "নির্মাণাধীন",
+    "Under construction"
+   ],
+   "db": "বন্দর নির্মাণাধীন। মাতারবাড়ী ১,২০০ মেগাওয়াট বিদ্যুৎকেন্দ্র ২০২৩-এ উৎপাদন শুরু করে।",
+   "de": "Port under construction. The 1,200 MW Matarbari power plant began generating in 2023."
+  },
+  {
+   "ll": [
+    92.02,
+    21.45
+   ],
+   "s": "D",
+   "b": "দোহাজারী–কক্সবাজার রেললাইন",
+   "e": "Dohazari–Cox’s Bazar Railway",
+   "l": [
+    "কক্সবাজার",
+    "Cox’s Bazar"
+   ],
+   "y": [
+    "চালু: ২০২৩",
+    "Opened: 2023"
+   ],
+   "db": "মূল কক্সবাজার অংশ ও আইকনিক রেলস্টেশন ২০২৩-এ উদ্বোধিত।",
+   "de": "The main Cox’s Bazar section and the iconic station opened in 2023."
+  },
+  {
+   "ll": null,
+   "s": "O",
+   "b": "আশ্রয়ণ প্রকল্প",
+   "e": "Ashrayan Project",
+   "l": [
+    "সারা দেশ",
+    "Nationwide"
+   ],
+   "y": [
+    "শুরু: ১৯৯৭",
+    "Began: 1997"
+   ],
+   "db": "ভূমিহীন ও গৃহহীন পরিবারের আবাসন। আশ্রয়ণ-২-এ বহু বাড়ি হস্তান্তর; প্রকল্প পর্যায়ক্রমে চলমান।",
+   "de": "Housing for landless and homeless families. Many homes handed over under Ashrayan-2; the project continues in phases."
+  },
+  {
+   "ll": null,
+   "s": "D",
+   "b": "কমিউনিটি ক্লিনিক",
+   "e": "Community Clinics",
+   "l": [
+    "সারা দেশ",
+    "Nationwide"
+   ],
+   "y": [
+    "১৯৯৮ শুরু · ২০০৯ পুনরায় চালু",
+    "Began 1998 · revived 2009"
+   ],
+   "db": "গ্রামীণ প্রাথমিক স্বাস্থ্যসেবা। ২০১৯ সালে ১৪ হাজারের বেশি ক্লিনিক সক্রিয় ছিল (WHO)।",
+   "de": "Rural primary healthcare. More than 14,000 clinics were active in 2019 (WHO)."
+  }
+ ],
+ "cats": [
+  {
+   "b": "১৯৯৬–২০০১",
+   "e": "1996–2001",
+   "it": [
+    [
+     "গঙ্গা পানি বণ্টন চুক্তি",
+     "Ganges Water Sharing Treaty",
+     "D",
+     "১৯৯৬"
+    ],
+    [
+     "পার্বত্য চট্টগ্রাম শান্তিচুক্তি",
+     "Chittagong Hill Tracts Peace Accord",
+     "P",
+     "১৯৯৭"
+    ],
+    [
+     "কমিউনিটি ক্লিনিক কর্মসূচি",
+     "Community clinic programme",
+     "P",
+     "১৯৯৮"
+    ],
+    [
+     "বয়স্ক ভাতা চালু",
+     "Old-age allowance introduced",
+     "D",
+     "১৯৯৭–৯৮"
+    ],
+    [
+     "বিধবা ও স্বামী-পরিত্যক্তা নারীদের ভাতা",
+     "Allowance for widowed and deserted women",
+     "D",
+     "১৯৯৮"
+    ],
+    [
+     "আশ্রয়ণ প্রকল্প",
+     "Ashrayan housing project",
+     "D",
+     "১৯৯৭"
+    ],
+    [
+     "যমুনা বহুমুখী সেতু উদ্বোধন",
+     "Jamuna Multipurpose Bridge opened",
+     "D",
+     "১৯৯৮"
+    ],
+    [
+     "পঞ্চম পঞ্চবার্ষিক পরিকল্পনা",
+     "Fifth Five-Year Plan",
+     "L",
+     "১৯৯৭–২০০২"
+    ],
+    [
+     "জাতীয় স্বাস্থ্যনীতি",
+     "National health policy",
+     "L",
+     ""
+    ],
+    [
+     "স্বাস্থ্য ও জনসংখ্যা খাত কর্মসূচি",
+     "Health and population sector programme",
+     "D",
+     "১৯৯৮–২০০৩"
+    ],
+    [
+     "নারীর ক্ষমতায়ন ও সামাজিক নিরাপত্তা সম্প্রসারণ",
+     "Women’s empowerment and social safety nets",
+     "D",
+     ""
+    ],
+    [
+     "১৯৯৮ সালের বন্যা মোকাবিলা",
+     "Response to the 1998 flood",
+     "D",
+     "১৯৯৮"
+    ],
+    [
+     "ইনডেমনিটি অধ্যাদেশ বাতিল",
+     "Indemnity Ordinance repealed",
+     "D",
+     "১৯৯৬"
+    ],
+    [
+     "মুক্তিযোদ্ধা ও শহীদ পরিবারের সহায়তা",
+     "Support for freedom fighters and martyrs’ families",
+     "D",
+     ""
+    ],
+    [
+     "জাতীয় শিক্ষানীতি প্রণয়নের উদ্যোগ",
+     "National education policy initiative",
+     "L",
+     "২০০০"
+    ],
+    [
+     "টেলিযোগাযোগে বেসরকারি অংশগ্রহণ",
+     "Private participation in telecoms",
+     "L",
+     ""
+    ],
+    [
+     "আন্তর্জাতিক মাতৃভাষা দিবসের UNESCO স্বীকৃতি",
+     "UNESCO recognition of International Mother Language Day",
+     "D",
+     "১৯৯৯"
+    ]
+   ]
+  },
+  {
+   "b": "যোগাযোগ ও বন্দর",
+   "e": "Transport & ports",
+   "it": [
+    [
+     "পদ্মা বহুমুখী সেতু (সড়ক অংশ)",
+     "Padma Bridge (road deck)",
+     "D",
+     "২০২২"
+    ],
+    [
+     "ঢাকা–মাওয়া–ভাঙ্গা এক্সপ্রেসওয়ে",
+     "Dhaka–Mawa–Bhanga Expressway",
+     "D",
+     "২০২০"
+    ],
+    [
+     "MRT লাইন-৬: উত্তরা–আগারগাঁও",
+     "MRT Line-6: Uttara–Agargaon",
+     "D",
+     "২০২২"
+    ],
+    [
+     "MRT লাইন-৬: আগারগাঁও–মতিঝিল",
+     "MRT Line-6: Agargaon–Motijheel",
+     "D",
+     "২০২৩"
+    ],
+    [
+     "MRT লাইন-৬: কমলাপুর সম্প্রসারণ",
+     "MRT Line-6: Kamalapur extension",
+     "O",
+     ""
+    ],
+    [
+     "MRT লাইন-১ ও লাইন-৫ (নর্দার্ন রুট)",
+     "MRT Line-1 and Line-5 (Northern Route)",
+     "O",
+     ""
+    ],
+    [
+     "কর্ণফুলী নদীর তলদেশে টানেল",
+     "Karnaphuli river tunnel",
+     "D",
+     "২০২৩"
+    ],
+    [
+     "ঢাকা এলিভেটেড এক্সপ্রেসওয়ে",
+     "Dhaka Elevated Expressway",
+     "P",
+     "২০২৩"
+    ],
+    [
+     "ঢাকা–আশুলিয়া এলিভেটেড এক্সপ্রেসওয়ে",
+     "Dhaka–Ashulia Elevated Expressway",
+     "O",
+     ""
+    ],
+    [
+     "চট্টগ্রাম এলিভেটেড এক্সপ্রেসওয়ে",
+     "Chattogram Elevated Expressway",
+     "P",
+     "২০২৩"
+    ],
+    [
+     "পদ্মা সেতু রেল সংযোগ",
+     "Padma Bridge rail link",
+     "P",
+     "২০২৩"
+    ],
+    [
+     "দোহাজারী–কক্সবাজার রেললাইন ও আইকনিক স্টেশন",
+     "Dohazari–Cox’s Bazar railway and iconic station",
+     "D",
+     "২০২৩"
+    ],
+    [
+     "খুলনা–মোংলা রেললাইন",
+     "Khulna–Mongla railway",
+     "D",
+     "২০২৪"
+    ],
+    [
+     "যমুনা পৃথক রেলসেতু",
+     "Separate Jamuna rail bridge",
+     "O",
+     ""
+    ],
+    [
+     "ঢাকা–সিলেট মহাসড়ক চার লেন",
+     "Dhaka–Sylhet highway four-laning",
+     "O",
+     ""
+    ],
+    [
+     "গাজীপুর–বিমানবন্দর BRT",
+     "Gazipur–Airport BRT",
+     "O",
+     ""
+    ],
+    [
+     "কালনা মধুমতী সেতু",
+     "Kalna Madhumati Bridge",
+     "D",
+     "২০২২"
+    ],
+    [
+     "তৃতীয় শীতলক্ষ্যা সেতু",
+     "Third Shitalakshya Bridge",
+     "D",
+     "২০২২"
+    ],
+    [
+     "পায়রা সেতু",
+     "Payra Bridge",
+     "D",
+     "২০২১"
+    ],
+    [
+     "পায়রা সমুদ্রবন্দর",
+     "Payra Sea Port",
+     "P",
+     ""
+    ],
+    [
+     "মাতারবাড়ী গভীর সমুদ্রবন্দর",
+     "Matarbari Deep Sea Port",
+     "O",
+     ""
+    ],
+    [
+     "চট্টগ্রাম বে টার্মিনাল",
+     "Chattogram Bay Terminal",
+     "L",
+     ""
+    ],
+    [
+     "শাহজালাল বিমানবন্দরের তৃতীয় টার্মিনাল",
+     "Shahjalal Airport Third Terminal",
+     "P",
+     "২০২৩"
+    ],
+    [
+     "কক্সবাজার বিমানবন্দর সম্প্রসারণ",
+     "Cox’s Bazar Airport expansion",
+     "P",
+     ""
+    ]
+   ]
+  },
+  {
+   "b": "বিদ্যুৎ ও শিল্প",
+   "e": "Power & industry",
+   "it": [
+    [
+     "পায়রা ১,৩২০ মেগাওয়াট তাপবিদ্যুৎকেন্দ্র",
+     "Payra 1,320 MW thermal power plant",
+     "D",
+     "২০২০–২২"
+    ],
+    [
+     "রামপাল মৈত্রী সুপার থার্মাল বিদ্যুৎকেন্দ্র",
+     "Rampal Maitree Super Thermal Power Plant",
+     "D",
+     "২০২২"
+    ],
+    [
+     "মাতারবাড়ী ১,২০০ মেগাওয়াট বিদ্যুৎকেন্দ্র",
+     "Matarbari 1,200 MW power plant",
+     "D",
+     "২০২৩"
+    ],
+    [
+     "রূপপুর পারমাণবিক বিদ্যুৎকেন্দ্র",
+     "Rooppur Nuclear Power Plant",
+     "O",
+     ""
+    ],
+    [
+     "ঘোড়াশাল–পলাশ ইউরিয়া সার কারখানা",
+     "Ghorashal–Palash urea fertiliser factory",
+     "D",
+     "২০২৩"
+    ],
+    [
+     "মহেশখালী ভাসমান LNG টার্মিনাল",
+     "Maheshkhali floating LNG terminal",
+     "D",
+     "২০১৮"
+    ],
+    [
+     "গ্রামীণ বিদ্যুতায়ন ও নতুন সংযোগ",
+     "Rural electrification and new connections",
+     "D",
+     "২০২২"
+    ],
+    [
+     "ভারত থেকে বিদ্যুৎ আমদানি ও আন্তঃদেশীয় সংযোগ",
+     "Power imports and cross-border links with India",
+     "D",
+     ""
+    ],
+    [
+     "সৌরবিদ্যুৎ ও নবায়নযোগ্য শক্তি",
+     "Solar and renewable energy",
+     "P",
+     ""
+    ],
+    [
+     "বাংলাদেশ অর্থনৈতিক অঞ্চল কর্তৃপক্ষ (BEZA)",
+     "Bangladesh Economic Zones Authority (BEZA)",
+     "D",
+     "২০১০"
+    ],
+    [
+     "মিরসরাই অর্থনৈতিক অঞ্চল",
+     "Mirsarai economic zone",
+     "O",
+     ""
+    ],
+    [
+     "হাই-টেক পার্ক ও সফটওয়্যার টেকনোলজি পার্ক",
+     "Hi-tech and software technology parks",
+     "P",
+     ""
+    ]
+   ]
+  },
+  {
+   "b": "ডিজিটাল বাংলাদেশ",
+   "e": "Digital Bangladesh",
+   "it": [
+    [
+     "ডিজিটাল বাংলাদেশ রূপকল্প ২০২১",
+     "Digital Bangladesh Vision 2021",
+     "L",
+     ""
+    ],
+    [
+     "a2i কর্মসূচি সম্প্রসারণ",
+     "Access to Information (a2i) expansion",
+     "D",
+     ""
+    ],
+    [
+     "ইউনিয়ন ডিজিটাল সেন্টার (৪,৫০১ ইউনিয়ন)",
+     "Union Digital Centres (4,501 unions)",
+     "D",
+     "২০১০"
+    ],
+    [
+     "e-GP: সরকারি ক্রয়ের অনলাইন ব্যবস্থা",
+     "e-GP: online public procurement",
+     "D",
+     ""
+    ],
+    [
+     "ই-নথি / ডি-নথি",
+     "e-Nothi / d-Nothi",
+     "D",
+     ""
+    ],
+    [
+     "ই-পাসপোর্ট",
+     "e-Passport",
+     "D",
+     "২০২০"
+    ],
+    [
+     "স্মার্ট জাতীয় পরিচয়পত্র",
+     "Smart national ID",
+     "D",
+     ""
+    ],
+    [
+     "বাংলাদেশ স্যাটেলাইট-১",
+     "Bangladesh Satellite-1",
+     "D",
+     "২০১৮"
+    ],
+    [
+     "দ্বিতীয় সাবমেরিন কেবল",
+     "Second submarine cable",
+     "D",
+     "২০১৭"
+    ],
+    [
+     "4G মোবাইল ইন্টারনেট",
+     "4G mobile internet",
+     "D",
+     "২০১৮"
+    ],
+    [
+     "5G পরীক্ষামূলক কার্যক্রম",
+     "5G trials",
+     "P",
+     ""
+    ],
+    [
+     "হটলাইন ৩৩৩, জরুরি সেবা ৯৯৯, স্বাস্থ্য বাতায়ন ১৬২৬৩",
+     "Hotline 333, emergency 999, health line 16263",
+     "D",
+     ""
+    ],
+    [
+     "ভূমি সেবার ডিজিটালাইজেশন",
+     "Digital land services",
+     "D",
+     ""
+    ]
+   ]
+  },
+  {
+   "b": "শিক্ষা, স্বাস্থ্য ও সমাজকল্যাণ",
+   "e": "Education, health & welfare",
+   "it": [
+    [
+     "জাতীয় শিক্ষানীতি ২০১০",
+     "National Education Policy 2010",
+     "P",
+     "২০১০"
+    ],
+    [
+     "বিনামূল্যে পাঠ্যপুস্তক বিতরণ",
+     "Free textbook distribution",
+     "D",
+     "২০১০"
+    ],
+    [
+     "প্রাথমিক বিদ্যালয় জাতীয়করণ",
+     "Nationalisation of primary schools",
+     "D",
+     "২০১৩"
+    ],
+    [
+     "শিক্ষার্থী ও মেয়েদের উপবৃত্তি",
+     "Stipends for students and girls",
+     "D",
+     ""
+    ],
+    [
+     "কমিউনিটি ক্লিনিক পুনরায় চালু",
+     "Community clinics revived",
+     "D",
+     "২০০৯"
+    ],
+    [
+     "মাতৃ ও শিশু স্বাস্থ্যসেবা",
+     "Maternal and child health services",
+     "D",
+     ""
+    ],
+    [
+     "COVID-19 জাতীয় টিকাদান",
+     "COVID-19 national vaccination",
+     "D",
+     "২০২১"
+    ],
+    [
+     "আশ্রয়ণ-২ প্রকল্প",
+     "Ashrayan-2 project",
+     "O",
+     ""
+    ],
+    [
+     "বয়স্ক, বিধবা ও প্রতিবন্ধী ভাতা সম্প্রসারণ",
+     "Expanded old-age, widow and disability allowances",
+     "D",
+     ""
+    ],
+    [
+     "মুক্তিযোদ্ধা সম্মানী ভাতা ও ডিজিটাল বিতরণ",
+     "Freedom fighter honorarium and digital payment",
+     "D",
+     ""
+    ],
+    [
+     "মাতৃত্বকালীন ভাতা",
+     "Maternity allowance",
+     "D",
+     ""
+    ],
+    [
+     "সর্বজনীন পেনশন স্কিম",
+     "Universal pension scheme",
+     "P",
+     "২০২৩"
+    ],
+    [
+     "সামাজিক ভাতার ডিজিটাল (G2P) বিতরণ",
+     "Digital (G2P) payment of social allowances",
+     "D",
+     ""
+    ]
+   ]
+  },
+  {
+   "b": "কৃষি ও জলবায়ু",
+   "e": "Agriculture & climate",
+   "it": [
+    [
+     "কৃষি উপকরণ সহায়তা কার্ড",
+     "Agricultural input assistance card",
+     "D",
+     "২০০৯–১০"
+    ],
+    [
+     "কৃষকের ১০ টাকার ব্যাংক হিসাব",
+     "10-taka bank accounts for farmers",
+     "D",
+     ""
+    ],
+    [
+     "কৃষি ভর্তুকি ও কৃষিঋণ সম্প্রসারণ",
+     "Expanded farm subsidies and credit",
+     "D",
+     ""
+    ],
+    [
+     "লবণাক্ততা-সহিষ্ণু ধানের জাত",
+     "Salt-tolerant rice varieties",
+     "O",
+     ""
+    ],
+    [
+     "খাদ্য নিরাপত্তা আইন ও কর্তৃপক্ষ",
+     "Food Safety Act and Authority",
+     "D",
+     "২০১৩"
+    ],
+    [
+     "জলবায়ু পরিবর্তন ট্রাস্ট ফান্ড",
+     "Climate Change Trust Fund",
+     "D",
+     ""
+    ],
+    [
+     "বাংলাদেশ ডেল্টা প্ল্যান ২১০০",
+     "Bangladesh Delta Plan 2100",
+     "L",
+     "২০১৮"
+    ],
+    [
+     "উপকূলীয় বেড়িবাঁধ পুনর্বাসন",
+     "Coastal embankment rehabilitation",
+     "O",
+     ""
+    ],
+    [
+     "ঘূর্ণিঝড় আশ্রয়কেন্দ্র",
+     "Cyclone shelters",
+     "D",
+     ""
+    ]
+   ]
+  },
+  {
+   "b": "কূটনীতি ও আইন",
+   "e": "Diplomacy & law",
+   "it": [
+    [
+     "ভারত-বাংলাদেশ স্থলসীমান্ত চুক্তির বাস্তবায়ন",
+     "Land Boundary Agreement with India implemented",
+     "D",
+     "২০১৫"
+    ],
+    [
+     "মিয়ানমারের সঙ্গে সমুদ্রসীমা: ট্রাইব্যুনালের রায়",
+     "Maritime boundary with Myanmar: tribunal judgment",
+     "D",
+     "২০১২"
+    ],
+    [
+     "ভারতের সঙ্গে সমুদ্রসীমা: সালিশি রায়",
+     "Maritime boundary with India: arbitral award",
+     "D",
+     "২০১৪"
+    ],
+    [
+     "রোহিঙ্গাদের আশ্রয় ও মানবিক সহায়তা",
+     "Shelter and aid for Rohingya refugees",
+     "O",
+     "২০১৭"
+    ],
+    [
+     "আন্তর্জাতিক অপরাধ ট্রাইব্যুনাল",
+     "International Crimes Tribunal",
+     "D",
+     "২০১০"
+    ],
+    [
+     "পঞ্চদশ সংবিধান সংশোধনী",
+     "Fifteenth Amendment",
+     "D",
+     "২০১১"
+    ],
+    [
+     "পারিবারিক সহিংসতা (প্রতিরোধ ও সুরক্ষা) আইন",
+     "Domestic Violence (Prevention and Protection) Act",
+     "D",
+     "২০১০"
+    ],
+    [
+     "জাতীয় নারী উন্নয়ন নীতি ও শিশুনীতি",
+     "National women’s development and children’s policies",
+     "L",
+     "২০১১"
+    ],
+    [
+     "মানবপাচার প্রতিরোধ ও দমন আইন",
+     "Human trafficking prevention act",
+     "D",
+     "২০১২"
+    ],
+    [
+     "প্রতিবন্ধী ব্যক্তির অধিকার ও সুরক্ষা আইন",
+     "Rights and Protection of Persons with Disabilities Act",
+     "D",
+     "২০১৩"
+    ],
+    [
+     "ডিজিটাল নিরাপত্তা আইন",
+     "Digital Security Act",
+     "D",
+     "২০১৮"
+    ],
+    [
+     "সাইবার নিরাপত্তা আইন",
+     "Cyber Security Act",
+     "D",
+     "২০২৩"
+    ],
+    [
+     "স্বল্পোন্নত দেশ থেকে উত্তরণের প্রস্তুতি",
+     "Preparing to graduate from LDC status",
+     "O",
+     ""
+    ],
+    [
+     "স্মার্ট বাংলাদেশ ২০৪১ ও প্রেক্ষিত পরিকল্পনা",
+     "Smart Bangladesh 2041 and Perspective Plan",
+     "L",
+     ""
+    ]
+   ]
+  },
+  {
+   "b": "শাসন ও জবাবদিহি",
+   "e": "Governance & accountability",
+   "it": [
+    [
+     "তত্ত্বাবধায়ক সরকারব্যবস্থা বাতিল (২০১১)",
+     "Abolition of the caretaker government system (2011)",
+     "A",
+     ""
+    ],
+    [
+     "২০১৪, ২০১৮ ও ২০২৪ সালের নির্বাচন",
+     "The 2014, 2018 and 2024 elections",
+     "A",
+     ""
+    ],
+    [
+     "গুম ও বিচারবহির্ভূত হত্যার অভিযোগ",
+     "Allegations of enforced disappearance and extrajudicial killing",
+     "A",
+     ""
+    ],
+    [
+     "ডিজিটাল নিরাপত্তা আইন ও মতপ্রকাশের স্বাধীনতা",
+     "The Digital Security Act and freedom of expression",
+     "A",
+     ""
+    ],
+    [
+     "মেগা প্রকল্পে ব্যয় ও সময় বৃদ্ধি",
+     "Cost and time overruns in mega projects",
+     "A",
+     ""
+    ],
+    [
+     "ব্যাংকিং খাতের দুর্বলতা",
+     "Weaknesses in the banking sector",
+     "A",
+     ""
+    ],
+    [
+     "২০২৪ সালের জুলাই–আগস্ট আন্দোলন",
+     "The July–August 2024 movement",
+     "A",
+     ""
+    ],
+    [
+     "৫ আগস্ট ২০২৪: ক্ষমতা ছাড়ার ঘটনা",
+     "5 August 2024: leaving office",
+     "A",
+     ""
+    ]
+   ]
+  }
+ ],
+ "divs": {
+  "Chittagong": [
+   "চট্টগ্রাম",
+   "Chattogram"
+  ],
+  "Dhaka": [
+   "ঢাকা",
+   "Dhaka"
+  ],
+  "Mymensingh": [
+   "ময়মনসিংহ",
+   "Mymensingh"
+  ],
+  "Rajshani": [
+   "রাজশাহী",
+   "Rajshahi"
+  ],
+  "Rangpur": [
+   "রংপুর",
+   "Rangpur"
+  ],
+  "Sylhet": [
+   "সিলেট",
+   "Sylhet"
+  ],
+  "Khulna": [
+   "খুলনা",
+   "Khulna"
+  ],
+  "Barisal": [
+   "বরিশাল",
+   "Barishal"
+  ]
+ },
+ "dist": {
+  "Bagerhat": "বাগেরহাট",
+  "Bandarban": "বান্দরবান",
+  "Barguna": "বরগুনা",
+  "Barisal": "বরিশাল",
+  "Bhola": "ভোলা",
+  "Bogra": "বগুড়া",
+  "Brahamanbaria": "ব্রাহ্মণবাড়িয়া",
+  "Chandpur": "চাঁদপুর",
+  "Chittagong": "চট্টগ্রাম",
+  "Chuadanga": "চুয়াডাঙ্গা",
+  "Comilla": "কুমিল্লা",
+  "Cox's Bazar": "কক্সবাজার",
+  "Dhaka": "ঢাকা",
+  "Dinajpur": "দিনাজপুর",
+  "Faridpur": "ফরিদপুর",
+  "Feni": "ফেনী",
+  "Gaibandha": "গাইবান্ধা",
+  "Gazipur": "গাজীপুর",
+  "Gopalganj": "গোপালগঞ্জ",
+  "Habiganj": "হবিগঞ্জ",
+  "Jamalpur": "জামালপুর",
+  "Jessore": "যশোর",
+  "Jhalokati": "ঝালকাঠি",
+  "Jhenaidah": "ঝিনাইদহ",
+  "Joypurhat": "জয়পুরহাট",
+  "Khagrachhari": "খাগড়াছড়ি",
+  "Khulna": "খুলনা",
+  "Kishoreganj": "কিশোরগঞ্জ",
+  "Kurigram": "কুড়িগ্রাম",
+  "Kushtia": "কুষ্টিয়া",
+  "Lakshmipur": "লক্ষ্মীপুর",
+  "Lalmonirhat": "লালমনিরহাট",
+  "Madaripur": "মাদারীপুর",
+  "Magura": "মাগুরা",
+  "Manikganj": "মানিকগঞ্জ",
+  "Maulvibazar": "মৌলভীবাজার",
+  "Meherpur": "মেহেরপুর",
+  "Munshiganj": "মুন্সীগঞ্জ",
+  "Mymensingh": "ময়মনসিংহ",
+  "Naogaon": "নওগাঁ",
+  "Narail": "নড়াইল",
+  "Narayanganj": "নারায়ণগঞ্জ",
+  "Narsingdi": "নরসিংদী",
+  "Natore": "নাটোর",
+  "Nawabganj": "চাঁপাইনবাবগঞ্জ",
+  "Netrakona": "নেত্রকোনা",
+  "Nilphamari": "নীলফামারী",
+  "Noakhali": "নোয়াখালী",
+  "Pabna": "পাবনা",
+  "Panchagarh": "পঞ্চগড়",
+  "Patuakhali": "পটুয়াখালী",
+  "Pirojpur": "পিরোজপুর",
+  "Rajbari": "রাজবাড়ী",
+  "Rajshahi": "রাজশাহী",
+  "Rangamati": "রাঙ্গামাটি",
+  "Rangpur": "রংপুর",
+  "Satkhira": "সাতক্ষীরা",
+  "Shariatpur": "শরীয়তপুর",
+  "Sherpur": "শেরপুর",
+  "Sirajganj": "সিরাজগঞ্জ",
+  "Sunamganj": "সুনামগঞ্জ",
+  "Sylhet": "সিলেট",
+  "Tangail": "টাঙ্গাইল",
+  "Thakurgaon": "ঠাকুরগাঁও"
+ },
+ "steps": [
+  [
+   "রিপোর্ট জমা",
+   "Report submitted",
+   "আপনি ঘটনা ও প্রমাণ জমা দেন।",
+   "You submit the incident and evidence."
+  ],
+  [
+   "গোপন সংরক্ষণ ও স্ক্রিনিং",
+   "Private storage & screening",
+   "ফাইল সুরক্ষিত জায়গায় রাখা হয় এবং নিরাপত্তা পরীক্ষা হয়।",
+   "Files go to restricted storage and are security-screened."
+  ],
+  [
+   "বিশেষ রিভিউয়ার",
+   "Sensitive-case reviewer",
+   "শুধু অনুমোদিত রিভিউয়ার রিপোর্টটি দেখেন।",
+   "Only an authorised reviewer sees the report."
+  ],
+  [
+   "প্রমাণ মূল্যায়ন",
+   "Evidence assessment",
+   "উৎস ও নিরাপত্তা যাচাই; দরকার হলে বাড়তি তথ্য চাওয়া হয়।",
+   "Sources and safety are assessed; more information may be requested."
+  ],
+  [
+   "আইনি ও গোপনীয়তা পর্যালোচনা",
+   "Legal & privacy review",
+   "প্রকাশের ঝুঁকি বিবেচনা ও সংবেদনশীল তথ্য আড়াল করা হয়।",
+   "Publication risk is weighed and sensitive details redacted."
+  ],
+  [
+   "প্রকাশের সিদ্ধান্ত",
+   "Publication decision",
+   "অনুমোদিত হলে কেবল একটি সারসংক্ষেপ প্রকাশিত হয়।",
+   "If approved, only a summary is published."
+  ]
+ ],
+ "give": [
+  [
+   "বঙ্গবন্ধু-সংক্রান্ত ঐতিহাসিক তথ্য",
+   "Bangabandhu historical information"
+  ],
+  [
+   "ঐতিহাসিক আলোকচিত্র",
+   "Historical photograph"
+  ],
+  [
+   "ঐতিহাসিক অডিও বা ভিডিও",
+   "Historical audio or video"
+  ],
+  [
+   "দলিল বা পত্রিকা",
+   "Document or newspaper"
+  ],
+  [
+   "উন্নয়ন প্রকল্পের তথ্য",
+   "Development project information"
+  ],
+  [
+   "উন্নয়নের ছবি বা ভিডিও",
+   "Development photo or video"
+  ],
+  [
+   "সরকারি প্রতিবেদন বা নিবন্ধ",
+   "Government report or article"
+  ],
+  [
+   "স্থানীয় তথ্য",
+   "Local Bangladesh information"
+  ],
+  [
+   "ঘটনা বা অভিযোগ",
+   "Incident or allegation"
+  ],
+  [
+   "বিদ্যমান রেকর্ডে প্রমাণ",
+   "Evidence for an existing record"
+  ],
+  [
+   "সংশোধনী বা হালনাগাদ",
+   "Correction or update"
+  ],
+  [
+   "অন্যান্য প্রাসঙ্গিক উপাদান",
+   "Other relevant material"
+  ]
+ ]
+}

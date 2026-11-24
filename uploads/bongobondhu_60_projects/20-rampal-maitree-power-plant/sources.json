@@ -1,0 +1,38 @@
+{
+  "id": 20,
+  "slug": "rampal-maitree-power-plant",
+  "title": "মৈত্রী সুপার থার্মাল পাওয়ার প্ল্যান্ট/রামপাল",
+  "query": "Rampal Maitree super thermal power plant",
+  "folder": "20-rampal-maitree-power-plant",
+  "photos": [
+    {
+      "url": "https://www.orfonline.org/public/uploads/posts/image/Sheikh-Hasina-Modi.jpg",
+      "source": "https://www.orfonline.org/expert-speak/sheikh-hasina-modi-summit-2022",
+      "source_title": "Sheikh Hasina-Modi Summit 2022: Exploring energy cooperation",
+      "caption": "Sheikh Hasina-Modi Energy Summit 2022",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/imgAllNew/BG/2023March/rampalpowerplantb-20230704164249.jpg",
+      "source": "https://www.jagonews24.com/en/national/news/69270",
+      "source_title": "Rampal power plant unit-2 test synchronize successfully",
+      "caption": "Rampal Power Plant Unit-2 Synchronization",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.tbsnews.net/sites/default/files/styles/infograph/public/images/2022/08/05/rampal_power_plant_1.png",
+      "source": "https://www.tbsnews.net/bangladesh/energy/rampal-power-plant-80-progress-production-starts-october-472174",
+      "source_title": "Rampal Power Plant: 80% progress, production starts in October | The Business Standard",
+      "caption": "Rampal Thermal Power Plant at Night",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "শীর্ষ বৈঠকের ছবি সরাসরি বিদ্যুৎকেন্দ্রের উদ্বোধন বা সফরের ছবি হিসেবে ব্যবহার করা যাবে না।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

@@ -1,0 +1,38 @@
+{
+  "id": 55,
+  "slug": "khulna-mongla-railway",
+  "title": "খুলনা–মোংলা রেললাইন",
+  "query": "Khulna Mongla railway",
+  "folder": "55-khulna-mongla-railway",
+  "photos": [
+    {
+      "url": "https://www.thestatesman.com/wp-content/uploads/2023/11/IMG_9744.jpeg",
+      "source": "https://www.thestatesman.com/india/pm-modi-sheikh-hasina-jointly-inaugurate-rail-power-sector-projects-between-india-bangladesh-1503236665.html",
+      "source_title": "PM Modi, Sheikh Hasina jointly inaugurate rail, power sector projects between India, Bangladesh - The Statesman",
+      "caption": "India–Bangladesh Infrastructure Inauguration",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://bcdn.dhakatribune.net/contents/cache/images/1200x630x1xxxxx1x2382/uploads/media/2023/10/11/rail-c1a726bc6662b436d8d2eb72c180cf58.jpg?watermark=media%2F2023%2F10%2F08%2FBkash-Banner-3f317a07fba1b1bc8220debbcd37b631.png",
+      "source": "https://bangla.dhakatribune.com/bangladesh/71873/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE-%E0%A6%AE%E0%A7%8B%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%8B%E0%A6%A7%E0%A6%A8-%E0%A7%AF-%E0%A6%A8%E0%A6%AD%E0%A7%87%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%B0",
+      "source_title": "খুলনা-মোংলা রেললাইনের উদ্বোধন ৯ নভেম্বর",
+      "caption": "Khulna–Mongla Railway Bridge",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://img.etimg.com/thumb/width-1600%2Cheight-900%2Cimgsize-217536%2Cresizemode-75%2Cmsid-92661488/news/international/world-news/is-bangladesh-next-to-fall-in-chinas-debt-trap-diplomacy.jpg",
+      "source": "https://m.economictimes.com/news/international/world-news/is-bangladesh-next-to-fall-in-chinas-debt-trap-diplomacy/articleshow/92661488.cms",
+      "source_title": "china: Is Bangladesh next to fall in China's debt-trap diplomacy? - The Economic Times",
+      "caption": "Rupsha Rail Bridge Installation",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

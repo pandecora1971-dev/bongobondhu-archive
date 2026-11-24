@@ -1,0 +1,38 @@
+{
+  "id": 46,
+  "slug": "mrt-line-5-south",
+  "title": "এমআরটি লাইন-৫ (দক্ষিণ)",
+  "query": "Dhaka MRT Line 5 southern route",
+  "folder": "46-mrt-line-5-south",
+  "photos": [
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/MRT_Line_5_%28Southern%29_Route_Map_%28en%29.svg/960px-MRT_Line_5_%28Southern%29_Route_Map_%28en%29.svg.png",
+      "source": "https://commons.wikimedia.org/wiki/File%3AMRT_Line_5_%28Southern%29_Route_Map_%28en%29.svg",
+      "source_title": "File:MRT Line 5 (Southern) Route Map (en).svg - Wikimedia Commons",
+      "caption": "MRT Line 5 Southern Route Map",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://i0.wp.com/www.acebd.com/wp-content/uploads/2022/02/DMRT5.png?ssl=1&w=1430",
+      "source": "https://www.acebd.com/portfolio/dmrt5s/",
+      "source_title": "ACE Consultants Ltd., BangladeshDhaka Metro Line 5, Southern Route Project",
+      "caption": "Dhaka Metro Line 5 South Route Map",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.tbsnews.net/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/images/2024/11/17/mrt_infographic.png",
+      "source": "https://www.tbsnews.net/bangladesh/infrastructure/review-trims-mrt-5-project-cost-nearly-tk7000cr-994986",
+      "source_title": "Review trims MRT-5 project cost by nearly Tk7,000cr | The Business Standard",
+      "caption": "MRT-5 Southern Route Cost Reduction Infographic",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "দক্ষিণ রুটের নকশা ও মানচিত্র। উত্তর রুটের উদ্বোধনের ছবি বাদ। এই প্রকল্পের জন্য শেখ হাসিনার উপযুক্ত সফর বা উদ্বোধনের ছবি এখনও নিশ্চিত করা যায়নি।",
+  "hasina_requirement": "pending"
+}

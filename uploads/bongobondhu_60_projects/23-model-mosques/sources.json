@@ -1,0 +1,47 @@
+{
+  "id": 23,
+  "slug": "model-mosques",
+  "title": "৫৬০ মডেল মসজিদ ও ইসলামিক সাংস্কৃতিক কেন্দ্র",
+  "query": "Bangladesh 560 model mosques",
+  "folder": "23-model-mosques",
+  "photos": [
+    {
+      "url": "https://www.bssnews.net/assets/news_photos/2023/01/16/image-105447-1673859856.jpg",
+      "source": "https://www.bssnews.net/news-flash/105447",
+      "source_title": "PM opens 50 more model mosques in country | News Flash",
+      "caption": "Inauguration of Second Phase Model Mosques",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://ecdn.ittefaqbd.com/contents/cache/images/1200x630x1xxxxx1/uploads/media/2023/10/30/3fed36eda49c5682720cc7d5174b8f5f-653f61f6418a5.jpg",
+      "source": "https://en.ittefaq.com.bd/6589/pm-with-masjid-e-nabawi-imam-opens-50-more-model",
+      "source_title": "PM with Masjid-e Nabawi Imam opens 50 more model mosque",
+      "caption": "Inauguration of 50 Model Mosques by Sheikh Hasina",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.risingbd.com/media/imgAll/2023January/natore-mosque-2301160632.jpg",
+      "source": "https://www.risingbd.com/national/news/489557",
+      "source_title": "৫০ মডেল মসজিদ উদ্বোধন করলেন প্রধানমন্ত্রী",
+      "caption": "Model Mosque in Natore",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/PhotoGalleryNew/BG/2019November/model-mosque-4-20210610142843.jpg",
+      "source": "https://www.jagonews24.com/photo/bangladesh/photo-feature/8691",
+      "source_title": "৫৬০টি মডেল মসজিদে যেসব সুবিধা থাকছে",
+      "caption": "Model Mosque in Coastal Bangladesh",
+      "name": "04",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

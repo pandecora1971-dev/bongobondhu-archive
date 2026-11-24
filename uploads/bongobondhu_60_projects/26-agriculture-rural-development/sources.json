@@ -1,0 +1,38 @@
+{
+  "id": 26,
+  "slug": "agriculture-rural-development",
+  "title": "কৃষি ও গ্রামীণ উন্নয়ন উদ্যোগ",
+  "query": "Bangladesh agriculture rural development",
+  "folder": "26-agriculture-rural-development",
+  "photos": [
+    {
+      "url": "https://news.usask.ca/images/2023/gifs-bangladesh-2.jpg",
+      "source": "https://news.usask.ca/articles/research/2023/gifs-at-usask-partnership-receives-56-million-commitment-for-bangladesh-agtech-centre.php",
+      "source_title": "GIFS at USask partnership receives $56 million commitment for Bangladesh agtech centre - News | University of Saskatchewan",
+      "caption": "Inauguration of the Bangabandhu-Pierre Elliott Trudeau Agriculture Technology Centre",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/PhotoGalleryNew/BG/2019November/daily-pic-2-20230223191254.jpg",
+      "source": "https://www.jagonews24.com/photo/bangladesh/news/10435",
+      "source_title": "আজকের আলোচিত ছবি: ২৩ ফেব্রুয়ারি ২০২৩",
+      "caption": "Sheikh Hasina at BRRI’s 50th Anniversary Exhibition",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://media.nationthailand.com/uploads/images/contents/w1024/2022/10/4GCF8NCFWOIOu3KvTbXB.webp?x-image-process=style%2Fmd-webp",
+      "source": "https://www.nationthailand.com/world/asia-pacific/40021219",
+      "source_title": "As seas and rivers rise, Bangladesh farmers revive old practice of floating raft farms",
+      "caption": "Floating Raft Farms in Bangladesh",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "বিস্তৃত উদ্যোগের প্রতিনিধিত্বকারী কৃষি গবেষণা ও গ্রামীণ কৃষির ছবি। ভাসমান কৃষির দৃশ্য প্রতিনিধিত্বকারী। এই নির্দিষ্ট সরকারি প্রকল্পের স্থাপনা হিসেবে দাবি করা হয়নি।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

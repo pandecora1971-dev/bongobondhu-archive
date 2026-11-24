@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>বঙ্গবন্ধু ও বাংলাদেশ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<script src="./image-slot.js"></script>
+<style>
+:root{
+  --bg:#fbfaf6;--ink:#14201b;--mute:#55635d;--line:#e4e1d8;
+  --green:oklch(0.52 0.13 160);--red:oklch(0.6 0.2 27);--yellow:oklch(0.84 0.15 88);--blue:oklch(0.55 0.16 255);--plum:oklch(0.48 0.14 335);
+  --serif:'Noto Serif Bengali',Georgia,serif;--sans:'Hind Siliguri',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:var(--green);text-decoration:none}a:hover{color:var(--red)}
+h1,h2,h3{font-family:var(--serif);line-height:1.3;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+#bar{position:fixed;top:0;left:0;height:4px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--green) 0 25%,var(--yellow) 25% 50%,var(--red) 50% 75%,var(--blue) 75%);z-index:60}
+
+/* nav */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1240px,calc(100% - 24px));z-index:50;display:flex;align-items:center;gap:20px;padding:10px 12px 10px 22px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;transition:box-shadow .3s}
+nav.sc{box-shadow:0 10px 30px -14px rgba(20,32,27,.3)}
+.logo{font-family:var(--serif);font-weight:900;font-size:19px;color:var(--ink);display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo i{width:22px;height:22px;border-radius:50%;background:var(--red);box-shadow:0 0 0 5px var(--green);display:block;margin-left:5px}
+.links{display:flex;gap:22px;margin-left:auto;font-weight:500;font-size:16px}
+.links a{color:var(--ink);position:relative}
+.links a::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:100% 50%;transition:transform .35s}
+.links a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff;margin-left:auto}
+.links + .lang{margin-left:0}
+.lang button{border:0;background:none;font:600 14px var(--sans);padding:6px 12px;border-radius:999px;cursor:pointer;color:var(--mute);min-height:34px}
+.lang button.on{background:var(--ink);color:#fff}
+
+/* buttons */
+.btn{--c:var(--green);position:relative;display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:12px 26px;border-radius:999px;font:600 17px var(--sans);color:#fff;background:var(--c);border:2px solid var(--c);cursor:pointer;overflow:hidden;isolation:isolate;transition:color .35s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .35s;will-change:transform}
+.btn::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:20px;height:20px;border-radius:50%;background:#fff;transform:translate(-50%,-50%) scale(0);transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{color:var(--c);box-shadow:0 14px 30px -12px var(--c)}
+.btn:hover::before{transform:translate(-50%,-50%) scale(22)}
+.btn .ar{display:inline-grid;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--c);place-items:center;font-size:15px;transition:transform .4s cubic-bezier(.2,.8,.2,1),background .35s,color .35s}
+.btn:hover .ar{transform:translateX(6px) rotate(-45deg);background:var(--c);color:#fff}
+.btn.ghost{background:transparent;color:var(--c)}
+.btn.ghost::before{background:var(--c)}
+.btn.ghost:hover{color:#fff}
+.btn.ghost .ar{background:var(--c);color:#fff}.btn.ghost:hover .ar{background:#fff;color:var(--c)}
+.btn.sm{min-height:44px;padding:8px 18px;font-size:15px}
+.btn.glow::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.2s infinite}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(46px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.rv.l{transform:translateX(-60px)}.rv.r{transform:translateX(60px)}.rv.s{transform:scale(.85)}
+.rv.in{opacity:1;transform:none}
+
+/* hero */
+.hero{position:relative;min-height:100vh;padding:130px 0 60px;display:flex;align-items:center;overflow:clip}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;width:100%}
+.disc{position:absolute;border-radius:50%;pointer-events:none}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--mute);margin-bottom:18px}
+.eyebrow b{display:inline-block;width:34px;height:3px;background:var(--red);border-radius:3px}
+.hero h1{font-size:clamp(46px,7.6vw,112px);font-weight:900;line-height:1.22;letter-spacing:-.01em}
+.hero h1 span{display:block;overflow:hidden;padding:.08em 0 .22em;margin-bottom:-.22em}
+.hero h1 em{display:block;font-style:normal;transform:translateY(110%);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) em{animation-delay:.12s;color:var(--red)}
+.hero h1 span:nth-child(3) em{animation-delay:.24s;color:var(--green)}
+@keyframes up{to{transform:none}}
+.hero p.lead{font-size:20px;color:var(--mute);max-width:560px;margin:22px 0 28px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.search{display:flex;gap:8px;margin-top:28px;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 22px;transition:box-shadow .3s,border-color .3s}
+.search:focus-within{border-color:var(--blue);box-shadow:0 0 0 5px color-mix(in oklch,var(--blue) 18%,transparent)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:none;font:400 17px var(--sans);color:var(--ink)}
+.collage{position:relative;height:580px}
+.collage > div{position:absolute;border-radius:22px;box-shadow:0 30px 60px -30px rgba(20,32,27,.45);will-change:transform}
+.years{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;font-family:var(--serif);font-weight:700}
+.years div{display:flex;flex-direction:column;line-height:1.3}
+.years small{font:500 14px var(--sans);color:var(--mute)}
+
+/* section head */
+.sh{padding:120px 0 50px}
+.sh .no{font:700 15px var(--sans);color:var(--c,var(--green));display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.sh .no::before{content:"";width:12px;height:12px;border-radius:50%;background:currentColor}
+.sh h2{font-size:clamp(34px,5vw,68px);font-weight:900;max-width:900px}
+.sh p{color:var(--mute);max-width:640px;margin-top:16px;font-size:19px}
+
+/* stack cards */
+.stack{padding-bottom:60px}
+.sc-card{position:sticky;top:calc(90px + var(--i)*16px);margin-bottom:28px}
+.sc-in{--c:var(--green);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;min-height:min(560px,72vh);padding:44px;border-radius:32px;background:color-mix(in oklch,var(--c) 13%,#fff);border:1px solid color-mix(in oklch,var(--c) 30%,#fff);transform-origin:50% 0;will-change:transform;box-shadow:0 -18px 40px -30px rgba(20,32,27,.35)}
+.sc-in .big{font:900 clamp(70px,10vw,150px)/1 var(--serif);color:var(--c);opacity:.9}
+.sc-in h3{font-size:clamp(28px,3.4vw,44px);font-weight:900;margin:6px 0 12px}
+.sc-in p{color:#33413b;margin-bottom:22px;max-width:480px}
+.sc-img{height:min(420px,50vh);border-radius:22px;overflow:hidden}
+
+/* timeline */
+.tl{position:relative;padding:20px 0 120px}
+.tl-line{position:absolute;left:50%;top:0;bottom:0;width:4px;margin-left:-2px;background:var(--line);border-radius:4px}
+.tl-fill{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:50% 0;transform:scaleY(0);background:linear-gradient(var(--green),var(--yellow),var(--red),var(--blue));border-radius:4px}
+.tl-item{--c:var(--green);display:grid;grid-template-columns:1fr 90px 1fr;align-items:center;margin-bottom:110px;position:relative}
+.tl-item:nth-child(odd) .tl-text{order:3}.tl-item:nth-child(odd) .tl-img{order:1}
+.tl-dot{order:2;justify-self:center;width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--c);z-index:1;transition:transform .5s cubic-bezier(.3,1.6,.5,1),background .4s}
+.tl-item.act .tl-dot{transform:scale(1.45);background:var(--c)}
+.tl-year{font:900 clamp(40px,5.4vw,78px)/1.15 var(--serif);color:var(--c)}
+.tl-text h3{font-size:clamp(22px,2.4vw,30px);margin:8px 0 10px}
+.tl-text p{color:var(--mute)}
+.tl-ev{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;list-style:none;padding:0}
+.tl-ev li{font-size:15px;font-weight:500;padding:5px 14px;border-radius:999px;background:color-mix(in oklch,var(--c) 14%,#fff);color:color-mix(in oklch,var(--c) 70%,#000)}
+.tl-img{height:340px;border-radius:24px;will-change:transform;box-shadow:0 30px 50px -34px rgba(20,32,27,.5)}
+.tl-img.b{height:400px;margin:0 40px}
+
+/* map stages */
+.tall{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:96px max(24px,calc((100vw - 1240px)/2)) 30px}
+.mapbox{position:relative;height:100%;min-height:0;display:grid;place-items:center}
+.mapbox svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#dmapw{position:absolute;inset:0}
+#hmap .mapbox svg{top:28px;height:calc(100% - 28px)}
+#devtall .stage{padding-bottom:56px}
+#devtall .mc-img{height:min(300px,28vh)}
+.land{fill:color-mix(in oklch,var(--green) 16%,#fff);stroke:var(--green);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-linejoin:round;transition:fill .6s}
+.route{fill:none;stroke:var(--red);stroke-width:3;stroke-dasharray:2 7;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.35}
+.route.live{stroke-dasharray:none;opacity:1}
+.stop{fill:#fff;stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke;transition:fill .4s}
+.stop.on{fill:var(--red)}
+.pin circle{fill:var(--red)}
+.ring{fill:none!important;stroke:var(--red);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ring 1.8s infinite}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(3.6);opacity:0}}
+.lbl{font:600 13px var(--sans);fill:var(--ink);paint-order:stroke;stroke:#fbfaf6;stroke-width:4px}
+.cards{position:relative;height:100%;min-height:0}
+.mc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:14px;opacity:0;transform:translateY(50px) scale(.97);transition:opacity .6s,transform .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.mc.on{opacity:1;transform:none;pointer-events:auto}
+.mc.past{transform:translateY(-50px) scale(.97)}
+.mc-img{height:min(300px,34vh);border-radius:22px;overflow:hidden;flex-shrink:0}
+.mc .tag{align-self:flex-start;font:600 14px var(--sans);padding:4px 14px;border-radius:999px;background:var(--c,var(--red));color:#fff}
+.mc h3{font-size:clamp(24px,3vw,40px);font-weight:900}
+.mc p{color:var(--mute);max-width:520px}
+.mc .meta{display:flex;gap:18px;flex-wrap:wrap;font-weight:600;font-size:16px}
+.mc .meta span{display:flex;gap:8px;align-items:center}
+.mc .meta span::before{content:"";width:8px;height:8px;background:var(--c,var(--red));transform:rotate(45deg)}
+.count{position:absolute;right:0;top:0;font:900 20px var(--serif);color:var(--mute)}
+.maptitle{position:absolute;left:0;top:0;font:700 15px var(--sans);color:var(--mute);z-index:2}
+/* dev map */
+#dev{background:linear-gradient(#fbfaf6,color-mix(in oklch,var(--blue) 9%,#fff) 12% 88%,#fbfaf6)}
+#dmapw{will-change:transform}
+.div-dot{fill:#fff;stroke:var(--blue);stroke-width:2;transition:fill .5s,r .5s}
+.div-dot.on{fill:var(--yellow)}
+.nation .div-dot{fill:var(--yellow);r:9}
+.nation .land{fill:color-mix(in oklch,var(--yellow) 45%,#fff)}
+#dev .land{fill:color-mix(in oklch,var(--blue) 12%,#fff);stroke:var(--blue)}
+.pp{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .6s cubic-bezier(.3,1.6,.5,1),opacity .4s}
+.pp.on{opacity:1;transform:scale(1)}
+.pp circle{fill:var(--blue)}.pp.cur circle{fill:var(--red)}
+.pp .ring{display:none}.pp.cur .ring{display:block}
+.pp text{font:700 11px var(--sans);fill:#fff;text-anchor:middle}
+.chips{position:absolute;left:0;right:0;bottom:16px;display:flex;gap:6px;justify-content:center;padding:0 24px}
+.chips i{height:6px;flex:1;max-width:60px;border-radius:6px;background:rgba(20,32,27,.14);transition:background .4s}
+.chips i.on{background:var(--blue)}.chips i.cur{background:var(--red)}
+
+/* incident */
+#incident{--c:var(--plum);background:color-mix(in oklch,var(--plum) 8%,#fff);border-radius:48px 48px 0 0;margin-top:80px;position:relative;z-index:2;box-shadow:0 -30px 60px -40px rgba(20,32,27,.4)}
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding-bottom:110px;align-items:start}
+.inc-l{position:sticky;top:110px}
+.inc-l h3{font-size:clamp(30px,4vw,54px);font-weight:900;color:var(--plum)}
+.inc-l p{color:#3d3440;margin:16px 0 24px;max-width:520px}
+.sos{margin-top:26px;padding:16px 20px;border-radius:16px;background:#fff;border:2px dashed var(--red);font-size:16px;font-weight:500;max-width:520px}
+.steps{list-style:none;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:25px;top:20px;bottom:20px;width:3px;background:color-mix(in oklch,var(--plum) 20%,#fff)}
+.steps li{position:relative;display:flex;gap:20px;align-items:flex-start;padding:16px 20px 16px 0;margin-bottom:10px}
+.steps b{flex:0 0 52px;height:52px;border-radius:50%;display:grid;place-items:center;font:900 20px var(--serif);background:#fff;border:3px solid var(--plum);color:var(--plum);z-index:1;transition:background .5s,color .5s,transform .5s cubic-bezier(.3,1.6,.5,1)}
+.steps li.in b{background:var(--plum);color:#fff;transform:scale(1.08)}
+.steps h4{font:700 20px var(--sans)}
+.steps p{color:#5b5060;font-size:16px}
+.guar{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:100px}
+.guar div{background:#fff;border-radius:22px;padding:26px;border:1px solid color-mix(in oklch,var(--plum) 22%,#fff);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.guar div:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 24px 40px -26px var(--plum)}
+.guar h4{font:700 21px var(--serif);margin-bottom:8px;color:var(--plum)}
+.guar p{font-size:16px;color:#5b5060}
+
+/* contribute */
+#contribute{padding:40px 0 130px;background:#fff;position:relative;z-index:2}
+.mq{display:flex;gap:14px;white-space:nowrap;will-change:transform;margin-bottom:14px;width:max-content}
+.mq span{padding:12px 24px;border-radius:999px;font-weight:600;font-size:18px;background:color-mix(in oklch,var(--c) 15%,#fff);color:color-mix(in oklch,var(--c) 65%,#000);border:1px solid color-mix(in oklch,var(--c) 35%,#fff)}
+.cbox{margin-top:60px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;background:var(--ink);color:#fff;border-radius:36px;padding:56px;position:relative;overflow:hidden}
+.cbox h3{font-size:clamp(28px,3.6vw,48px);font-weight:900}
+.cbox p{color:#c9d2cd;margin:14px 0 26px;max-width:520px}
+.cbox .disc{right:-80px;top:-80px;width:340px;height:340px;background:var(--red);opacity:.9}
+.stat{display:flex;flex-direction:column;gap:12px;position:relative}
+.stat div{background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:14px 18px;font-weight:500;font-size:16px;display:flex;gap:12px;align-items:center}
+.stat i{width:10px;height:10px;border-radius:50%;background:var(--yellow);flex-shrink:0}
+
+footer{background:#fff;border-top:1px solid var(--line);padding:50px 0 40px;position:relative;z-index:2}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between;align-items:center}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px}
+footer .fl a{color:var(--mute)}footer .fl a:hover{color:var(--red)}
+
+@media (max-width:860px){
+  body{font-size:17px}
+  .links{display:none}
+  nav{padding-left:16px;gap:8px}
+  nav .btn{display:none}
+  .logo{font-size:16px}
+  .hero{padding-top:110px}
+  .hero .wrap{grid-template-columns:1fr}
+  .collage{height:320px}
+  .sh{padding:80px 0 34px}
+  .sc-in{grid-template-columns:1fr;padding:26px;gap:18px;min-height:0}
+  .sc-img{height:200px}
+  .tl-line{left:17px}
+  .tl-item{grid-template-columns:36px 1fr;margin-bottom:70px;row-gap:20px}
+  .tl-item .tl-dot{order:1!important;grid-row:1}
+  .tl-item .tl-text{order:2!important;grid-column:2}
+  .tl-item .tl-img{order:3!important;grid-column:2;height:220px;margin:0}
+  .stage{grid-template-columns:1fr;grid-template-rows:42% minmax(0,1fr);gap:10px;padding:84px 20px 34px}
+  .mc{justify-content:flex-start;gap:8px}
+  .mc-img{height:110px;border-radius:16px}
+  .mc p{font-size:15.5px;line-height:1.55}
+  .mc .meta{font-size:14px;gap:10px}
+  .count{font-size:16px}
+  .inc{grid-template-columns:1fr;gap:30px;padding-bottom:60px}
+  .inc-l{position:static}
+  .guar{grid-template-columns:1fr;padding-bottom:70px}
+  #incident{border-radius:28px 28px 0 0}
+  .cbox{grid-template-columns:1fr;padding:30px}
+  .mq span{font-size:15px;padding:9px 18px}
+}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.hero h1 em{animation:none;transform:none}.btn.glow::after,.ring{animation:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav id="nav">
+  <a class="logo" href="#top"><i></i><span data-en="Bongobondhu &amp; Bangladesh">বঙ্গবন্ধু ও বাংলাদেশ</span></a>
+  <div class="links">
+    <a href="#history" data-en="History">ইতিহাস</a>
+    <a href="#dev" data-en="Development">উন্নয়ন</a>
+    <a href="#incident" data-en="Incidents">ঘটনা নথি</a>
+    <a href="#contribute" data-en="Contribute">অবদান</a>
+  </div>
+  <div class="lang"><button data-l="bn" class="on">বাং</button><button data-l="en">EN</button></div>
+  <a class="btn sm" href="#contribute" style="--c:var(--red)"><span data-en="Submit">তথ্য দিন</span><span class="ar">→</span></a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="disc" data-speed=".25" style="width:46vw;height:46vw;max-width:640px;max-height:640px;right:-8vw;top:8vh;background:color-mix(in oklch,var(--red) 18%,#fff)"></div>
+  <div class="disc" data-speed="-.18" style="width:180px;height:180px;left:-60px;bottom:6vh;background:var(--yellow);opacity:.7"></div>
+  <div class="disc" data-speed=".4" style="width:90px;height:90px;left:46%;top:16vh;border:14px solid var(--green)"></div>
+  <div class="wrap" style="position:relative">
+    <div>
+      <div class="eyebrow rv in"><b></b><span data-en="National digital archive">জাতীয় ডিজিটাল আর্কাইভ</span></div>
+      <h1><span><em data-en="Bongobondhu">বঙ্গবন্ধু</em></span><span><em data-en="and">ও</em></span><span><em data-en="Bangladesh">বাংলাদেশ</em></span></h1>
+      <p class="lead rv" style="--d:.4s" data-en="History, development and public-interest records of Bangladesh — preserved with original documents, citizen contributions and verified sources.">বাংলাদেশের ইতিহাস, উন্নয়ন ও জনস্বার্থের দলিল — মূল নথি, নাগরিকের অবদান আর যাচাই করা উৎসসহ এক জায়গায় সংরক্ষিত।</p>
+      <div class="cta rv" style="--d:.5s">
+        <a class="btn glow mag" href="#history"><span data-en="Explore the archive">আর্কাইভ ঘুরে দেখুন</span><span class="ar">→</span></a>
+        <a class="btn ghost mag" href="#contribute" style="--c:var(--red)"><span data-en="Contribute information">তথ্য জমা দিন</span><span class="ar">→</span></a>
+      </div>
+      <form class="search rv" style="--d:.6s" onsubmit="return false">
+        <input type="search" placeholder="নাম, সাল, জেলা বা বিষয় লিখে খুঁজুন" data-en-ph="Search by name, year, district or topic" aria-label="Search">
+        <button class="btn sm" style="--c:var(--blue)"><span data-en="Search">খুঁজুন</span></button>
+      </form>
+      <div class="years rv" style="--d:.7s">
+        <div><span>১৯৪৮ – ১৯৭৫</span><small data-en="Bangabandhu historical archive">বঙ্গবন্ধু ঐতিহাসিক আর্কাইভ</small></div>
+        <div><span>১৯৯৬ – ২০২৪</span><small data-en="Development &amp; governance archive">উন্নয়ন ও শাসন আর্কাইভ</small></div>
+      </div>
+    </div>
+    <div class="collage">
+      <div data-speed="-.22" style="left:6%;top:0;width:58%;height:62%"><image-slot id="hero-1" radius="22" placeholder="বঙ্গবন্ধুর প্রতিকৃতি / ৭ মার্চের ছবি"></image-slot></div>
+      <div data-speed="-.42" style="right:0;top:34%;width:48%;height:44%"><image-slot id="hero-2" radius="22" placeholder="পদ্মা সেতু"></image-slot></div>
+      <div data-speed="-.1" style="left:0;bottom:0;width:42%;height:32%"><image-slot id="hero-3" radius="22" placeholder="ঐতিহাসিক দলিল / পত্রিকা"></image-slot></div>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+  <div class="sh rv"><div class="no" data-en="01 — Four domains">০১ — চারটি ক্ষেত্র</div><h2 data-en="One archive, four doors">একটি আর্কাইভ, চারটি দরজা</h2></div>
+  <div class="stack" id="stack"></div>
+</section>
+
+<section id="history">
+  <div class="wrap">
+    <div class="sh rv" style="--c:var(--red)"><div class="no" data-en="02 — Bangabandhu historical archive">০২ — বঙ্গবন্ধু ঐতিহাসিক আর্কাইভ</div><h2 data-en="1948 to 1975: the making of a nation">১৯৪৮ থেকে ১৯৭৫: একটি জাতির জন্মকথা</h2><p data-en="Six periods, each with its events, speeches, photographs and documents.">ছয়টি পর্ব — প্রতিটির ঘটনা, ভাষণ, ছবি ও দলিল নিয়ে।</p></div>
+    <div class="tl" id="tl"><div class="tl-line"><div class="tl-fill" id="tlfill"></div></div></div>
+  </div>
+</section>
+
+<section class="tall" id="hmap" style="height:620vh">
+  <div class="stage">
+    <div class="mapbox"><div class="maptitle" data-en="Follow the journey — keep scrolling">যাত্রাপথ অনুসরণ করুন — স্ক্রল করতে থাকুন</div><svg id="hsvg" viewBox="0 0 600 720" role="img" aria-label="Bangladesh map"></svg></div>
+    <div class="cards" id="hcards"><div class="count" id="hcount"></div></div>
+  </div>
+</section>
+
+<section class="tall" id="dev">
+  <div class="wrap"><div class="sh rv" style="--c:var(--blue)"><div class="no" data-en="03 — Development &amp; governance archive">০৩ — উন্নয়ন ও শাসন আর্কাইভ</div><h2 data-en="Projects that redrew the map">যে প্রকল্পগুলো মানচিত্র বদলে দিয়েছে</h2><p data-en="Eleven featured records. Approval, financing, implementation and completion are tracked separately, each with its source.">এগারোটি নির্বাচিত রেকর্ড। অনুমোদন, অর্থায়ন, বাস্তবায়ন ও সমাপ্তি আলাদাভাবে, নিজ নিজ উৎসসহ নথিভুক্ত হবে।</p></div></div>
+  <div id="devtall" style="height:1000vh;position:relative">
+    <div class="stage">
+      <div class="mapbox"><div id="dmapw"><svg id="dsvg" viewBox="0 0 600 720" role="img" aria-label="Bangladesh development map"></svg></div></div>
+      <div class="cards" id="dcards"><div class="count" id="dcount"></div></div>
+      <div class="chips" id="dchips"></div>
+    </div>
+  </div>
+</section>
+
+<section id="incident">
+  <div class="wrap">
+    <div class="sh rv"><div class="no" data-en="04 — Incident &amp; evidence documentation">০৪ — ঘটনা, অভিযোগ ও প্রমাণ নথিভুক্তি</div><h2 data-en="Report safely. Reviewed before anything is published.">নিরাপদে জানান। যাচাইয়ের আগে কিছুই প্রকাশ হয় না।</h2></div>
+    <div class="inc">
+      <div class="inc-l rv l">
+        <h3 data-en="An allegation is not a verdict">অভিযোগ মানেই রায় নয়</h3>
+        <p data-en="Report violence, intimidation, harassment, discrimination, corruption or other public-interest incidents. Your identity can stay confidential, and no report automatically creates a public accusation.">সহিংসতা, হুমকি, হয়রানি, বৈষম্য, দুর্নীতি বা অন্য জনস্বার্থের ঘটনা জানান। আপনার পরিচয় গোপন রাখা যাবে, আর কোনো রিপোর্ট থেকে স্বয়ংক্রিয়ভাবে কারও বিরুদ্ধে প্রকাশ্য অভিযোগ তৈরি হয় না।</p>
+        <div class="cta">
+          <a class="btn glow mag" href="#" style="--c:var(--plum)"><span data-en="Submit a confidential report">গোপনীয় রিপোর্ট জমা দিন</span><span class="ar">→</span></a>
+          <a class="btn ghost mag" href="#" style="--c:var(--plum)"><span data-en="View public records">প্রকাশিত রেকর্ড</span><span class="ar">→</span></a>
+        </div>
+        <div class="sos" data-en="This is a documentation service, not an emergency service. If you are in immediate danger, contact local emergency services (999).">এটি নথিভুক্তির সেবা, জরুরি সহায়তা নয়। তাৎক্ষণিক বিপদে থাকলে স্থানীয় জরুরি সেবায় (৯৯৯) যোগাযোগ করুন।</div>
+      </div>
+      <ol class="steps" id="steps"></ol>
+    </div>
+    <div class="guar">
+      <div class="rv"><h4 data-en="Confidential by default">শুরু থেকেই গোপনীয়</h4><p data-en="Private reports and evidence are stored separately from the public archive.">গোপন রিপোর্ট ও প্রমাণ প্রকাশ্য আর্কাইভ থেকে আলাদা জায়গায় সংরক্ষিত থাকে।</p></div>
+      <div class="rv" style="--d:.12s"><h4 data-en="Privacy protected">পরিচয় সুরক্ষিত</h4><p data-en="Addresses, ID numbers and phone numbers are never published. Locations are generalised.">ঠিকানা, পরিচয়পত্র নম্বর বা ফোন নম্বর প্রকাশ হয় না। অবস্থান সাধারণীকৃতভাবে দেখানো হয়।</p></div>
+      <div class="rv" style="--d:.24s"><h4 data-en="Right of reply">জবাব দেওয়ার অধিকার</h4><p data-en="Corrections, removal requests, counter-evidence and appeals each create an auditable record.">সংশোধন, অপসারণের অনুরোধ, পাল্টা প্রমাণ ও আপিল — প্রতিটির নিরীক্ষাযোগ্য রেকর্ড থাকে।</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contribute">
+  <div class="wrap"><div class="sh rv" style="--c:var(--green)"><div class="no" data-en="05 — Public contribution portal">০৫ — নাগরিক অবদান পোর্টাল</div><h2 data-en="Your old photograph may be a missing page of history">আপনার কাছে থাকা পুরোনো ছবিটিই হয়তো ইতিহাসের হারানো পাতা</h2></div></div>
+  <div style="overflow:hidden"><div class="mq" id="mq1"></div><div class="mq" id="mq2"></div></div>
+  <div class="wrap">
+    <div class="cbox rv s">
+      <div class="disc" data-speed=".15"></div>
+      <div style="position:relative">
+        <h3 data-en="Photos, audio, video, documents — send what you have">ছবি, অডিও, ভিডিও, দলিল — যা আছে পাঠান</h3>
+        <p data-en="Every submission gets a reference number and is published only after editorial review, with its source attached.">প্রতিটি জমার একটি রেফারেন্স নম্বর থাকে। সম্পাদকীয় যাচাইয়ের পর, উৎসসহ তবেই তা প্রকাশিত হয়।</p>
+        <a class="btn glow mag" href="#" style="--c:var(--yellow);color:var(--ink)"><span data-en="Start contributing">অবদান শুরু করুন</span><span class="ar" style="color:var(--ink)">→</span></a>
+      </div>
+      <div class="stat">
+        <div class="rv r"><i></i><span data-en="Draft → Submitted → Under review → Published">খসড়া → জমা → পর্যালোচনা → প্রকাশিত</span></div>
+        <div class="rv r" style="--d:.1s"><i></i><span data-en="Choose your attribution: name, pseudonym or none">নাম, ছদ্মনাম, না কি নাম ছাড়া — আপনিই ঠিক করবেন</span></div>
+        <div class="rv r" style="--d:.2s"><i></i><span data-en="Suggest a correction to any published record">প্রকাশিত যেকোনো রেকর্ডে সংশোধনী প্রস্তাব করুন</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <a class="logo" href="#top"><i></i><span data-en="Bongobondhu &amp; Bangladesh">বঙ্গবন্ধু ও বাংলাদেশ</span></a>
+  <div class="fl">
+    <a href="#" data-en="About">পরিচিতি</a><a href="#" data-en="Contact">যোগাযোগ</a><a href="#" data-en="Editorial policy">সম্পাদকীয় নীতি</a><a href="#" data-en="Privacy">গোপনীয়তা নীতি</a><a href="#" data-en="Terms">শর্তাবলি</a><a href="#" data-en="Accessibility">অ্যাক্সেসিবিলিটি</a><a href="#" data-en="Corrections">সংশোধনী</a><a href="#" data-en="Removal requests">অপসারণের অনুরোধ</a>
+  </div>
+</div></footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Number.isFinite(v)?Math.min(b,Math.max(a,v)):a,lerp=(a,b,t)=>a+(b-a)*t,ss=t=>t*t*(3-2*t);
+const bn=n=>String(n).padStart(2,'0').replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const T=(b,e,tag='span',cls='')=>`<${tag}${cls?` class="${cls}"`:''} data-en="${e}">${b}</${tag}>`;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const COL=['var(--green)','var(--blue)','var(--plum)','var(--yellow)','var(--red)'];
+
+/* ---------- data ---------- */
+const DOMAINS=[
+ {c:'var(--green)',b:'বঙ্গবন্ধুর ইতিহাস',e:'Bangabandhu History',db:'১৯৪৮–১৯৭৫: রাজনৈতিক জীবন, ভাষণ, আন্দোলন, দলিল ও ছবির আর্কাইভ।',de:'1948–1975: political life, speeches, movements, documents and photographs.',h:'#history',ph:'ঐতিহাসিক আলোকচিত্র'},
+ {c:'var(--blue)',b:'উন্নয়ন ও শাসন',e:'Development & Governance',db:'অবকাঠামো, নীতি ও জাতীয় সূচক — প্রকল্পভিত্তিক সময়রেখা ও উৎসসহ।',de:'Infrastructure, policy and national indicators with project timelines and sources.',h:'#dev',ph:'মেট্রোরেল / অবকাঠামো'},
+ {c:'var(--plum)',b:'ঘটনা নথিভুক্তি',e:'Incident Documentation',db:'নিরাপদ রিপোর্টিং, প্রমাণ সংরক্ষণ এবং যাচাই করা প্রকাশ্য রেকর্ড।',de:'Secure reporting, evidence preservation and reviewed public records.',h:'#incident',ph:'নথি / প্রমাণের প্রতীকী ছবি'},
+ {c:'oklch(0.7 0.15 75)',b:'বাংলাদেশ অ্যাটলাস',e:'Bangladesh Atlas',db:'বিভাগ, জেলা ও উপজেলা ধরে ইতিহাস ও উন্নয়নের তথ্য মানচিত্রে।',de:'History and development data on the map, by division, district and upazila.',h:'#hmap',ph:'বাংলাদেশের মানচিত্র / ভূদৃশ্য'}];
+const PERIODS=[
+ {y:'১৯৪৮–১৯৫২',b:'ভাষা আন্দোলন ও প্রারম্ভিক রাজনীতি',e:'Language movement and early politics',db:'রাষ্ট্রভাষা বাংলার দাবিতে আন্দোলন, কারাবরণ এবং নতুন রাজনৈতিক দলের সূচনা।',de:'The movement for Bangla as a state language, imprisonment, and the start of a new political party.',ev:[['১৯৪৮ রাষ্ট্রভাষা আন্দোলন','1948 language protests'],['১৯৪৯ আওয়ামী মুসলিম লীগ','1949 Awami Muslim League'],['২১ ফেব্রুয়ারি ১৯৫২','21 February 1952']],ph:'ভাষা আন্দোলনের মিছিল'},
+ {y:'১৯৫৩–১৯৫৮',b:'আওয়ামী লীগের নেতৃত্ব',e:'Awami League leadership',db:'দলের সাধারণ সম্পাদক, যুক্তফ্রন্টের নির্বাচনী বিজয় এবং সামরিক শাসন জারি পর্যন্ত।',de:'General secretary of the party, the United Front election victory, up to the imposition of martial law.',ev:[['১৯৫৩ সাধারণ সম্পাদক','1953 general secretary'],['১৯৫৪ যুক্তফ্রন্ট নির্বাচন','1954 United Front election'],['১৯৫৮ সামরিক শাসন','1958 martial law']],ph:'যুক্তফ্রন্ট নির্বাচন ১৯৫৪'},
+ {y:'১৯৫৯–১৯৬৫',b:'সামরিক শাসন ও স্বায়ত্তশাসনের দাবি',e:'Military rule and the call for autonomy',db:'বারবার কারাবরণের মধ্যেও স্বায়ত্তশাসনের পক্ষে রাজনৈতিক সংগঠন।',de:'Political organising for autonomy despite repeated imprisonment.',ev:[['১৯৬২ শিক্ষা আন্দোলন','1962 education movement'],['১৯৬৪ দল পুনরুজ্জীবন','1964 party revival']],ph:'ষাটের দশকের জনসভা'},
+ {y:'১৯৬৬–১৯৬৯',b:'ছয় দফা, আগরতলা মামলা, গণঅভ্যুত্থান',e:'Six Points, Agartala Case, mass uprising',db:'ছয় দফা ঘোষণা, আগরতলা মামলা এবং গণঅভ্যুত্থানের পর ‘বঙ্গবন্ধু’ উপাধি।',de:'The Six-Point programme, the Agartala Case, and the title “Bangabandhu” after the mass uprising.',ev:[['১৯৬৬ ছয় দফা','1966 Six Points'],['১৯৬৮ আগরতলা মামলা','1968 Agartala Case'],['২৩ ফেব্রুয়ারি ১৯৬৯','23 February 1969']],ph:'ছয় দফার প্রচারপত্র'},
+ {y:'১৯৭০–১৯৭১',b:'নির্বাচন, ভাষণ ও স্বাধীনতা',e:'Election, speech and independence',db:'সত্তরের নির্বাচনে বিজয়, ৭ মার্চের ভাষণ, স্বাধীনতার ঘোষণা ও মুক্তিযুদ্ধ।',de:'Victory in the 1970 election, the 7 March speech, the declaration of independence and the Liberation War.',ev:[['ডিসেম্বর ১৯৭০ নির্বাচন','December 1970 election'],['৭ মার্চ ১৯৭১','7 March 1971'],['২৬ মার্চ ১৯৭১','26 March 1971'],['১৬ ডিসেম্বর ১৯৭১','16 December 1971']],ph:'৭ মার্চের ভাষণ, রেসকোর্স ময়দান'},
+ {y:'১৯৭২–১৯৭৫',b:'সংবিধান ও রাষ্ট্রগঠন',e:'Constitution and state-building',db:'স্বদেশ প্রত্যাবর্তন, সংবিধান প্রণয়ন, জাতিসংঘে বাংলায় ভাষণ এবং ১৫ আগস্ট ১৯৭৫।',de:'Homecoming, the constitution, the UN address in Bangla, and 15 August 1975.',ev:[['১০ জানুয়ারি ১৯৭২','10 January 1972'],['১৯৭২ সংবিধান','1972 constitution'],['১৯৭৪ জাতিসংঘে ভাষণ','1974 UN address'],['১৫ আগস্ট ১৯৭৫','15 August 1975']],ph:'স্বদেশ প্রত্যাবর্তন ১৯৭২'}];
+const STOPS=[
+ {ll:[89.90,22.90],y:'সূচনা',ye:'Origin',b:'টুঙ্গিপাড়া, গোপালগঞ্জ',e:'Tungipara, Gopalganj',db:'এই গ্রামেই শেখ মুজিবুর রহমানের জন্ম ও বেড়ে ওঠা।',de:'The village where Sheikh Mujibur Rahman was born and raised.',ph:'টুঙ্গিপাড়ার বাড়ি'},
+ {ll:[90.39,23.73],y:'১৯৪৮–১৯৫২',ye:'1948–1952',b:'ঢাকা: ভাষা আন্দোলন',e:'Dhaka: the language movement',db:'ঢাকা বিশ্ববিদ্যালয় এলাকায় রাষ্ট্রভাষা বাংলার দাবিতে ছাত্র আন্দোলন।',de:'Student protests around Dhaka University demanding Bangla as a state language.',ph:'ঢাকা বিশ্ববিদ্যালয়, ১৯৫২'},
+ {ll:[90.40,23.735],y:'৭ মার্চ ১৯৭১',ye:'7 March 1971',b:'ঢাকা: রেসকোর্স ময়দান',e:'Dhaka: Racecourse Ground',db:'“এবারের সংগ্রাম আমাদের মুক্তির সংগ্রাম, এবারের সংগ্রাম স্বাধীনতার সংগ্রাম।”',de:'“The struggle this time is the struggle for our emancipation, the struggle for independence.”',ph:'৭ মার্চের জনসমুদ্র'},
+ {ll:[91.85,22.39],y:'২৬–২৭ মার্চ ১৯৭১',ye:'26–27 March 1971',b:'চট্টগ্রাম: কালুরঘাট বেতার কেন্দ্র',e:'Chattogram: Kalurghat radio station',db:'বঙ্গবন্ধুর স্বাধীনতার ঘোষণা এখান থেকে প্রচারিত হয়।',de:'Bangabandhu’s declaration of independence was broadcast from here.',ph:'কালুরঘাট বেতার কেন্দ্র'},
+ {ll:[88.60,23.65],y:'১৭ এপ্রিল ১৯৭১',ye:'17 April 1971',b:'মুজিবনগর, মেহেরপুর',e:'Mujibnagar, Meherpur',db:'বাংলাদেশের প্রথম সরকারের শপথ গ্রহণ।',de:'The first government of Bangladesh takes its oath.',ph:'মুজিবনগর সরকারের শপথ'},
+ {ll:[90.40,23.78],y:'১০ জানুয়ারি ১৯৭২',ye:'10 January 1972',b:'ঢাকা: স্বদেশ প্রত্যাবর্তন',e:'Dhaka: the homecoming',db:'পাকিস্তানের কারাগার থেকে মুক্ত হয়ে স্বাধীন দেশে ফিরে আসা।',de:'Return to an independent country after release from prison in Pakistan.',ph:'তেজগাঁও বিমানবন্দর, ১৯৭২'}];
+const OP=['চালু','Operational'],UC=['নির্মাণাধীন','Under construction'],ON=['চলমান কর্মসূচি','Ongoing programme'];
+const PROJ=[
+ {ll:[90.26,23.44],b:'পদ্মা সেতু',e:'Padma Bridge',s:OP,l:['মুন্সীগঞ্জ – শরীয়তপুর','Munshiganj – Shariatpur'],f:['৬.১৫ কিমি','6.15 km'],y:['উদ্বোধন জুন ২০২২','Opened June 2022'],db:'দক্ষিণ-পশ্চিমাঞ্চলকে রাজধানীর সঙ্গে সরাসরি যুক্ত করা সড়ক ও রেল সেতু।',de:'A road and rail bridge linking the south-west directly to the capital.'},
+ {ll:[90.37,23.82],b:'মেট্রোরেল (এমআরটি লাইন-৬)',e:'Metro Rail (MRT Line-6)',s:OP,l:['উত্তরা – মতিঝিল, ঢাকা','Uttara – Motijheel, Dhaka'],f:['প্রায় ২০ কিমি','About 20 km'],y:['উদ্বোধন ডিসেম্বর ২০২২','Opened December 2022'],db:'দেশের প্রথম বিদ্যুৎচালিত দ্রুতগতির নগর রেল।',de:'The country’s first electric rapid-transit urban rail.'},
+ {ll:[91.80,22.23],b:'কর্ণফুলী টানেল',e:'Karnaphuli Tunnel',s:OP,l:['চট্টগ্রাম','Chattogram'],f:['নদীর তলদেশে সড়ক টানেল','Under-river road tunnel'],y:['উদ্বোধন অক্টোবর ২০২৩','Opened October 2023'],db:'কর্ণফুলী নদীর দুই তীরকে যুক্ত করা সড়ক টানেল।',de:'A road tunnel joining the two banks of the Karnaphuli river.'},
+ {ll:[90.42,23.77],b:'ঢাকা এলিভেটেড এক্সপ্রেসওয়ে',e:'Dhaka Elevated Expressway',s:['আংশিক চালু','Partly open'],l:['বিমানবন্দর – কুতুবখালী','Airport – Kutubkhali'],f:['উড়াল মহাসড়ক','Elevated highway'],y:['প্রথম অংশ সেপ্টেম্বর ২০২৩','First section September 2023'],db:'রাজধানীর উত্তর-দক্ষিণ বরাবর যানজট এড়িয়ে চলার উড়াল পথ.',de:'An elevated north–south route across the capital.'},
+ {ll:[89.05,24.07],b:'রূপপুর পারমাণবিক বিদ্যুৎকেন্দ্র',e:'Rooppur Nuclear Power Plant',s:UC,l:['ঈশ্বরদী, পাবনা','Ishwardi, Pabna'],f:['দুটি ইউনিট','Two units'],y:['',''],db:'দেশের প্রথম পারমাণবিক বিদ্যুৎকেন্দ্র।',de:'The country’s first nuclear power plant.'},
+ {ll:[90.42,24.02],b:'বঙ্গবন্ধু স্যাটেলাইট-১',e:'Bangabandhu Satellite-1',s:OP,l:['গ্রাউন্ড স্টেশন: গাজীপুর','Ground station: Gazipur'],f:['যোগাযোগ উপগ্রহ','Communications satellite'],y:['উৎক্ষেপণ মে ২০১৮','Launched May 2018'],db:'বাংলাদেশের প্রথম ভূস্থির যোগাযোগ উপগ্রহ।',de:'Bangladesh’s first geostationary communications satellite.'},
+ {ll:[91.88,21.72],b:'মাতারবাড়ি গভীর সমুদ্রবন্দর',e:'Matarbari Deep Sea Port',s:UC,l:['মহেশখালী, কক্সবাজার','Maheshkhali, Cox’s Bazar'],f:['গভীর সমুদ্রবন্দর','Deep sea port'],y:['',''],db:'বড় জাহাজ ভেড়ার উপযোগী গভীর সমুদ্রবন্দর প্রকল্প।',de:'A deep sea port project able to berth large vessels.'},
+ {ll:[90.27,21.99],b:'পায়রা বন্দর',e:'Payra Port',s:OP,l:['কলাপাড়া, পটুয়াখালী','Kalapara, Patuakhali'],f:['সমুদ্রবন্দর','Sea port'],y:['কার্যক্রম শুরু ২০১৬','Operations began 2016'],db:'দক্ষিণাঞ্চলের সমুদ্রবন্দর।',de:'A sea port for the southern region.'},
+ {ll:null,b:'শতভাগ বিদ্যুতায়ন',e:'100% Electrification',s:['ঘোষিত','Declared'],l:['সারা দেশ','Nationwide'],f:['বিদ্যুৎ সংযোগ','Electricity access'],y:['ঘোষণা মার্চ ২০২২','Declared March 2022'],db:'সারা দেশে বিদ্যুৎ সংযোগ পৌঁছে দেওয়ার কর্মসূচি।',de:'The programme to extend electricity connections across the country.'},
+ {ll:null,b:'আশ্রয়ণ প্রকল্প',e:'Ashrayan Project',s:ON,l:['সারা দেশ','Nationwide'],f:['আবাসন','Housing'],y:['শুরু ১৯৯৭','Began 1997'],db:'ভূমিহীন ও গৃহহীন পরিবারের জন্য ঘর ও জমির ব্যবস্থা।',de:'Homes and land for landless and homeless families.'},
+ {ll:null,b:'ডিজিটাল বাংলাদেশ',e:'Digital Bangladesh',s:ON,l:['সারা দেশ','Nationwide'],f:['ডিজিটাল সেবা','Digital services'],y:['রূপকল্প ঘোষণা ২০০৮','Vision announced 2008'],db:'সরকারি সেবা, সংযোগ ও তথ্যপ্রযুক্তি সম্প্রসারণের রূপকল্প।',de:'A vision for expanding public e-services, connectivity and IT.'}];
+const DIVS=[['ঢাকা','Dhaka',90.41,23.71],['চট্টগ্রাম','Chattogram',91.78,22.36],['রাজশাহী','Rajshahi',88.60,24.37],['খুলনা','Khulna',89.54,22.82],['বরিশাল','Barishal',90.35,22.70],['সিলেট','Sylhet',91.87,24.90],['রংপুর','Rangpur',89.25,25.75],['ময়মনসিংহ','Mymensingh',90.41,24.75]];
+const STEPS=[['রিপোর্ট জমা','Report submitted','আপনি ঘটনা ও প্রমাণ জমা দেন।','You submit the incident and evidence.'],['গোপন সংরক্ষণ ও স্ক্রিনিং','Private storage & screening','ফাইল সুরক্ষিত জায়গায় রাখা হয় এবং নিরাপত্তা পরীক্ষা হয়।','Files go to restricted storage and are security-screened.'],['বিশেষ রিভিউয়ার','Sensitive-case reviewer','শুধু অনুমোদিত রিভিউয়ার রিপোর্টটি দেখেন।','Only an authorised reviewer sees the report.'],['প্রমাণ মূল্যায়ন','Evidence assessment','উৎস ও নিরাপত্তা যাচাই; দরকার হলে বাড়তি তথ্য চাওয়া হয়।','Sources and safety are assessed; more information may be requested.'],['আইনি ও গোপনীয়তা পর্যালোচনা','Legal & privacy review','প্রকাশের ঝুঁকি বিবেচনা ও সংবেদনশীল তথ্য আড়াল করা হয়।','Publication risk is weighed and sensitive details redacted.'],['প্রকাশের সিদ্ধান্ত','Publication decision','অনুমোদিত হলে কেবল একটি সারসংক্ষেপ প্রকাশিত হয়।','If approved, only a summary is published.']];
+const CATS=[['বঙ্গবন্ধু-সংক্রান্ত ঐতিহাসিক তথ্য','Bangabandhu historical information'],['ঐতিহাসিক আলোকচিত্র','Historical photograph'],['ঐতিহাসিক অডিও বা ভিডিও','Historical audio or video'],['দলিল বা পত্রিকা','Document or newspaper'],['উন্নয়ন প্রকল্পের তথ্য','Development project information'],['উন্নয়নের ছবি বা ভিডিও','Development photo or video'],['সরকারি প্রতিবেদন বা নিবন্ধ','Government report or article'],['স্থানীয় তথ্য','Local Bangladesh information'],['ঘটনা বা অভিযোগ','Incident or allegation'],['বিদ্যমান রেকর্ডে প্রমাণ','Evidence for an existing record'],['সংশোধনী বা হালনাগাদ','Correction or update'],['অন্যান্য প্রাসঙ্গিক উপাদান','Other relevant material']];
+
+/* ---------- render ---------- */
+$('#stack').innerHTML=DOMAINS.map((d,i)=>`<div class="sc-card" style="--i:${i}"><div class="sc-in" style="--c:${d.c}"><div><div class="big">${bn(i+1)}</div>${T(d.b,d.e,'h3')}${T(d.db,d.de,'p')}<a class="btn mag" href="${d.h}">${T('প্রবেশ করুন','Enter')}<span class="ar">→</span></a></div><div class="sc-img"><image-slot id="dom-${i}" radius="22" placeholder="${d.ph}"></image-slot></div></div></div>`).join('');
+$('#tl').insertAdjacentHTML('beforeend',PERIODS.map((p,i)=>`<div class="tl-item" style="--c:${COL[(i+4)%5]}"><div class="tl-text rv ${i%2?'l':'r'}"><div class="tl-year">${p.y}</div>${T(p.b,p.e,'h3')}${T(p.db,p.de,'p')}<ul class="tl-ev">${p.ev.map(v=>T(v[0],v[1],'li')).join('')}</ul></div><div class="tl-dot"></div><div class="tl-img ${i%2?'b':''}" data-speed="${i%2?-.16:-.08}"><image-slot id="tl-${i}" radius="24" placeholder="${p.ph}"></image-slot></div></div>`).join(''));
+$('#hcards').insertAdjacentHTML('beforeend',STOPS.map((s,i)=>`<div class="mc" style="--c:var(--red)"><div class="mc-img"><image-slot id="stop-${i}" radius="22" placeholder="${s.ph}"></image-slot></div>${T(s.y,s.ye,'span','tag')}${T(s.b,s.e,'h3')}${T(s.db,s.de,'p')}</div>`).join(''));
+$('#dcards').insertAdjacentHTML('beforeend',PROJ.map((p,i)=>`<div class="mc" style="--c:${p.s===OP?'var(--green)':p.s===UC?'oklch(0.62 0.15 60)':'var(--blue)'}"><div class="mc-img"><image-slot id="proj-${i}" radius="22" placeholder="${p.b}"></image-slot></div>${T(p.s[0],p.s[1],'span','tag')}${T(p.b,p.e,'h3')}<div class="meta">${T(p.l[0],p.l[1])}${T(p.f[0],p.f[1])}${p.y[0]?T(p.y[0],p.y[1]):''}</div>${T(p.db,p.de,'p')}</div>`).join(''));
+$('#dchips').innerHTML=PROJ.map(()=>'<i></i>').join('');
+$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="rv" style="--d:${i*.05}s"><b>${bn(i+1).slice(1)}</b><div>${T(s[0],s[1],'h4')}${T(s[2],s[3],'p')}</div></li>`).join('');
+const pill=(c,i)=>`<span style="--c:${COL[i%5]}" data-en="${c[1]}">${c[0]}</span>`;
+$('#mq1').innerHTML=[...CATS,...CATS].map(pill).join('');
+$('#mq2').innerHTML=[...CATS.slice(6),...CATS,...CATS.slice(0,6)].map((c,i)=>pill(c,i+2)).join('');
+
+/* ---------- language ---------- */
+function setLang(l){
+  document.documentElement.lang=l;
+  $$('[data-en]').forEach(e=>{if(e.dataset.bn===undefined)e.dataset.bn=e.innerHTML;e.innerHTML=l==='en'?e.dataset.en:e.dataset.bn});
+  $$('[data-en-ph]').forEach(e=>{if(!e.dataset.bnPh)e.dataset.bnPh=e.placeholder;e.placeholder=l==='en'?e.dataset.enPh:e.dataset.bnPh});
+  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  try{localStorage.setItem('bb-lang',l)}catch(e){}
+}
+$$('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let L='bn';try{L=localStorage.getItem('bb-lang')||'bn'}catch(e){}
+
+/* ---------- maps ---------- */
+const W=600,H=720;let hs=null,ds=null;
+async function maps(){
+  try{
+    const topo=await (await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json')).json();
+    const f=topojson.feature(topo,topo.objects.countries).features.find(d=>d.id==='050');
+    const proj=d3.geoMercator().fitExtent([[40,40],[W-40,H-40]],f),d=d3.geoPath(proj)(f);
+    const pts=STOPS.map(s=>proj(s.ll));
+    const cum=[0];pts.forEach((p,i)=>{if(i)cum.push(cum[i-1]+Math.hypot(p[0]-pts[i-1][0],p[1]-pts[i-1][1]))});
+    const line='M'+pts.map(p=>p.join(',')).join('L');
+    $('#hsvg').innerHTML=`<g id="hz"><path class="land" d="${d}"/><path class="route" d="${line}"/><path class="route live" id="hlive" d="${line}" stroke-dasharray="${cum.at(-1)}" stroke-dashoffset="${cum.at(-1)}"/>${pts.map(p=>`<circle class="stop" cx="${p[0]}" cy="${p[1]}" r="5"/>`).join('')}<g class="pin" id="hpin"><circle class="ring" r="9"/><circle r="9"/><circle r="3.5" style="fill:#fff"/></g></g>`;
+    hs={pts,cum,z:$('#hz'),live:$('#hlive'),pin:$('#hpin'),stops:$$('#hsvg .stop')};
+    const dv=DIVS.map(v=>[...proj([v[2],v[3]]),v]);
+    $('#dsvg').innerHTML=`<path class="land" d="${d}"/>${dv.map(v=>`<circle class="div-dot" cx="${v[0]}" cy="${v[1]}" r="6"/><text class="lbl" x="${v[0]+10}" y="${v[1]-9}" data-en="${v[2][1]}">${v[2][0]}</text>`).join('')}${PROJ.map((p,i)=>{if(!p.ll)return'';const q=proj(p.ll);return`<g class="pp" data-i="${i}"><g transform="translate(${q[0]},${q[1]})"><circle class="ring" r="12"/><circle r="12"/><text y="4">${i+1}</text></g></g>`}).join('')}`;
+    ds={svg:$('#dsvg'),dots:$$('#dsvg .div-dot'),pp:$$('#dsvg .pp')};
+  }catch(e){hs=ds=null;$$('.mapbox svg').forEach(s=>s.outerHTML='<p style="color:var(--mute)">মানচিত্র লোড করা যায়নি।</p>');return}
+  setLang(document.documentElement.lang);tick();
+}
+
+/* ---------- scroll engine ---------- */
+const prog=el=>{const r=el.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight))};
+const par=$$('[data-speed]'),scards=$$('.sc-card'),tl=$('#tl'),titems=$$('.tl-item'),hmap=$('#hmap'),devt=$('#devtall');
+const hc=$$('#hcards .mc'),dc=$$('#dcards .mc'),chips=$$('#dchips i');
+function setCards(list,a,countEl){list.forEach((c,i)=>{c.classList.toggle('on',i===a);c.classList.toggle('past',i<a)});countEl.textContent=document.documentElement.lang==='en'?`${String(a+1).padStart(2,'0')} / ${String(list.length).padStart(2,'0')}`:`${bn(a+1)} / ${bn(list.length)}`}
+let raf=0;
+function tick(){
+  raf=0;const vh=innerHeight,doc=document.documentElement;
+  $('#bar').style.transform=`scaleX(${clamp(scrollY/(doc.scrollHeight-vh))})`;
+  $('#nav').classList.toggle('sc',scrollY>40);
+  if(!reduce)par.forEach(e=>{const r=e.parentElement.getBoundingClientRect();if(r.bottom<-300||r.top>vh+300)return;e.style.transform=`translate3d(0,${((r.top+r.height/2)-vh/2)*e.dataset.speed}px,0)`});
+  scards.forEach((c,i)=>{const n=scards[i+1],inn=c.firstElementChild;if(!n){return}const d=clamp(1-(n.getBoundingClientRect().top-c.getBoundingClientRect().top)/c.offsetHeight);inn.style.transform=`scale(${1-d*.07})`;inn.style.filter=`brightness(${1-d*.06})`});
+  const tr=tl.getBoundingClientRect();$('#tlfill').style.transform=`scaleY(${clamp((vh*.55-tr.top)/tr.height)})`;
+  titems.forEach(t=>{const r=t.getBoundingClientRect();t.classList.toggle('act',r.top+r.height/2<vh*.62)});
+  // history map
+  const hp=prog(hmap)*(STOPS.length-1),i=clamp(Math.floor(hp),0,STOPS.length-2),t=ss(clamp((hp-i-.25)/.5));
+  setCards(hc,t<.5?i:i+1,$('#hcount'));
+  if(hs){const a=hs.pts[i],b=hs.pts[i+1],x=lerp(a[0],b[0],t),y=lerp(a[1],b[1],t),s=innerWidth<860?1.5:1.7,mx=lerp(W/2,x,.75),my=lerp(H/2,y,.75);
+    hs.z.setAttribute('transform',`translate(${W/2-mx*s},${H/2-my*s}) scale(${s})`);
+    hs.pin.setAttribute('transform',`translate(${x},${y}) scale(${1/s*1.4})`);
+    hs.live.setAttribute('stroke-dashoffset',hs.cum.at(-1)-lerp(hs.cum[i],hs.cum[i+1],t));
+    hs.stops.forEach((c,k)=>c.classList.toggle('on',k<=i+(t>.95?1:0)))}
+  // dev map
+  const dp=prog(devt),q=ss(clamp(dp/.1)),n=PROJ.length,a=clamp(Math.floor(clamp((dp-.1)/.9)*n),0,n-1);
+  $('#dmapw').style.transform=reduce?'':`translateY(${(q-1)*60}vh) scale(${.5+.5*q}) rotate(${(1-q)*-8}deg)`;
+  $('#dmapw').style.opacity=.25+.75*q;
+  setCards(dc,a,$('#dcount'));
+  chips.forEach((c,k)=>{c.classList.toggle('on',k<a);c.classList.toggle('cur',k===a)});
+  if(ds){ds.dots.forEach((d,k)=>d.classList.toggle('on',q*8>k+.5));ds.pp.forEach(p=>{const k=+p.dataset.i;p.classList.toggle('on',dp>.08&&k<=a);p.classList.toggle('cur',k===a)});ds.svg.classList.toggle('nation',!PROJ[a].ll&&dp>.1)}
+  // marquee
+  const cr=$('#contribute').getBoundingClientRect(),m=(vh-cr.top)*.25;
+  $('#mq1').style.transform=`translateX(${-m}px)`;$('#mq2').style.transform=`translateX(${m-600}px)`;
+}
+const req=()=>{if(!raf)raf=requestAnimationFrame(tick)};
+addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
+
+/* reveal + magnetic */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+$$('.rv').forEach(e=>io.observe(e));
+if(!reduce&&matchMedia('(hover:hover)').matches)$$('.mag').forEach(b=>{b.onpointermove=e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.35}px)`};b.onpointerleave=()=>b.style.transform=''});
+
+setLang(L);tick();maps();
+</script>
+</body>
+</html>

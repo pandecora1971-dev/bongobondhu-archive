@@ -1,0 +1,38 @@
+{
+  "id": 50,
+  "slug": "bay-terminal",
+  "title": "বে-টার্মিনাল",
+  "query": "Chattogram Bay Terminal project",
+  "folder": "50-bay-terminal",
+  "photos": [
+    {
+      "url": "https://www.tbsnews.net/sites/default/files/styles/big_3/public/images/2024/08/21/ctg_bay_terminal_photo_3.jpg",
+      "source": "https://www.tbsnews.net/bangladesh/bay-terminal-tk14908cr-support-project-set-final-govt-approval-1118061",
+      "source_title": "Bay Terminal: Tk14,908cr support project set for final govt approval | The Business Standard",
+      "caption": "Chattogram Bay Terminal Construction Site",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.thedailystar.net/sites/default/files/styles/big_1/public/images/2021/08/20/construction-work-2.jpg?h=476b1794",
+      "source": "https://www.thedailystar.net/business/economy/news/bay-terminal-project-gather-pace-2156566",
+      "source_title": "Bay Terminal project to gather pace | The Daily Star",
+      "caption": "Bay Terminal Expansion at Chittagong Port",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.tbsnews.net/sites/default/files/styles/infograph/public/images/2024/12/12/p1_infograph_bay-terminal.jpg",
+      "source": "https://www.tbsnews.net/bangladesh/infrastructure/govt-pushes-2025-launch-ctg-bay-terminal-project-1017291",
+      "source_title": "Govt pushes for 2025 launch of Ctg Bay Terminal project | The Business Standard",
+      "caption": "Bay Terminal Project Infographic",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": " এই প্রকল্পের জন্য শেখ হাসিনার উপযুক্ত সফর বা উদ্বোধনের ছবি এখনও নিশ্চিত করা যায়নি।",
+  "hasina_requirement": "pending"
+}

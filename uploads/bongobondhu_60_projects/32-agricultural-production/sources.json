@@ -1,0 +1,47 @@
+{
+  "id": 32,
+  "slug": "agricultural-production",
+  "title": "কৃষি উৎপাদন বৃদ্ধি",
+  "query": "Bangladesh agricultural production harvest",
+  "folder": "32-agricultural-production",
+  "photos": [
+    {
+      "url": "https://cdn.jagonews24.com/media/PhotoGalleryNew/BG/2019November/daily-pic-2-20230223191254.jpg",
+      "source": "https://www.jagonews24.com/photo/bangladesh/news/10435",
+      "source_title": "আজকের আলোচিত ছবি: ২৩ ফেব্রুয়ারি ২০২৩",
+      "caption": "Sheikh Hasina at BRRI’s 50th Anniversary Exhibition",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/imgAllNew/BG/2019November/priminister-20201006190132.jpg",
+      "source": "https://www.jagonews24.com/national/news/615440",
+      "source_title": "চালের নমুনা পর্যবেক্ষণ করলেন প্রধানমন্ত্রী | jagonews24",
+      "caption": "Rice Sample Inspection by Prime Minister Sheikh Hasina",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://bn-cdn.banglanews24.com/public/news_images/2021/01/23/1611372783.M.jpg",
+      "source": "https://www.banglanews24.com/agriculture/news/bd/836900.details",
+      "source_title": "উচ্চফলনশীল জাতের ব্রি ধান-৮৭ চাষে নতুন সফলতা",
+      "caption": "Successful Harvest of BRRI dhan-87 Rice",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdx.dhakamail.com/media/images/2022August/brii-98-manikganj-2-20220830085647.jpg",
+      "source": "https://dhakamail.com/country/37021",
+      "source_title": "মানিকগঞ্জে ব্রি ধান-৯৮ চাষে সাফল্য: ফলন বিঘা প্রতি ২২ মণ!",
+      "caption": "BRI dhan-98 Harvest Success in Manikganj",
+      "name": "04",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

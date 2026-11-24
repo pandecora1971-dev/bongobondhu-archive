@@ -1,0 +1,38 @@
+{
+  "id": 35,
+  "slug": "education-stipends",
+  "title": "শিক্ষা উপবৃত্তি",
+  "query": "Bangladesh education stipend",
+  "folder": "35-education-stipends",
+  "photos": [
+    {
+      "url": "https://media.prothomalo.com/prothomalo-bangla/2024-06/3dc0a9cc-0ea1-47ad-a14c-d2d8182dce76/22070f00-387c-4e97-8657-0c55307d869d.jpg?auto=format%2Ccompress&fit=max&h=675&w=1200",
+      "source": "https://www.prothomalo.com/education/scholarship/meei4ubg6h",
+      "source_title": "উপবৃত্তি, টিউশন ফি বিতরণ করলেন প্রধানমন্ত্রী, শিক্ষার্থীরা পাবেন ২ হাজার ২২৮ কোটি টাকা | প্রথম আলো",
+      "caption": "Scholarship and Tuition Fee Distribution Inauguration",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.bssnews.net/assets/news_photos/2024/06/24/inside-image/1719213175_1.jpg",
+      "source": "https://www.bssnews.net/news/196426",
+      "source_title": "PM opens stipend, tuition fee disbursement among insolvent meritorious students | News",
+      "caption": "PM’s Education Assistance Trust Disbursement Ceremony",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/PhotoGalleryNew/BG/2023March/3-20240624162045.jpg",
+      "source": "https://www.jagonews24.com/photo/bangladesh/news/11577",
+      "source_title": "শিক্ষার্থীদের পুরস্কার প্রদান অনুষ্ঠানে প্রধানমন্ত্রী",
+      "caption": "Scholarship Award Ceremony with Prime Minister Sheikh Hasina",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

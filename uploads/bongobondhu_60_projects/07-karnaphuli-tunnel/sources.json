@@ -1,0 +1,51 @@
+{
+  "id": 7,
+  "slug": "karnaphuli-tunnel",
+  "title": "কর্ণফুলী নদীর তলদেশের টানেল",
+  "query": "Karnaphuli Bangabandhu tunnel",
+  "folder": "07-karnaphuli-tunnel",
+  "photos": [
+    {
+      "name": "01",
+      "caption": "উদ্বোধনী বোতাম চাপছেন শেখ হাসিনা",
+      "source": "https://en.somoynews.tv/news/2023-10-28/bangladesh-s-milestone-achievement-pm-inaugurates-iconic-river-tunnel",
+      "credit": "Bangladesh's Milestone Achievement: PM inaugurate...",
+      "url": "https://d2u0ktu8omkpf6.cloudfront.net/8817e92f2201d4b2c9b0320bdcd3b8fe6bc22ec8c842670a.jpg",
+      "source_title": "Bangladesh's Milestone Achievement: PM inaugurate...",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "02",
+      "caption": "টানেলের উদ্বোধনী অনুষ্ঠান",
+      "source": "https://www.bssnews.net/bangla/news-flash/111998",
+      "credit": "বঙ্গবন্ধু টানেল উদ্বোধন করলেন প্রধানমন্ত্রী | শিরোনাম",
+      "url": "https://www.bssnews.net/bangla/assets/news_photos/2023/10/28/image-111998-1698483592.jpg",
+      "source_title": "বঙ্গবন্ধু টানেল উদ্বোধন করলেন প্রধানমন্ত্রী | শিরোনাম",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "03",
+      "caption": "টানেলের প্রবেশমুখ",
+      "source": "https://bdnews24.com/economy/tuohy4ifpg",
+      "credit": "Bangabandhu tunnel touted to fast-track Chattogram's growth, connectivity",
+      "url": "https://cdn.bdnews24.com/bdnews24/media/bdnews24-english/2023-10/e71fc69c-63c1-43ec-a189-c28c0104bc20/bangabandhu_tunnel_chattogram_271023_09.jpg",
+      "source_title": "Bangabandhu tunnel touted to fast-track Chattogram's growth, connectivity",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "name": "04",
+      "caption": "টানেলের টোল প্লাজা",
+      "source": "https://www.chinadailyhk.com/hk/article/360524",
+      "credit": "Underwater link set to spur growth",
+      "url": "https://campus-cdhk.oss-cn-hongkong.aliyuncs.com/store_manager/photo_pre/13/155/127/46788d61-5593-418b-8d06-10e7412f319d/middle_wm.jpg",
+      "source_title": "Underwater link set to spur growth",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "",
+  "hasina_requirement": "candidate_requires_visual_review"
+}

@@ -1,0 +1,38 @@
+{
+  "id": 11,
+  "slug": "bangabandhu-satellite-1",
+  "title": "বঙ্গবন্ধু স্যাটেলাইট-১",
+  "query": "Bangabandhu satellite 1",
+  "folder": "11-bangabandhu-satellite-1",
+  "photos": [
+    {
+      "url": "https://tds-images.thedailystar.net/sites/default/files/styles/very_big_201/public/feature/images/satellite_ground_station.jpg",
+      "source": "https://www.thedailystar.net/backpage/bangabandhu-satellite-pm-open-two-ground-stations-today-1613761",
+      "source_title": "Bangabandhu-1 Satellite: PM to open two ground stations today",
+      "caption": "Bangabandhu-1 Ground Station Facility",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://www.thedailystar.net/sites/default/files/styles/big_1/public/news/images/bangabandhu-satellite-1.jpg?h=21042403",
+      "source": "https://www.thedailystar.net/online/top-happening-of-2018-in-bangladesh-1681120",
+      "source_title": "Taking a look back at 2018 in Bangladesh | The Daily Star",
+      "caption": "Bangabandhu-1 Satellite Launch",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.jagonews24.com/media/imgAllNew/BG/2018March/gazipur-02-20180510175417.jpg",
+      "source": "https://www.jagonews24.com/national/news/426540",
+      "source_title": "গাজীপুরে প্রস্তুত বঙ্গবন্ধু স্যাটেলাইট গ্রাউন্ড স্টেশন",
+      "caption": "Bangabandhu Satellite Ground Station in Gazipur",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "গ্রাউন্ড স্টেশন ও উৎক্ষেপণের দৃশ্য। শেখ হাসিনার উপযুক্ত অনুষ্ঠানভিত্তিক ছবি বাকি। এই প্রকল্পের জন্য শেখ হাসিনার উপযুক্ত সফর বা উদ্বোধনের ছবি এখনও নিশ্চিত করা যায়নি।",
+  "hasina_requirement": "pending"
+}

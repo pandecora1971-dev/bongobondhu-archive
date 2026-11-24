@@ -1,0 +1,20 @@
+{
+  "id": 60,
+  "slug": "dhaka-airport-radar",
+  "title": "ঢাকা বিমানবন্দরের রাডার ও নেভিগেশন ব্যবস্থার আধুনিকীকরণ",
+  "query": "Dhaka airport radar navigation modernization",
+  "folder": "60-dhaka-airport-radar",
+  "photos": [
+    {
+      "url": "https://m360ict.s3.ap-south-1.amazonaws.com/monitor-website-storage/news-media-files/4390f555-a898-4a2e-baf4-60fe356ffa75.jpg",
+      "source": "https://bangladeshmonitor.com.bd/en/caab-thales-sign-deal-to-install-new-radar-at-dhaka-airport",
+      "source_title": "CAAB, Thales sign deal to install new radar at Dhaka Airport",
+      "caption": "CAAB–Thales Radar Contract Celebration",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "CAAB–Thales চুক্তির ছবি। অন্য সরকারের পরবর্তী উদ্বোধন এবং সামরিক ATS রাডারের ছবি বাদ। এই প্রকল্পের জন্য শেখ হাসিনার উপযুক্ত সফর বা উদ্বোধনের ছবি এখনও নিশ্চিত করা যায়নি।",
+  "hasina_requirement": "pending"
+}

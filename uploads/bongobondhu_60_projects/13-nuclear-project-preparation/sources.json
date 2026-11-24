@@ -1,0 +1,38 @@
+{
+  "id": 13,
+  "slug": "nuclear-project-preparation",
+  "title": "পারমাণবিক বিদ্যুৎ প্রকল্প-সংক্রান্ত প্রস্তুতি",
+  "query": "Bangladesh Rooppur nuclear power project preparation IAEA",
+  "folder": "13-nuclear-project-preparation",
+  "photos": [
+    {
+      "url": "https://www.albd.org/media/filer_public/05/f3/05f3c0b8-f08e-4983-b9eb-53a97b2930f8/09-hpm-sheikh-hasina-inaugurates-ruppur-nuclear-power-plant.jpg",
+      "source": "https://albd.org/articles/news/31181/HPM-Sheikh-Hasina-inaugurates-Ruppur-Nuclear-Power-Plant",
+      "source_title": "HPM Sheikh Hasina inaugurates Ruppur Nuclear Power Plant",
+      "caption": "Inauguration of Rooppur Nuclear Power Plant Construction",
+      "name": "01",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://cdn.bdnews24.com/bdnews24/media/bdnews24-english/import/media/2013/10/03/pm-pabna-pic-2537.jpg",
+      "source": "https://bdnews24.com/bangladesh/cabinet-clears-draft-law-to-form-company-to-operate-rooppur-nuclear-power-plant",
+      "source_title": "Cabinet clears draft law to form company to operate Rooppur nuclear power plant",
+      "caption": "Rooppur Nuclear Power Plant Foundation Ceremony",
+      "name": "02",
+      "file": "",
+      "visual_review": "pending"
+    },
+    {
+      "url": "https://subsites.chinadaily.com.cn/cnnc/att/20221215/1671099397581044256.jpg",
+      "source": "https://en.cnnc.com.cn/fr/2022-12/15/c_840081.htm",
+      "source_title": "L 'AIEA affirme que le Bangladesh s'est engagé envers la sûreté nucléaire",
+      "caption": "Rooppur Nuclear Power Plant Construction",
+      "name": "03",
+      "file": "",
+      "visual_review": "pending"
+    }
+  ],
+  "note": "PDF-এর এই শিরোনামটি বিস্তৃত। রূপপুরের প্রস্তুতি ও নির্মাণের প্রাসঙ্গিক ছবি রাখা হয়েছে।",
+  "hasina_requirement": "candidate_requires_visual_review"
+}
