@@ -253,6 +253,7 @@ model Complaint {
   division     Division?
   district     String?           @db.VarChar(80)
   thana        String?           @db.VarChar(120)
+  /// encrypted (as are links, internalNote and ComplaintUpdate.message)
   description  String            @db.Text
   links        String[]
   witness      TriState?
@@ -277,15 +278,19 @@ model AccusedPerson {
   complaintId String
   complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
   order       Int       @default(0)
-  name        String?   @db.VarChar(200)
-  role        String?   @db.VarChar(200)
-  org         String?   @db.VarChar(200)
+  /// name, role, org, description, facebookUrl, photoUrl are encrypted (seal / unseal in lib/crypto.ts)
+  name        String?   @db.Text
+  role        String?   @db.Text
+  org         String?   @db.Text
   description String?   @db.Text
   how         HowKnown?
-  facebookUrl String?   @db.VarChar(1000)
-  photoUrl    String?   @db.VarChar(1000)
+  facebookUrl String?   @db.Text
+  photoUrl    String?   @db.Text
+  /// HMAC of the normalised name, for exact-name search only
+  nameIdx     String?   @db.VarChar(64)
 
   @@index([complaintId])
+  @@index([nameIdx])
 }
 
 /// A message on a complaint's timeline. `public` ones are shown on /report/status.
@@ -469,6 +474,24 @@ model AdminUser {
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
   audit          AuditLog[]
+  loginCodes     AdminLoginChallenge[]
+}
+
+/// Second login step: a 6-digit code emailed to the admin after a correct password.
+/// Only hashes are stored; a challenge is single-use, expires after 10 minutes and allows 5 tries.
+model AdminLoginChallenge {
+  /// sha256 of the random challenge token held by the browser
+  id        String    @id
+  adminId   String
+  admin     AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  codeHash  String
+  attempts  Int       @default(0)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([adminId])
+  @@index([expiresAt])
 }
 
 /// Append-only log book. The actor's name / email / role are copied in, so the record survives

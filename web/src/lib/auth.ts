@@ -4,8 +4,9 @@ import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import type { AdminRole, Permission } from "@prisma/client";
+import type { AdminRole, AdminUser, Permission } from "@prisma/client";
 import { db } from "./db";
+import { emailOtpEnabled, verifyChallenge } from "./login-otp";
 import { rateLimit } from "./ratelimit";
 import { sha256 } from "./crypto";
 import { env } from "./env";
@@ -26,6 +27,31 @@ class TooMany extends CredentialsSignin {
 
 let DUMMY: string | undefined;
 const loginSchema = z.object({ email: z.string().trim().toLowerCase().email().max(200), password: z.string().min(1).max(200) });
+const codeSchema = z.object({ challenge: z.string().min(20).max(100), code: z.string().trim().regex(/^\d{6}$/) });
+
+const logRow = (u: AdminUser, action: string) =>
+  db.auditLog.create({ data: { adminId: u.id, actorName: u.name, actorEmail: u.email, actorRole: u.role, action, entityType: "AdminUser", entityId: u.id } });
+
+/**
+ * Login step 1: email + password, throttled per IP *and* per account (stops slow distributed
+ * guessing of one admin). Returns the account, null for a wrong login, or throws TooMany.
+ */
+export async function checkPassword(raw: unknown): Promise<AdminUser | null> {
+  const p = loginSchema.safeParse(raw);
+  if (!p.success) return null;
+  const [byIp, byAcct] = await Promise.all([rateLimit("login"), rateLimit("loginAccount", sha256(p.data.email), { perIp: false })]);
+  if (!byIp.ok || !byAcct.ok) throw new TooMany();
+  const u = await db.adminUser.findUnique({ where: { email: p.data.email } });
+  // always run bcrypt so response time does not reveal whether the email exists
+  const ok = await bcrypt.compare(p.data.password, u?.passwordHash ?? (DUMMY ??= bcrypt.hashSync("dummy-password", 12)));
+  if (!u || !u.active || !ok) {
+    if (u) await logRow(u, "login:failed");
+    return null;
+  }
+  return u;
+}
+
+export { TooMany };
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: env.authSecret,
@@ -34,22 +60,27 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: { signIn: "/admin/login", error: "/admin/login" },
   providers: [
     Credentials({
-      credentials: { email: {}, password: {} },
+      credentials: { email: {}, password: {}, challenge: {}, code: {} },
       async authorize(raw) {
-        const p = loginSchema.safeParse(raw);
-        if (!p.success) return null;
-        // throttle per IP *and* per account (stops slow distributed guessing of one admin)
-        const [byIp, byAcct] = await Promise.all([rateLimit("login"), rateLimit("loginAccount", sha256(p.data.email), { perIp: false })]);
-        if (!byIp.ok || !byAcct.ok) throw new TooMany();
-        const u = await db.adminUser.findUnique({ where: { email: p.data.email } });
-        // always run bcrypt so response time does not reveal whether the email exists
-        const ok = await bcrypt.compare(p.data.password, u?.passwordHash ?? (DUMMY ??= bcrypt.hashSync("dummy-password", 12)));
-        if (!u || !u.active || !ok) {
-          if (u) await db.auditLog.create({ data: { adminId: u.id, actorName: u.name, actorEmail: u.email, actorRole: u.role, action: "login:failed", entityType: "AdminUser", entityId: u.id } });
-          return null;
+        let u: AdminUser | null;
+        if (emailOtpEnabled()) {
+          // Login step 2: the emailed code. A plain email + password is refused while codes are on.
+          const p = codeSchema.safeParse(raw);
+          if (!p.success) return null;
+          if (!(await rateLimit("login")).ok) throw new TooMany();
+          const r = await verifyChallenge(p.data.challenge, p.data.code);
+          u = r.adminId ? await db.adminUser.findUnique({ where: { id: r.adminId } }) : null;
+          if (!u || !u.active) {
+            const known = r.knownAdminId ? await db.adminUser.findUnique({ where: { id: r.knownAdminId } }) : null;
+            if (known) await logRow(known, "login:code-failed");
+            return null;
+          }
+        } else {
+          u = await checkPassword(raw);
+          if (!u) return null;
         }
         await db.adminUser.update({ where: { id: u.id }, data: { lastLoginAt: new Date() } });
-        await db.auditLog.create({ data: { adminId: u.id, actorName: u.name, actorEmail: u.email, actorRole: u.role, action: "login", entityType: "AdminUser", entityId: u.id } });
+        await logRow(u, "login");
         return { id: u.id, email: u.email, name: u.name, role: u.role, sv: u.sessionVersion };
       },
     }),

@@ -7,6 +7,7 @@ import type { Permission, Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth";
 import { audit } from "@/lib/audit";
+import { seal } from "@/lib/crypto";
 import { permissionForOwner } from "@/lib/access";
 import { BLOCKS, invalidateHome, type BlockKey } from "@/lib/content";
 import { deleteAssetFiles } from "@/lib/media";
@@ -87,7 +88,7 @@ export async function complaintUpdate(fd: FormData) {
   await db.$transaction([
     db.complaint.update({ where: { id: p.id }, data: { progress: p.progress } }),
     db.complaintUpdate.create({
-      data: { complaintId: p.id, progress: p.progress, message: p.message || PROGRESS.label(p.progress), public: p.public === "on", adminId: me.id },
+      data: { complaintId: p.id, progress: p.progress, message: p.message ? seal(p.message)! : PROGRESS.label(p.progress), public: p.public === "on", adminId: me.id },
     }),
   ]);
   await audit(me, `progress:${p.progress}`, "complaint", p.id, { public: p.public === "on" });
@@ -97,7 +98,7 @@ export async function complaintUpdate(fd: FormData) {
 export async function complaintNote(fd: FormData) {
   const me = await requireAdmin("COMPLAINTS");
   const p = z.object({ id, internalNote: str(20000) }).parse(fdo(fd));
-  await db.complaint.update({ where: { id: p.id }, data: { internalNote: p.internalNote || null } });
+  await db.complaint.update({ where: { id: p.id }, data: { internalNote: seal(p.internalNote) } });
   await audit(me, "note", "complaint", p.id);
   redirect(`/admin/complaints/${p.id}?saved=1`);
 }

@@ -41,6 +41,23 @@ export function decrypt(enc: string | null | undefined): string | null {
   }
 }
 
+/**
+ * Complaint text at rest (description, accused details, links, messages, notes).
+ * `seal` encrypts; `unseal` decrypts and also passes through older plaintext rows unchanged.
+ */
+export const seal = (plain: string | null | undefined) => encrypt(plain);
+export function unseal(v: string | null | undefined): string | null {
+  if (v == null || v === "") return v ?? null;
+  if (!v.startsWith("v1.")) return v;
+  return decrypt(v) ?? "[এনক্রিপ্ট করা লেখা পড়া যায়নি]";
+}
+
+/** Blind index so admins can find an accused person by full name without storing the name readable. */
+export function nameIndex(name: string | null | undefined): string | null {
+  const n = name?.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+  return n ? hmac(`${env.encryptionKey}|accused-name-index`, n) : null;
+}
+
 /** scrypt hash for the complaint secret key: scrypt$<salt>$<hash> */
 export async function hashSecret(secret: string): Promise<string> {
   const salt = randomBytes(16);

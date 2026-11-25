@@ -2,6 +2,7 @@
  * Housekeeping — run daily (cron / Vercel Cron / GitHub Action):
  *   - deletes uploads that were presigned but never attached to a submission (> 24 h)
  *   - deletes expired rate-limit windows
+ *   - deletes used or expired admin login codes
  *   npm run cleanup
  */
 import "dotenv/config";
@@ -22,6 +23,7 @@ async function main() {
   for (const a of stale) if (a.key) await del(a.key).catch(() => {});
   await db.mediaAsset.deleteMany({ where: { id: { in: stale.map((a) => a.id) } } });
   const rl = await db.rateLimit.deleteMany({ where: { resetAt: { lt: new Date() } } });
-  console.log(`✓ removed ${stale.length} abandoned uploads, ${rl.count} expired rate-limit rows`);
+  const otp = await db.adminLoginChallenge.deleteMany({ where: { OR: [{ expiresAt: { lt: new Date() } }, { usedAt: { not: null } }] } });
+  console.log(`✓ removed ${stale.length} abandoned uploads, ${rl.count} expired rate-limit rows, ${otp.count} old login codes`);
 }
 main().catch((e) => { console.error(e); process.exit(1); }).finally(() => db.$disconnect());

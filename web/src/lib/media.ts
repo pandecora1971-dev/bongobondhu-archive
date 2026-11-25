@@ -1,5 +1,6 @@
 import "server-only";
 import sharp from "sharp";
+import { PDFDocument, PDFName } from "pdf-lib";
 import type { MediaKind, OwnerType, Prisma } from "@prisma/client";
 import { db } from "./db";
 import { storage } from "./storage";
@@ -65,6 +66,22 @@ export class UploadError extends Error {}
  * Verifies the per-upload token, re-checks size + real type from the stored bytes,
  * strips image metadata, writes thumbnails, and deletes the raw upload.
  */
+/** Copies the pages into a fresh document with no info dictionary or XMP. Returns null if it cannot. */
+export async function stripPdf(input: Buffer): Promise<Buffer | null> {
+  try {
+    const src = await PDFDocument.load(input, { updateMetadata: false });
+    const out = await PDFDocument.create({ updateMetadata: false });
+    const pages = await out.copyPages(src, src.getPageIndices());
+    for (const p of pages) {
+      for (const k of ["Metadata", "PieceInfo", "LastModified"]) p.node.delete(PDFName.of(k));
+      out.addPage(p);
+    }
+    return Buffer.from(await out.save({ useObjectStreams: true }));
+  } catch {
+    return null;
+  }
+}
+
 export async function finalizeUploads(opts: {
   uploads: { id: string; token: string }[];
   purpose: UploadPurpose;
@@ -117,8 +134,21 @@ export async function finalizeUploads(opts: {
       await storage.put(`${base}_t.webp`, p.thumb, "image/webp");
       await storage.delete(a.key).catch(() => {});
       data = { key: `${base}.webp`, thumbKey: `${base}_t.webp`, mime: "image/webp", width: p.width, height: p.height, size: p.full.length };
+    } else if (t.kind === "PDF") {
+      // PDFs are rebuilt page by page: author, software, dates and XMP metadata are left behind.
+      const to = `${base}.pdf`;
+      const clean = await stripPdf(await storage.get(a.key));
+      if (clean) {
+        await storage.put(to, clean, "application/pdf");
+        await storage.delete(a.key).catch(() => {});
+        data = { key: to, mime: t.mime, size: clean.length };
+      } else {
+        // encrypted / damaged PDF: kept as-is (admin-only, never public) rather than losing evidence
+        await storage.move(a.key, to);
+        data = { key: to, mime: t.mime, size: head.size };
+      }
     } else {
-      // Video / audio / PDF are kept as-is in the private bucket (metadata NOT stripped — see README).
+      // Video / audio are kept as-is in the private bucket (metadata NOT stripped — see README).
       const to = `${base}.${ext(t.mime)}`;
       await storage.move(a.key, to);
       data = { key: to, mime: t.mime, size: head.size };

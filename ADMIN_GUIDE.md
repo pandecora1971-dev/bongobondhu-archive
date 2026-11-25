@@ -98,6 +98,12 @@ New moderators get `CONTRIBUTIONS` + `POSTS` by default.
   - failed attempts are logged
   - bcrypt password hashes
   - sessions expire after 8 hours
+  - **emailed login code (second step, BNPNAMA-style):** when `RESEND_API_KEY` is set, every admin
+    (super admin and moderator) must enter a 6-digit code sent to their own email after the password.
+    The code lasts 10 minutes, allows 5 tries and works once; only its HMAC is stored
+    (`AdminLoginChallenge` table). A new password step cancels the old code. While codes are on, a
+    plain email + password sign-in is refused, so the step cannot be skipped. Log book entries:
+    `login:code-sent`, `login:code-failed`, `login`. Each admin's email must be a real inbox they read.
 - **Cross-site attacks:** form submissions from other websites are rejected (Origin check). Cookies are httpOnly and SameSite.
 - **No IP addresses are stored** anywhere. Rate limiting uses a salted hash that expires.
 
@@ -159,7 +165,7 @@ The browser was also used to run the real public forms end to end (contribution,
 
 - [ ] **Not yet tested against real Supabase + R2** (not connected). After setup, run `npm run test:security` once against a **test copy**.
 - [ ] **Lighthouse not measured.** The attempt to run it was blocked. Run it after deploying.
-- [ ] **Video, audio and PDF metadata is not stripped** (only images are). Reviewers should check these files before approving.
+- [ ] **Video and audio metadata is not stripped** (images and PDFs are). Reviewers should check these files before approving.
 - [ ] **Policy pages** (privacy, editorial policy, terms) don't exist yet.
 - [ ] **Missing photos:** the PM portrait, the 15 August memorial portraits and project #53. Upload them in the admin.
 - [ ] The local test database was reset for the new roles. The first super admin login is still `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` from `web/.env`. **Use your own strong password in production.**

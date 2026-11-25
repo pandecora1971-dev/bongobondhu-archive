@@ -1,7 +1,7 @@
 "use server";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
-import { encrypt, hashSecret, randomCode, verifySecret } from "@/lib/crypto";
+import { encrypt, hashSecret, nameIndex, randomCode, seal, unseal, verifySecret } from "@/lib/crypto";
 import { verifyCaptcha } from "@/lib/captcha";
 import { rateLimit } from "@/lib/ratelimit";
 import { finalizeUploads, UploadError } from "@/lib/media";
@@ -83,7 +83,7 @@ export async function submitComplaint(input: ComplaintInput): Promise<{ ok: true
             code, secretHash, crimes: d.crimes, harms: d.harms, victimType: d.victimType, victimCount: d.victimCount,
             victimNameEnc: encrypt(d.victimName), incidentDate: d.date ? new Date(d.date + "T00:00:00Z") : null,
             division: d.division, district: d.district ? normaliseDistrict(d.district) : null, thana: d.thana,
-            description: d.description, links: d.links, witness: d.witness, caseFiled: d.caseFiled, idMode: d.idMode,
+            description: seal(d.description) ?? "", links: d.links.map((l) => seal(l)!).filter(Boolean), witness: d.witness, caseFiled: d.caseFiled, idMode: d.idMode,
             contactEnc: d.idMode === "CONTACT" ? encrypt(d.contact) : null,
             updates: { create: { message: "অভিযোগটি জমা হয়েছে।", progress: "RECEIVED", public: true } },
           },
@@ -91,7 +91,10 @@ export async function submitComplaint(input: ComplaintInput): Promise<{ ok: true
         for (const [i, a] of d.accused.entries()) {
           if (!a.name && !a.role && !a.org && !a.description && !a.facebookUrl && !a.photoUrl && !a.photo) continue;
           const acc = await tx.accusedPerson.create({
-            data: { complaintId: c.id, order: i, name: a.name, role: a.role, org: a.org, description: a.description, how: a.how, facebookUrl: a.facebookUrl, photoUrl: a.photoUrl },
+            data: {
+              complaintId: c.id, order: i, name: seal(a.name), nameIdx: nameIndex(a.name), role: seal(a.role), org: seal(a.org),
+              description: seal(a.description), how: a.how, facebookUrl: seal(a.facebookUrl), photoUrl: seal(a.photoUrl),
+            },
           });
           if (a.photo) await finalizeUploads({ uploads: [a.photo], purpose: "accused", ownerType: "ACCUSED", ownerId: acc.id, tx });
         }
@@ -136,7 +139,7 @@ export async function lookupStatus(input: { code: string; secret: string }): Pro
     ok: true,
     view: {
       code: c.code, progress: c.progress, createdAt: c.createdAt.toISOString(), updatedAt: c.updatedAt.toISOString(),
-      updates: c.updates.map((u) => ({ at: u.createdAt.toISOString(), message: u.message, progress: u.progress, fromPublic: u.fromPublic })),
+      updates: c.updates.map((u) => ({ at: u.createdAt.toISOString(), message: unseal(u.message) ?? "", progress: u.progress, fromPublic: u.fromPublic })),
     },
   };
 }
@@ -148,7 +151,7 @@ export async function addFollowup(input: { code: string; secret: string; message
   if (!(await verifyCaptcha(p.data.captcha))) return { ok: false, error: "captcha" };
   const c = await findComplaint(p.data.code, p.data.secret);
   if (!c) return { ok: false, error: "notfound" };
-  await db.complaintUpdate.create({ data: { complaintId: c.id, fromPublic: true, public: true, message: p.data.message } });
+  await db.complaintUpdate.create({ data: { complaintId: c.id, fromPublic: true, public: true, message: seal(p.data.message) ?? "" } });
   await db.complaint.update({ where: { id: c.id }, data: { updatedAt: new Date() } });
   return lookupStatus({ code: p.data.code, secret: p.data.secret });
 }

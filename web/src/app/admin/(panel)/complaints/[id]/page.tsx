@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { decrypt } from "@/lib/crypto";
+import { decrypt, unseal } from "@/lib/crypto";
 import { audit } from "@/lib/audit";
 import { CASE_FILED, CRIMES, HARMS, HOW_KNOWN, ID_MODES, PROGRESS, VICTIMS, WITNESS } from "@/lib/labels";
 import { divisionLabel } from "@/lib/geo";
@@ -13,8 +13,17 @@ import a from "../../../admin.module.css";
 export default async function Complaint({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ saved?: string }> }) {
   const me = await requireAdmin("COMPLAINTS");
   const { id } = await params;
-  const c = await db.complaint.findUnique({ where: { id }, include: { accused: { orderBy: { order: "asc" } }, updates: { orderBy: { createdAt: "asc" } } } });
-  if (!c) notFound();
+  const raw = await db.complaint.findUnique({ where: { id }, include: { accused: { orderBy: { order: "asc" } }, updates: { orderBy: { createdAt: "asc" } } } });
+  if (!raw) notFound();
+  // complaint text is stored encrypted; decrypt only for this permitted viewer
+  const c = {
+    ...raw,
+    description: unseal(raw.description) ?? "",
+    links: raw.links.map((l) => unseal(l) ?? ""),
+    internalNote: unseal(raw.internalNote),
+    accused: raw.accused.map((x) => ({ ...x, name: unseal(x.name), role: unseal(x.role), org: unseal(x.org), description: unseal(x.description), facebookUrl: unseal(x.facebookUrl), photoUrl: unseal(x.photoUrl) })),
+    updates: raw.updates.map((u) => ({ ...u, message: unseal(u.message) ?? "" })),
+  };
   const media = await db.mediaAsset.findMany({ where: { OR: [{ ownerType: "COMPLAINT", ownerId: c.id }, { ownerType: "ACCUSED", ownerId: { in: c.accused.map((x) => x.id) } }] }, orderBy: { sort: "asc" } });
   // viewing decrypted personal data is itself audited
   // contact details / victim name: super admins, or moderators holding COMPLAINT_PII

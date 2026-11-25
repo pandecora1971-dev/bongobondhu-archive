@@ -1,6 +1,7 @@
 import type { Prisma } from "@prisma/client";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { nameIndex } from "@/lib/crypto";
 import { CRIMES, PROGRESS } from "@/lib/labels";
 import { DIVISIONS, divisionLabel } from "@/lib/geo";
 import { Pager, Pill, Top } from "@/components/admin/ui";
@@ -17,7 +18,8 @@ export default async function Complaints({ searchParams }: { searchParams: Promi
     ...(sp.progress ? { progress: sp.progress as never } : {}),
     ...(sp.crime ? { crimes: { has: sp.crime as never } } : {}),
     ...(sp.division ? { division: sp.division as never } : {}),
-    ...(sp.q ? { OR: [{ code: { contains: sp.q.toUpperCase() } }, { description: { contains: sp.q, mode: "insensitive" } }, { district: { contains: sp.q } }, { thana: { contains: sp.q, mode: "insensitive" } }, { accused: { some: { name: { contains: sp.q, mode: "insensitive" } } } }] } : {}),
+    // description and accused details are encrypted: search covers code, area and the accused's exact full name
+    ...(sp.q ? { OR: [{ code: { contains: sp.q.toUpperCase() } }, { district: { contains: sp.q } }, { thana: { contains: sp.q, mode: "insensitive" } }, { accused: { some: { nameIdx: nameIndex(sp.q) ?? "-" } } }] } : {}),
   };
   const [rows, total] = await Promise.all([
     db.complaint.findMany({ where, orderBy: { createdAt: "desc" }, take: SIZE, skip: (page - 1) * SIZE, include: { _count: { select: { accused: true } } } }),
@@ -35,7 +37,7 @@ export default async function Complaints({ searchParams }: { searchParams: Promi
         <select name="progress" defaultValue={sp.progress ?? ""}><option value="">সব ধাপ</option>{PROGRESS.list.map(([v, bn]) => <option key={v} value={v}>{bn}</option>)}</select>
         <select name="crime" defaultValue={sp.crime ?? ""}><option value="">সব অপরাধ</option>{CRIMES.list.map(([v, bn]) => <option key={v} value={v}>{bn}</option>)}</select>
         <select name="division" defaultValue={sp.division ?? ""}><option value="">সব বিভাগ</option>{DIVISIONS.map((d) => <option key={d.code} value={d.code}>{d.bn}</option>)}</select>
-        <input name="q" defaultValue={sp.q ?? ""} placeholder="কোড, এলাকা, অভিযুক্তের নাম…" />
+        <input name="q" defaultValue={sp.q ?? ""} placeholder="কোড, এলাকা বা অভিযুক্তের পুরো নাম…" title="নিরাপত্তার জন্য বিবরণ এনক্রিপ্ট করা থাকে; অভিযুক্তকে খুঁজতে পুরো নাম হুবহু লিখুন" />
         <button className={a.btn}>খুঁজুন</button>
       </form>
       <table className={a.table}>

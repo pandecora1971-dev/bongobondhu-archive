@@ -9,7 +9,7 @@ const SIZE = 100;
 
 // human labels for the log book
 const ACTION: Record<string, string> = {
-  login: "লগইন", "login:failed": "ভুল পাসওয়ার্ডে লগইন চেষ্টা", "status:APPROVED": "অনুমোদন", "status:REJECTED": "বাতিল", "status:ARCHIVED": "আর্কাইভ",
+  login: "লগইন", "login:failed": "ভুল পাসওয়ার্ডে লগইন চেষ্টা", "login:code-sent": "লগইন কোড ইমেইলে পাঠানো", "login:code-failed": "ভুল লগইন কোড","status:APPROVED": "অনুমোদন", "status:REJECTED": "বাতিল", "status:ARCHIVED": "আর্কাইভ",
   "status:PENDING": "অপেক্ষমাণে ফেরত", edit: "সম্পাদনা", create: "তৈরি", delete: "মুছে ফেলা", note: "নোট", view: "দেখা", "view:pii": "গোপন তথ্য দেখা",
   "media:hide": "ফাইল লুকানো", "media:unhide": "ফাইল দেখানো", "media:delete": "ফাইল মুছে ফেলা", "media:upload": "ছবি আপলোড",
   "user:create": "ব্যবহারকারী তৈরি", "user:update": "ব্যবহারকারী পরিবর্তন", "user:delete": "ব্যবহারকারী মুছে ফেলা", "user:logout-all": "জোর করে লগআউট",

@@ -144,7 +144,13 @@ npm run images:import
 3. Run migrations against production from your computer or CI: `npx prisma migrate deploy`
 4. Optional: schedule `npm run cleanup` daily (Vercel Cron or a GitHub Action).
 
-> ⚠️ **Never change `ENCRYPTION_KEY` after real data exists.** Contact details and victim names are encrypted with it; changing it makes them unreadable.
+> ⚠️ **Never change `ENCRYPTION_KEY` after real data exists.** Contact details, victim names and all complaint text are encrypted with it; changing it makes them unreadable. Keep a separate safe copy of it.
+
+### After the tables exist: give the website a restricted database account
+```bash
+npm run db:app-role
+```
+It creates `archive_app`, which can read and write rows but cannot change tables or edit the log book, and prints a new `DATABASE_URL` once. Put that value in `.env` and Vercel; keep `DIRECT_URL` as the owner account (used only for migrations). Run it again after any migration that adds tables.
 > ⚠️ Keep `RATE_LIMIT_SALT` and `AUTH_SECRET` secret. Changing `AUTH_SECRET` logs every admin out (harmless).
 
 ---
@@ -181,6 +187,7 @@ npm run dev                 # http://localhost:3000   admin: http://localhost:30
 | `UPLOAD_SIGNING_SECRET` | Signs local-driver upload URLs |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`, `CAPTCHA_DISABLED` | Captcha |
 | `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD`, `SEED_ADMIN_NAME` | First admin, created by the seed |
+| `RESEND_API_KEY`, `OTP_EMAIL_FROM` | Emailed 6-digit login code for every admin (on when the key is set). See `ADMIN_GUIDE.md` §4 |
 
 ---
 
@@ -247,7 +254,8 @@ npm run dev                 # http://localhost:3000   admin: http://localhost:30
 3. The form sends only `{id, token}`.
 4. The server action verifies the token hash, re-reads the real file type from the stored bytes, and checks the size limit.
 5. **Images** are re-encoded with sharp, which removes all EXIF/GPS. A 640 px thumbnail is made and the raw upload is deleted.
-6. Video, audio and PDF are moved as they are, with metadata **not** stripped.
+6. **PDFs** are rebuilt page by page (`stripPdf()` in `lib/media.ts`), which drops author, software, dates and XMP metadata. An encrypted or damaged PDF is kept as-is (admin-only).
+7. Video and audio are moved as they are, with metadata **not** stripped.
 
 Size and count limits live in `lib/upload-rules.ts`, shared by browser and server.
 
@@ -317,6 +325,7 @@ Size and count limits live in `lib/upload-rules.ts`, shared by browser and serve
    - Rate limiting uses only `sha256(salt|route|ip|window)`.
    - Never log form contents or personal data.
 4. **Contact details and victim names stay encrypted** (`encrypt()` / `decrypt()` in `lib/crypto.ts`). Viewing them in the admin writes an audit entry.
+   **All complaint text is encrypted too** (`seal()` / `unseal()`): description, links, accused name/role/organisation/description/links, follow-up and update messages, internal notes. Accused names are searchable only by exact full name through a keyed hash (`nameIndex()`). Location and categories stay readable for filters.
 5. **Every admin page / action / route must call `requireAdmin(permission)` (or `adminOrNull`) and every mutation must call `audit(me, …)`.** Use `"SUPER"` for anything about accounts or permanent deletion. The middleware is only a convenience; never rely on hiding a button.
 6. **Never trust the browser's file type.** Use `sniff()` in `lib/media.ts`. Images must go through `processImage()` (this is what strips GPS).
 7. **Keep Bangla copy verbatim from the prototypes.** Labels go in `lib/labels.ts` or `src/i18n/*`, never in enum names.
@@ -333,7 +342,7 @@ Size and count limits live in `lib/upload-rules.ts`, shared by browser and serve
 
 - [ ] **Connect Supabase + R2** (section 4) and deploy to Vercel.
 - [ ] **Lighthouse not run** (target ≥ 90 on mobile). Run it after deploying: `npx lighthouse https://YOUR-DOMAIN --form-factor=mobile`. The homepage HTML is about 124 KB gzipped, mostly the RSC payload for roughly 250 images; reduce it if the score is low.
-- [ ] **Video, audio and PDF metadata is not stripped**; only images are. Add ffmpeg/exiftool processing if needed, or keep reviewers checking files before approval.
+- [ ] **Video and audio metadata is not stripped** (images and PDFs are). Doing it needs ffmpeg, which is too heavy for Vercel functions with 200 MB files; it would need a separate worker. These files are admin-only and never public; reviewers should check them before approving.
 - [ ] **Missing portraits:** the PM portrait and the 18 portraits for the 15 August memorial. Upload them in `/admin/content`, using slots `pm` and `v75-<group>-<index>` (e.g. `v75-0-4` is Sheikh Russel).
 - [ ] **Project #53** (ঢাকা ইস্ট–ওয়েস্ট এলিভেটেড এক্সপ্রেসওয়ে) has no working photo. Upload one in `/admin/projects`.
 - [ ] **Image permissions:** reuse permission and the subjects of the 60-project photos are not yet verified (warning from the prototype's `uploads/…/README.txt`). Credits and source links are stored on every image.

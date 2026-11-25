@@ -23,6 +23,19 @@ const db = new PrismaClient();
 let pass = 0, fail = 0;
 const ok = (cond, msg) => { if (cond) { pass++; console.log("  ✓", msg); } else { fail++; console.log("  ✗ FAIL:", msg); } };
 
+// Emailed login codes are on when the server has RESEND_API_KEY (this script reads the same .env).
+const OTP = !!process.env.RESEND_API_KEY;
+const AUTH_SECRET = process.env.AUTH_SECRET && !process.env.AUTH_SECRET.startsWith("change-me") ? process.env.AUTH_SECRET : "dev-auth-secret-for-local-development-only";
+async function plantCode(email, code = "424242") {
+  const { createHash, createHmac, randomBytes } = await import("node:crypto");
+  const u = await db.adminUser.findUnique({ where: { email } });
+  const challenge = randomBytes(32).toString("base64url");
+  const id = createHash("sha256").update(challenge).digest("hex");
+  const codeHash = createHmac("sha256", AUTH_SECRET).update(`login-otp|${id}|${code}`).digest("base64url");
+  await db.adminLoginChallenge.create({ data: { id, adminId: u.id, codeHash, expiresAt: new Date(Date.now() + 600_000) } });
+  return { challenge, code };
+}
+
 // ───────── tiny HTTP client with a cookie jar ─────────
 class Client {
   jar = new Map();
@@ -41,14 +54,20 @@ class Client {
     return res;
   }
   async get(url) { const r = await this.req(url); return { status: r.status, loc: r.headers.get("location") || "", body: r.status === 200 ? await r.text() : "" }; }
-  async login(email, password) {
+  async signIn(fields) {
     const c = await (await this.req("/api/auth/csrf")).json();
     const r = await this.req("/api/auth/callback/credentials", {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ csrfToken: c.csrfToken, email, password }),
+      body: new URLSearchParams({ csrfToken: c.csrfToken, ...fields }),
     });
     return r.status;
+  }
+  /** With emailed login codes on, the test plants a known code (it cannot read the email). */
+  async login(email, password) {
+    if (!OTP) return this.signIn({ email, password });
+    const { challenge, code } = await plantCode(email);
+    return this.signIn({ challenge, code });
   }
   /** submit a server-action <form> found in `html`, chosen by `pick(fields)` */
   async action(pageUrl, html, pick, extra = {}, headers = {}) {
@@ -116,6 +135,19 @@ async function main() {
   ok(!(await anon.get("/search?q=security%20test")).body.includes(fx.complaint.code), "complaints never appear in search");
 
   console.log("\n2. Super admin");
+  if (OTP) {
+    const skip = new Client();
+    await skip.signIn({ email: SUPER.email, password: SUPER.password });
+    ok((await skip.get("/admin/users")).loc.includes("/admin/login"), "login code on: password alone gives no session");
+    const { challenge } = await plantCode(SUPER.email);
+    await skip.signIn({ challenge, code: "000001" });
+    ok((await skip.get("/admin/users")).loc.includes("/admin/login"), "login code on: a wrong code gives no session");
+    const used = await plantCode(SUPER.email, "135790");
+    await new Client().signIn(used);
+    const again = new Client();
+    await again.signIn(used);
+    ok((await again.get("/admin/users")).loc.includes("/admin/login"), "login code on: a used code cannot be used again");
+  }
   const sup = new Client();
   ok((await sup.login(SUPER.email, SUPER.password)) === 302, "super admin can log in");
   const supUsers = await sup.get("/admin/users");

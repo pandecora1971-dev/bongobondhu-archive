@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { adminOrNull, can } from "@/lib/auth";
 import { audit } from "@/lib/audit";
 import { db } from "@/lib/db";
-import { decrypt } from "@/lib/crypto";
+import { decrypt, unseal } from "@/lib/crypto";
 import { ACTIVITY_TYPES, CONTRIBUTION_TYPES, CRIMES, HARMS, ORGS } from "@/lib/labels";
 import { divisionLabel } from "@/lib/geo";
 
@@ -42,7 +42,7 @@ export async function GET(req: Request) {
       ["code", "status", "progress", "crimes", "harms", "date", "division", "district", "thana", "description", "victims", "accused", "links", ...(pii ? ["contact", "victimName"] : []), "created"],
       r.map((x) => [
         x.code, x.status, x.progress, x.crimes.map((c) => CRIMES.label(c)), x.harms.map((h) => HARMS.label(h)), x.incidentDate, divisionLabel(x.division), x.district, x.thana,
-        x.description, x.victimCount, x.accused.map((a) => [a.name, a.role, a.org].filter(Boolean).join(" / ")), x.links,
+        unseal(x.description), x.victimCount, x.accused.map((a) => [unseal(a.name), unseal(a.role), unseal(a.org)].filter(Boolean).join(" / ")), x.links.map((l) => unseal(l)),
         ...(pii ? [decrypt(x.contactEnc), decrypt(x.victimNameEnc)] : []), x.createdAt,
       ]),
     );
