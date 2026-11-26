@@ -46,6 +46,11 @@ async function main() {
   ]) assert.equal(policy.requestIsSameOrigin(request(headers), site, true), false);
   assert.equal(policy.requestIsSameOrigin(request({ "sec-fetch-site": "same-origin" }), site, true), true);
   assert.equal(policy.requestIsSameOrigin(request(), site, false), true);
+  // the host may redirect bare domain <-> www; both are the same site, look-alikes are not
+  assert.equal(policy.requestIsSameOrigin(request({ origin: "https://www.archive.example" }), site, true), true);
+  assert.equal(policy.requestIsSameOrigin(request({ origin: site }), "https://www.archive.example", true), true);
+  for (const origin of ["http://www.archive.example", "https://www.archive.example:8443", "https://wwwarchive.example", "https://www.www.archive.example", "https://evil.www.archive.example"])
+    assert.equal(policy.requestIsSameOrigin(request({ origin }), site, true), false, origin);
 
   const spoof = new Headers({ "cf-connecting-ip": "attacker", "x-real-ip": "attacker", "x-forwarded-for": "attacker", "x-vercel-forwarded-for": "203.0.113.1" });
   assert.equal(policy.requestClientIp(spoof, true), "203.0.113.1");
@@ -64,6 +69,8 @@ async function main() {
   for (const result of [null, {}, { success: true }, { success: true, hostname: "evil.example" }, { success: "true", hostname: "archive.example" }])
     assert.equal(policy.captchaResultIsValid(result, site), false);
   assert.equal(policy.captchaResultIsValid({ success: true, hostname: "archive.example" }, site), true);
+  assert.equal(policy.captchaResultIsValid({ success: true, hostname: "www.archive.example" }, site), true);
+  assert.equal(policy.captchaResultIsValid({ success: true, hostname: "www.evil.example" }, site), false);
 
   const captchaEnv = { isProd: true, siteUrl: site, captchaDisabled: false, turnstileSecret: "real-secret" };
   const savedKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;

@@ -9,6 +9,7 @@ import { PrismaClient, type OwnerType, type ProjectStatus } from "@prisma/client
 import bcrypt from "bcryptjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { PORTRAITS } from "./portraits";
 
 const db = new PrismaClient();
 const dir = path.join(__dirname, "seed-data");
@@ -153,10 +154,12 @@ async function seedContent() {
   for (const [key, data] of Object.entries(blocks)) await db.contentBlock.create({ data: { key, data: data as object } });
 
   console.log("→ site images (hero, domains)");
-  const site: ReturnType<typeof imgRow>[] = [];
+  const site: (ReturnType<typeof imgRow> & { sourceUrl?: string })[] = [];
   (IMG.hero ?? []).forEach((o, i) => site.push(imgRow(o, "SITE", null, i, "hero")));
   // prototype: domain card i uses IMG.dom[i], except card 3 (index 2) which has no photo
   (IMG.dom ?? []).forEach((o, i) => { if (i !== 2) site.push(imgRow(o, "SITE", null, i, "dom")); });
+  // portraits (PM + 15 August 1975 memorial) — see prisma/portraits.ts
+  PORTRAITS.forEach((o) => site.push({ ...imgRow({ u: o.url, t: o.alt, l: o.license } as ImgRec, "SITE", null, 0, o.slot), credit: o.credit, sourceUrl: o.sourceUrl }));
   await db.mediaAsset.createMany({ data: site });
 
   console.log("→ history chapters + events");

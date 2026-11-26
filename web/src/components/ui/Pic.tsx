@@ -16,6 +16,7 @@ export default function Pic({
   priority,
   eager,
   onDead,
+  pos,
 }: {
   img: PicData;
   className?: string;
@@ -23,6 +24,8 @@ export default function Pic({
   priority?: boolean;
   eager?: boolean;
   onDead?: () => void;
+  /** framing for cropped frames: the point (x%, y%) of the photo to centre, optionally zoomed in */
+  pos?: { x: number; y: number; zoom?: number };
 }) {
   const [dead, setDeadState] = useState(false);
   const setDead = (v: boolean) => {
@@ -46,6 +49,7 @@ export default function Pic({
         sizes={sizes}
         priority={priority}
         className={className}
+        style={pos ? { objectPosition: `${pos.x}% ${pos.y}%`, transform: `scale(${pos.zoom ?? 1}) translate(${50 - pos.x}%, ${50 - pos.y}%)` } : undefined}
         data-cr={img.credit}
         ref={ref}
         onError={() => setDead(true)}
@@ -57,6 +61,7 @@ export default function Pic({
       src={img.src}
       alt={img.alt}
       className={className}
+        style={pos ? { objectPosition: `${pos.x}% ${pos.y}%`, transform: `scale(${pos.zoom ?? 1}) translate(${50 - pos.x}%, ${50 - pos.y}%)` } : undefined}
       data-cr={img.credit}
       loading={priority || eager ? "eager" : "lazy"}
       decoding="async"

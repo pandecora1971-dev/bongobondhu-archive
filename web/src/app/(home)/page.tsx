@@ -16,6 +16,7 @@ import IndexTabs from "@/components/home/IndexTabs";
 import Atlas from "@/components/home/Atlas";
 import HomeEngine from "@/components/home/HomeEngine";
 import { memorialHoles } from "@/components/home/holes";
+import { FOCUS } from "../../../prisma/portraits";
 import "@/styles/home.css";
 
 export const dynamic = "force-dynamic";
@@ -260,7 +261,7 @@ export default async function HomePage() {
                       return (
                         <div key={k} className={`vc rv s${x[4] ? " kid" : ""}`} style={css({ "--d": `${(k % 6) * 0.1}s` })}>
                           <div className="vp" style={{ borderRadius: "50%", overflow: "hidden" }}>
-                            {ph ? <Pic img={ph} sizes="150px" /> : <Placeholder label={t("photo")} round />}
+                            {ph ? <Pic img={ph} sizes="150px" pos={FOCUS[`v75-${gi}-${k}`]} /> : <Placeholder label={t("photo")} round />}
                           </div>
                           <b>{p(x[0], x[1])}</b>
                           <small>{p(x[2], x[3])}</small>

@@ -1,4 +1,14 @@
 /** Request policies shared by server code and security regression tests. */
+
+/**
+ * The configured site URL plus its "www." twin (or the bare domain when the site URL has www.).
+ * The host may redirect one to the other, so both are the same site.
+ */
+export function siteHostnames(siteUrl: string): string[] {
+  const h = new URL(siteUrl).hostname;
+  return [h, h.startsWith("www.") ? h.slice(4) : `www.${h}`];
+}
+
 export function requestIsSameOrigin(req: Request, siteUrl: string, isProd: boolean): boolean {
   const fetchSite = req.headers.get("sec-fetch-site");
   if (fetchSite === "cross-site" || fetchSite === "same-site") return false;
@@ -8,7 +18,10 @@ export function requestIsSameOrigin(req: Request, siteUrl: string, isProd: boole
   try {
     const supplied = new URL(origin);
     const expected = new URL(siteUrl);
-    return supplied.origin === origin && supplied.origin === expected.origin;
+    return supplied.origin === origin &&
+      supplied.protocol === expected.protocol &&
+      supplied.port === expected.port &&
+      siteHostnames(siteUrl).includes(supplied.hostname);
   } catch {
     return false;
   }
@@ -31,7 +44,7 @@ export function captchaResultIsValid(result: unknown, siteUrl: string): boolean 
   if (!result || typeof result !== "object") return false;
   const r = result as { success?: unknown; hostname?: unknown };
   try {
-    return r.success === true && r.hostname === new URL(siteUrl).hostname;
+    return r.success === true && typeof r.hostname === "string" && siteHostnames(siteUrl).includes(r.hostname);
   } catch {
     return false;
   }

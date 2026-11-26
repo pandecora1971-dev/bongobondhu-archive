@@ -18,6 +18,7 @@
     "admin:create": "tsx scripts/create-admin.ts",
     "db:app-role": "tsx scripts/create-app-role.ts",
     "images:import": "tsx scripts/import-images.ts",
+    "portraits:link": "tsx scripts/link-portraits.ts",
     "postinstall": "prisma generate",
     "cleanup": "tsx scripts/cleanup.ts",
     "lighthouse": "npx lighthouse http://localhost:3000 --form-factor=mobile --view",
