@@ -7,8 +7,10 @@ No production release has been made.
 
 ## Fixed
 
-- Media access is checked on every request. Successful files, redirects and denials use
-  `private, no-store`. Disabling the separate Next.js image optimizer prevents a cached
+- Media access is checked on every request. Denials, private files and public submissions use
+  `private, no-store`. Admin-curated site content (SITE/PROJECT/MILESTONE/FILM/CHAPTER) is
+  served `public, max-age=300, s-maxage=3600` for speed, so hiding it takes up to an hour to
+  reach every visitor. Disabling the separate Next.js image optimizer prevents a cached
   approved image from continuing to bypass a later hide/rejection. Images still use the
   existing resize, WebP and EXIF/GPS stripping pipeline.
 - Approved contributions cannot expose PDF/audio/video through a guessed media URL.

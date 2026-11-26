@@ -185,6 +185,20 @@ async function main() {
   asset.key = null;
   asset.externalUrl = "https://images.example/test.jpg";
   assert.match((await getMedia()).headers.get("cache-control"), /no-store/);
+  // admin-curated site content may be cached for a bounded time; everything else stays no-store
+  for (const ownerType of ["SITE", "PROJECT", "MILESTONE", "FILM", "CHAPTER"]) {
+    asset = { id: "test-media", state: "READY", ownerType, ownerId: ownerType === "SITE" ? null : "x", kind: "IMAGE", hidden: false, key: "site.webp", mime: "image/webp" };
+    const curated = await getMedia();
+    assert.equal(curated.status, 200);
+    assert.equal(curated.headers.get("cache-control"), "public, max-age=300, s-maxage=3600", ownerType);
+    assert.equal(curated.headers.get("vary"), null, "curated content must not vary on the admin cookie");
+    asset.hidden = true;
+    const hidden = await getMedia();
+    assert.equal(hidden.status, 404, "hidden curated content is blocked at the origin");
+    assert.match(hidden.headers.get("cache-control"), /no-store/);
+  }
+  asset = { id: "test-media", state: "READY", ownerType: "SITE", ownerId: null, kind: "IMAGE", hidden: false, key: null, externalUrl: "https://images.example/site.jpg" };
+  assert.equal((await getMedia()).headers.get("cache-control"), "public, max-age=300, s-maxage=3600");
   asset = null;
   assert.match((await getMedia()).headers.get("cache-control"), /no-store/);
 

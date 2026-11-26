@@ -262,7 +262,7 @@ Size and count limits live in `lib/upload-rules.ts`, shared by browser and serve
 ### Who can see which files (`/api/media/[id]`)
 | Files | Who can see them |
 |---|---|
-| Site content: projects, films, chapters, milestones, site images | Everyone; visibility rechecked on every request, no-store |
+| Site content: projects, films, chapters, milestones, site images | Everyone; cached (browser 5 min, CDN 1 h), so hiding one can take up to an hour to disappear |
 | Approved posts and approved contributions | Everyone |
 | Complaints, accused photos, anything pending | **Admins only**, never cached |
 
