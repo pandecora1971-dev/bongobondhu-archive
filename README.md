@@ -8,7 +8,7 @@
 Last updated: **2026-11-24**. Local security hardening and current verification limits:
 [`web/SECURITY_REVIEW.md`](web/SECURITY_REVIEW.md). Production deployment is not yet verified.
 The integration security suite now requires `SECURITY_TEST_DATABASE=true` and a disposable test database.
-
+https://www.xn--r5bd7bdrc3mtdd.com/rstsjdjdsdjdshjdslhdssakdkifdkfmdhjsahsakd
 ---
 
 ## 1. What this project is
