@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Prisma } from "@prisma/client";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -80,7 +81,7 @@ export default async function Audit({ searchParams }: { searchParams: Promise<Re
         <input type="date" name="from" defaultValue={sp.from ?? ""} aria-label="থেকে" />
         <input type="date" name="to" defaultValue={sp.to ?? ""} aria-label="পর্যন্ত" />
         <button className={a.btn}>ফিল্টার</button>
-        {qs.size > 0 && <a className={`${a.btn} ${a.ghost}`} href="/admin/audit">রিসেট</a>}
+        {qs.size > 0 && <a className={`${a.btn} ${a.ghost}`} href={`${ADMIN}/audit`}>রিসেট</a>}
       </form>
       <table className={a.table}>
         <thead><tr><th>সময়</th><th>কে</th><th>কাজ</th><th>বিষয়</th><th>বিস্তারিত</th></tr></thead>
@@ -91,7 +92,7 @@ export default async function Audit({ searchParams }: { searchParams: Promise<Re
               <tr key={l.id}>
                 <td className={a.muted} style={{ whiteSpace: "nowrap" }}>{l.createdAt.toLocaleString("en-GB")}</td>
                 <td>
-                  {me.super && l.adminId ? <a href={`/admin/audit?user=${l.adminId}`}>{l.actorName ?? "—"}</a> : l.actorName ?? "—"}
+                  {me.super && l.adminId ? <a href={`${ADMIN}/audit?user=${l.adminId}`}>{l.actorName ?? "—"}</a> : l.actorName ?? "—"}
                   <br /><span className={a.muted}>{l.actorEmail}{l.actorRole && ` · ${ROLES.label(l.actorRole as never) || l.actorRole}`}</span>
                   {!l.adminId && l.actorEmail && <><br /><span className={a.pill}>অ্যাকাউন্ট মুছে ফেলা</span></>}
                 </td>
@@ -99,7 +100,7 @@ export default async function Audit({ searchParams }: { searchParams: Promise<Re
                 <td className={a.mono}>
                   {l.entityType}
                   <br />
-                  {l.entityId && link && (me.super || l.entityType !== "AdminUser") ? <a href={`/admin/${link}/${l.entityId}`}>{l.entityId}</a> : l.entityId}
+                  {l.entityId && link && (me.super || l.entityType !== "AdminUser") ? <a href={`${ADMIN}/${link}/${l.entityId}`}>{l.entityId}</a> : l.entityId}
                 </td>
                 <td className={a.mono} style={{ maxWidth: 460, wordBreak: "break-word" }}>{l.detail ? JSON.stringify(l.detail).slice(0, 400) : ""}</td>
               </tr>
@@ -108,7 +109,7 @@ export default async function Audit({ searchParams }: { searchParams: Promise<Re
           {!rows.length && <tr><td colSpan={5} className={a.muted}>কোনো রেকর্ড নেই।</td></tr>}
         </tbody>
       </table>
-      <Pager page={page} total={total} size={SIZE} base={`/admin/audit?${qs}`} />
+      <Pager page={page} total={total} size={SIZE} base={`${ADMIN}/audit?${qs}`} />
     </>
   );
 }

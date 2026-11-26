@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { BLOCKS, type BlockKey } from "@/lib/content";
@@ -29,13 +30,13 @@ export default async function Content({ searchParams }: { searchParams: Promise<
         {SLOTS.map(([slot, label]) => (
           <div key={slot} className={a.section}>
             <b>{label}</b>
-            <MediaGrid items={site.filter((m) => m.slot === slot)} back="/admin/content" canDelete={me.super} />
-            <AdminUpload ownerType="SITE" slot={slot} back="/admin/content" label={`${label} — যোগ করুন`} />
+            <MediaGrid items={site.filter((m) => m.slot === slot)} back={`${ADMIN}/content`} canDelete={me.super} />
+            <AdminUpload ownerType="SITE" slot={slot} back={`${ADMIN}/content`} label={`${label} — যোগ করুন`} />
           </div>
         ))}
         <details className={a.json}>
           <summary>১৫ আগস্ট ১৯৭৫ — স্মরণে: প্রতিকৃতি (slot v75-গ্রুপ-ক্রম, যেমন v75-0-4 = শেখ রাসেল)</summary>
-          <MediaGrid items={site.filter((m) => m.slot?.startsWith("v75-"))} back="/admin/content" canDelete={me.super} />
+          <MediaGrid items={site.filter((m) => m.slot?.startsWith("v75-"))} back={`${ADMIN}/content`} canDelete={me.super} />
           <V75Upload />
         </details>
       </div>
@@ -64,7 +65,7 @@ function V75Upload() {
           {Array.from({ length: g === 0 ? 10 : g === 1 ? 2 : 6 }, (_, k) => (
             <div key={k} style={{ marginTop: 8 }}>
               <b className={a.mono}>v75-{g}-{k}</b>
-              <AdminUpload ownerType="SITE" slot={`v75-${g}-${k}`} back="/admin/content" label="প্রতিকৃতি যোগ" />
+              <AdminUpload ownerType="SITE" slot={`v75-${g}-${k}`} back={`${ADMIN}/content`} label="প্রতিকৃতি যোগ" />
             </div>
           ))}
         </details>

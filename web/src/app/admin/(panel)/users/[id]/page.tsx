@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -30,7 +31,7 @@ export default async function User({ params, searchParams }: { params: Promise<{
   return (
     <>
       <Top title={u.name} sub={`${u.email} · ${ROLES.label(u.role)}${creator ? ` · তৈরি করেছেন ${creator.name}` : ""} · ${u.createdAt.toLocaleDateString("en-GB")}`}>
-        <a className={`${a.btn} ${a.ghost}`} href="/admin/users">← তালিকা</a>
+        <a className={`${a.btn} ${a.ghost}`} href={`${ADMIN}/users`}>← তালিকা</a>
       </Top>
       <Saved on={sp.saved} />
       {sp.error && <div className={a.warn}>{ERR[sp.error] ?? sp.error}</div>}
@@ -75,7 +76,7 @@ export default async function User({ params, searchParams }: { params: Promise<{
             ))}
             {!logs.length && <li className={a.muted}>এখনো কোনো কাজ নেই।</li>}
           </ul>
-          <a className={`${a.btn} ${a.ghost}`} href={`/admin/audit?user=${u.id}`} style={{ justifySelf: "start" }}>পুরো লগ →</a>
+          <a className={`${a.btn} ${a.ghost}`} href={`${ADMIN}/audit?user=${u.id}`} style={{ justifySelf: "start" }}>পুরো লগ →</a>
         </div>
       </div>
     </>

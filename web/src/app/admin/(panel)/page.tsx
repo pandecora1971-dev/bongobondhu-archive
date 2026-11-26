@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PERMISSIONS, ROLES } from "@/lib/labels";
@@ -29,13 +30,13 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
       <Top title={`স্বাগতম, ${me.name}`} sub={`${ROLES.label(me.role)}${me.super ? " — কোনো সীমা নেই" : " — অনুমতি: " + (me.permissions.map((p) => PERMISSIONS.label(p)).join(", ") || "কিছুই না")}`} />
       {sp.denied && <div className={a.warn}>এই অংশে প্রবেশের অনুমতি আপনার নেই। প্রয়োজনে একজন সুপার অ্যাডমিনকে বলুন।</div>}
       <div className={a.cards}>
-        {can(me, "CONTRIBUTIONS") && S("/admin/contributions?status=PENDING", cP, "তথ্য জমা — অপেক্ষমাণ")}
-        {can(me, "COMPLAINTS") && S("/admin/complaints?status=PENDING", kP, "অভিযোগ — নতুন")}
-        {can(me, "POSTS") && S("/admin/posts?status=PENDING", pP, "দুঃসময়ের গল্প — অপেক্ষমাণ")}
-        {can(me, "CONTRIBUTIONS") && S("/admin/contributions?status=APPROVED", cA, "অনুমোদিত তথ্য")}
-        {can(me, "POSTS") && S("/admin/posts?status=APPROVED", pA, "প্রকাশিত কার্যক্রম")}
-        {can(me, "COMPLAINTS") && S("/admin/complaints", kAll, "মোট অভিযোগ")}
-        {S("/admin/media", media, "মিডিয়া ফাইল")}
+        {can(me, "CONTRIBUTIONS") && S(`${ADMIN}/contributions?status=PENDING`, cP, "তথ্য জমা — অপেক্ষমাণ")}
+        {can(me, "COMPLAINTS") && S(`${ADMIN}/complaints?status=PENDING`, kP, "অভিযোগ — নতুন")}
+        {can(me, "POSTS") && S(`${ADMIN}/posts?status=PENDING`, pP, "দুঃসময়ের গল্প — অপেক্ষমাণ")}
+        {can(me, "CONTRIBUTIONS") && S(`${ADMIN}/contributions?status=APPROVED`, cA, "অনুমোদিত তথ্য")}
+        {can(me, "POSTS") && S(`${ADMIN}/posts?status=APPROVED`, pA, "প্রকাশিত কার্যক্রম")}
+        {can(me, "COMPLAINTS") && S(`${ADMIN}/complaints`, kAll, "মোট অভিযোগ")}
+        {S(`${ADMIN}/media`, media, "মিডিয়া ফাইল")}
       </div>
       {me.super && (
         <div className={a.section}>
@@ -45,10 +46,10 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
             <tbody>
               {team.map((u) => (
                 <tr key={u.id}>
-                  <td><a href={`/admin/users/${u.id}`}>{u.name}</a><br /><span className={a.muted}>{u.email}</span></td>
+                  <td><a href={`${ADMIN}/users/${u.id}`}>{u.name}</a><br /><span className={a.muted}>{u.email}</span></td>
                   <td>{ROLES.label(u.role)}</td>
                   <td>{u.active ? "সক্রিয়" : <b style={{ color: "oklch(0.5 0.2 27)" }}>নিষ্ক্রিয়</b>}</td>
-                  <td><a href={`/admin/audit?user=${u.id}`}>{u._count.audit}</a></td>
+                  <td><a href={`${ADMIN}/audit?user=${u.id}`}>{u._count.audit}</a></td>
                   <td className={a.muted}>{u.lastLoginAt?.toLocaleString("en-GB") ?? "কখনো না"}</td>
                 </tr>
               ))}
@@ -66,7 +67,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
             ))}
           </tbody>
         </table>
-        <a className={`${a.btn} ${a.ghost}`} href="/admin/audit" style={{ justifySelf: "start" }}>পুরো লগ বই →</a>
+        <a className={`${a.btn} ${a.ghost}`} href={`${ADMIN}/audit`} style={{ justifySelf: "start" }}>পুরো লগ বই →</a>
       </div>
     </>
   );

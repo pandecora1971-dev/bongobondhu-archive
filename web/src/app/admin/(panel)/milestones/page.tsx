@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PROJECT_STATUS } from "@/lib/labels";
@@ -44,8 +45,8 @@ export default async function Milestones({ searchParams }: { searchParams: Promi
             <button className={a.btn}>সংরক্ষণ</button>
           </form>
           <div className={a.section}>
-            <MediaGrid items={media.filter((x) => x.ownerId === m.id)} back={`/admin/milestones#m-${m.id}`} canDelete={me.super} />
-            <AdminUpload ownerType="MILESTONE" ownerId={m.id} back="/admin/milestones" />
+            <MediaGrid items={media.filter((x) => x.ownerId === m.id)} back={`${ADMIN}/milestones#m-${m.id}`} canDelete={me.super} />
+            <AdminUpload ownerType="MILESTONE" ownerId={m.id} back={`${ADMIN}/milestones`} />
           </div>
         </div>
       ))}

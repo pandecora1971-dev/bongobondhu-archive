@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Prisma } from "@prisma/client";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -45,7 +46,7 @@ export default async function Complaints({ searchParams }: { searchParams: Promi
         <tbody>
           {rows.map((r) => (
             <tr key={r.id}>
-              <td className={a.mono}><a href={`/admin/complaints/${r.id}`}>{r.code}</a></td>
+              <td className={a.mono}><a href={`${ADMIN}/complaints/${r.id}`}>{r.code}</a></td>
               <td>{r.crimes.map((c) => CRIMES.label(c)).join(", ")}</td>
               <td className={a.muted}>{[r.thana, r.district, divisionLabel(r.division)].filter(Boolean).join(", ") || "—"}</td>
               <td>{r._count.accused}</td>
@@ -57,7 +58,7 @@ export default async function Complaints({ searchParams }: { searchParams: Promi
           {!rows.length && <tr><td colSpan={7} className={a.muted}>কিছু পাওয়া যায়নি।</td></tr>}
         </tbody>
       </table>
-      <Pager page={page} total={total} size={SIZE} base={`/admin/complaints?${qs}`} />
+      <Pager page={page} total={total} size={SIZE} base={`${ADMIN}/complaints?${qs}`} />
     </>
   );
 }

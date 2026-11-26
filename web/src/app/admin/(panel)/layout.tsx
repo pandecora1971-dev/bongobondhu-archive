@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Metadata } from "next";
 import { can, requireAdmin, signOut } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -21,22 +22,22 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className={a.shell}>
       <header className={a.header}>
         <div className={a.brandRow}>
-          <a href="/admin" className={a.logo}>বঙ্গবন্ধু ও বাংলাদেশ<i>′</i></a>
+          <a href={`${ADMIN}`} className={a.logo}>বঙ্গবন্ধু ও বাংলাদেশ<i>′</i></a>
           <span>পর্যালোচনা প্যানেল</span>
         </div>
         <div className={a.me}>
           <strong>{me.name}</strong>
           <span className={`${a.role} ${me.super ? a.roleSuper : ""}`}>{ROLES.label(me.role)}</span>
-          <a href="/admin/account">আমার অ্যাকাউন্ট</a>
+          <a href={`${ADMIN}/account`}>আমার অ্যাকাউন্ট</a>
           <a href="/" target="_blank" rel="noopener">সাইট দেখুন ↗</a>
-          <form action={async () => { "use server"; await signOut({ redirectTo: "/admin/login" }); }}>
+          <form action={async () => { "use server"; await signOut({ redirectTo: `${ADMIN}/login` }); }}>
             <button>লগআউট</button>
           </form>
         </div>
       </header>
       <div className={a.wrap}>
         <nav className={a.side} aria-label="অ্যাডমিন বিভাগ">
-          <Nav perms={perms} counts={{ contributions: c, complaints: k, posts: p }} />
+          <Nav perms={perms} counts={{ contributions: c, complaints: k, posts: p }} base={ADMIN} />
         </nav>
         <div className={a.note}>
           {me.super ? (

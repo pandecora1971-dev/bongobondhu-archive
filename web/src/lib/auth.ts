@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import "server-only";
 import NextAuth, { CredentialsSignin, type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -57,7 +58,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: env.authSecret,
   trustHost: true,
   session: { strategy: "jwt", maxAge: 8 * 60 * 60 },
-  pages: { signIn: "/admin/login", error: "/admin/login" },
+  pages: { signIn: `${ADMIN}/login`, error: `${ADMIN}/login` },
   providers: [
     Credentials({
       credentials: { email: {}, password: {}, challenge: {}, code: {} },
@@ -129,8 +130,8 @@ export async function currentAdmin(): Promise<Admin | null> {
  */
 export async function requireAdmin(need?: Permission | "SUPER"): Promise<Admin> {
   const me = await currentAdmin();
-  if (!me) redirect("/admin/login");
-  if (need === "SUPER" ? !me.super : need ? !can(me, need) : false) redirect("/admin?denied=1");
+  if (!me) redirect(`${ADMIN}/login`);
+  if (need === "SUPER" ? !me.super : need ? !can(me, need) : false) redirect(`${ADMIN}?denied=1`);
   return me;
 }
 

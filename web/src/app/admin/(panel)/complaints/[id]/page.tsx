@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { notFound } from "next/navigation";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -33,7 +34,7 @@ export default async function Complaint({ params, searchParams }: { params: Prom
   if (contact || victimName) await audit(me, "view:pii", "complaint", c.id);
   else await audit(me, "view", "complaint", c.id);
   const evidence = media.filter((m) => m.ownerType === "COMPLAINT");
-  const back = `/admin/complaints/${c.id}`;
+  const back = `${ADMIN}/complaints/${c.id}`;
   const R = (what: string, label: string, extra?: Record<string, string>) => (
     <form action={redactComplaint}>
       <input type="hidden" name="id" value={c.id} />

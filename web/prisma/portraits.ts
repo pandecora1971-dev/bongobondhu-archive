@@ -3,9 +3,11 @@
  *  - "pm"         → the PM portrait section
  *  - "v75-g-k"    → 15 August 1975 memorial cards (group g, person k — same order as V75 in seed.ts)
  *
- * Only images whose file page names the exact person were used (Wikimedia Commons / Bangla Wikipedia).
- * No verifiable photo was found for: Parveen Jamal Rosy (v75-0-6), Sheikh Abu Naser (v75-0-7),
- * Siddiqur Rahman (v75-0-9), Begum Arzu Moni (v75-1-1) and the whole Serniabat household (v75-2-*);
+ * Only images whose source names the exact person were used (Wikimedia Commons, Bangla Wikipedia,
+ * Banglapedia, and an Ekushey TV title card captioned with the name). The last two are copyrighted
+ * and stay external links — do not copy them into our storage without permission.
+ * No verifiable photo was found for: Parveen Jamal Rosy (v75-0-6), Siddiqur Rahman (v75-0-9),
+ * Begum Arzu Moni (v75-1-1) and the Serniabat household except Abdur Rab Serniabat (v75-2-1..5);
  * those keep the neutral placeholder until an admin uploads one (/admin/content).
  */
 export type Portrait = {
@@ -40,12 +42,22 @@ export const PORTRAITS: Portrait[] = [
   bn("v75-0-4", "শেখ রাসেল (১৯৬৪-১৯৭৫).jpg", "শেখ রাসেল"),
   c("v75-0-5", "Sultana_Kamal_Khuki.jpg", "সুলতানা কামাল খুকু", "CC0"),
   bn("v75-0-8", "জামিল উদ্দিন আহমেদ.jpg", "কর্নেল জামিল উদ্দিন আহমেদ"),
+  {
+    slot: "v75-0-7", url: "https://www.ekushey-tv.com/media/imgAll/2020June/S-up-2309020854.jpg", alt: "শেখ আবু নাসের (১৯২৮–১৯৭৫)",
+    credit: "একুশে টেলিভিশন", license: "© একুশে টেলিভিশন", sourceUrl: "https://www.ekushey-tv.com/special-personality/1360873111111134122",
+  },
   // শেখ মনির বাড়ি
   bn("v75-1-0", "শেখ ফজলুল হক মনি.jpg", "শেখ ফজলুল হক মনি"),
+  // সেরনিয়াবাতের বাড়ি
+  {
+    slot: "v75-2-0", url: "https://en.banglapedia.org/images/8/86/SerniabatAbdurRab.jpg", alt: "আবদুর রব সেরনিয়াবাত",
+    credit: "বাংলাপিডিয়া", license: "© বাংলাদেশ এশিয়াটিক সোসাইটি", sourceUrl: "https://en.banglapedia.org/index.php/Serniabat,_Abdur_Rab",
+  },
 ];
 
 /** where to centre the circular crop when the subject is not in the middle of the photo */
 export const FOCUS: Record<string, { x: number; y: number; zoom?: number }> = {
   "v75-0-3": { x: 64, y: 36, zoom: 2.8 }, // Sheikh Jamal stands on the right of a two-person photo
   "v75-0-2": { x: 54, y: 42, zoom: 1.5 },
+  "v75-0-7": { x: 27, y: 48, zoom: 1.7 }, // portrait sits on the left of a title card
 };

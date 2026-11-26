@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { MediaGrid, Saved, Top } from "@/components/admin/ui";
@@ -42,8 +43,8 @@ export default async function Films({ searchParams }: { searchParams: Promise<{ 
             <button className={a.btn}>সংরক্ষণ</button>
           </form>
           <div className={a.section}>
-            <MediaGrid items={media.filter((m) => m.ownerId === f.id)} back={`/admin/films#f-${f.id}`} canDelete={me.super} />
-            <AdminUpload ownerType="FILM" ownerId={f.id} back="/admin/films" />
+            <MediaGrid items={media.filter((m) => m.ownerId === f.id)} back={`${ADMIN}/films#f-${f.id}`} canDelete={me.super} />
+            <AdminUpload ownerType="FILM" ownerId={f.id} back={`${ADMIN}/films`} />
           </div>
         </div>
       ))}

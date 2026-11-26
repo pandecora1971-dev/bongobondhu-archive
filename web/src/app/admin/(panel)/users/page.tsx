@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PERMISSIONS, ROLES } from "@/lib/labels";
@@ -27,11 +28,11 @@ export default async function Users({ searchParams }: { searchParams: Promise<{ 
         <tbody>
           {users.map((u) => (
             <tr key={u.id}>
-              <td><a href={`/admin/users/${u.id}`}>{u.name}</a><br /><span className={a.muted}>{u.email}</span></td>
+              <td><a href={`${ADMIN}/users/${u.id}`}>{u.name}</a><br /><span className={a.muted}>{u.email}</span></td>
               <td><span className={`${a.role} ${u.role === "SUPER_ADMIN" ? a.roleSuper : ""}`}>{ROLES.label(u.role)}</span></td>
               <td className={a.muted} style={{ fontSize: 13 }}>{u.role === "SUPER_ADMIN" ? "সব" : u.permissions.map((p) => PERMISSIONS.label(p)).join(", ") || "কিছুই না"}</td>
               <td>{u.active ? "সক্রিয়" : <b style={{ color: "oklch(0.5 0.2 27)" }}>নিষ্ক্রিয়</b>}</td>
-              <td><a href={`/admin/audit?user=${u.id}`}>{u._count.audit}</a></td>
+              <td><a href={`${ADMIN}/audit?user=${u.id}`}>{u._count.audit}</a></td>
               <td className={a.muted}>{u.lastLoginAt?.toLocaleString("en-GB") ?? "কখনো না"}</td>
             </tr>
           ))}

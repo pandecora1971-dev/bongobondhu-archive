@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -12,7 +13,7 @@ export default async function Chapter({ params, searchParams }: { params: Promis
   const c = await db.historyChapter.findUnique({ where: { id }, include: { events: { orderBy: { order: "asc" } } } });
   if (!c) notFound();
   const media = await db.mediaAsset.findMany({ where: { ownerType: "CHAPTER", ownerId: c.id }, orderBy: { sort: "asc" } });
-  const back = `/admin/history/${c.id}`;
+  const back = `${ADMIN}/history/${c.id}`;
   const Ev = ({ e, i }: { e?: (typeof c.events)[number]; i: number }) => (
     <form action={saveEvent} className={a.form} style={{ borderTop: "1px solid #eee9df", paddingTop: 12 }}>
       <input type="hidden" name="chapterId" value={c.id} />
@@ -34,7 +35,7 @@ export default async function Chapter({ params, searchParams }: { params: Promis
   );
   return (
     <>
-      <Top title={c.titleBn} sub={c.yearBn}><a className={`${a.btn} ${a.ghost}`} href="/admin/history">← অধ্যায়</a></Top>
+      <Top title={c.titleBn} sub={c.yearBn}><a className={`${a.btn} ${a.ghost}`} href={`${ADMIN}/history`}>← অধ্যায়</a></Top>
       <Saved on={(await searchParams).saved} />
       <div className={a.grid2}>
         <div>

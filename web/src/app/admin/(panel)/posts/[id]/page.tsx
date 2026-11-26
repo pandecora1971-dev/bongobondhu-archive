@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -13,7 +14,7 @@ export default async function Post({ params, searchParams }: { params: Promise<{
   const p = await db.activityPost.findUnique({ where: { id } });
   if (!p) notFound();
   const media = await db.mediaAsset.findMany({ where: { ownerType: "POST", ownerId: p.id }, orderBy: { sort: "asc" } });
-  const back = `/admin/posts/${p.id}`;
+  const back = `${ADMIN}/posts/${p.id}`;
   return (
     <>
       <Top title={p.title} sub={`${ORGS.label(p.org)} · ${p.createdAt.toLocaleString("en-GB")}`}>

@@ -1,15 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { requestIsSameOrigin } from "./lib/security";
+import { ADMIN, ADMIN_HIDDEN, INTERNAL_ADMIN, toInternalAdmin } from "./lib/admin-path";
 
 /**
  * - Per-request CSP nonce (Next applies it to its own scripts automatically).
- * - Cheap admin gate: no session cookie → /admin/login. Real authorisation happens
+ * - Admin lives behind the secret ADMIN_PATH (see lib/admin-path.ts); plain /admin answers 404.
+ * - Cheap admin gate: no session cookie → <ADMIN>/login. Real authorisation happens
  *   server-side in every admin page and action (requireAdmin()).
  */
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  const isInternalAdmin = pathname === INTERNAL_ADMIN || pathname.startsWith(INTERNAL_ADMIN + "/");
+  // the internal route is never reachable directly once the panel has a secret address
+  if (ADMIN_HIDDEN && isInternalAdmin) return notFound(req);
+  const adminPath = toInternalAdmin(pathname); // "/admin/…" when this is an admin request, else null
   const dev = process.env.NODE_ENV !== "production";
-  const privatePage = pathname.startsWith("/admin") || pathname.startsWith("/api/auth") || pathname.startsWith("/report");
+  const privatePage = adminPath !== null || pathname.startsWith("/api/auth") || pathname.startsWith("/report");
   const secure = (res: NextResponse) => {
     if (privatePage) {
       res.headers.set("Cache-Control", "private, no-store");
@@ -24,12 +30,12 @@ export function middleware(req: NextRequest) {
     return secure(new NextResponse(null, { status: 403 }));
   }
 
-  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
+  if (adminPath !== null && !adminPath.startsWith(INTERNAL_ADMIN + "/login")) {
     const has =
       req.cookies.has("authjs.session-token") || req.cookies.has("__Secure-authjs.session-token");
     if (!has) {
       const url = req.nextUrl.clone();
-      url.pathname = "/admin/login";
+      url.pathname = ADMIN + "/login";
       url.search = "";
       return secure(NextResponse.redirect(url));
     }
@@ -64,9 +70,27 @@ export function middleware(req: NextRequest) {
   const headers = new Headers(req.headers);
   headers.set("x-nonce", nonce);
   headers.set("Content-Security-Policy", csp);
-  const res = NextResponse.next({ request: { headers } });
+  let res: NextResponse;
+  if (adminPath !== null && ADMIN_HIDDEN) {
+    const url = req.nextUrl.clone();
+    url.pathname = adminPath;
+    res = NextResponse.rewrite(url, { request: { headers } });
+  } else {
+    res = NextResponse.next({ request: { headers } });
+  }
   res.headers.set("Content-Security-Policy", csp);
   return secure(res);
+}
+
+/** same answer as any unknown address, so the internal route reveals nothing */
+function notFound(req: NextRequest) {
+  const url = req.nextUrl.clone();
+  url.pathname = "/__not-found";
+  url.search = "";
+  const res = NextResponse.rewrite(url);
+  res.headers.set("Cache-Control", "private, no-store");
+  res.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  return res;
 }
 
 export const config = {

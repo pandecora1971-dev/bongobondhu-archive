@@ -28,6 +28,12 @@ class TestResponse extends Response {
     return res;
   }
   static redirect(url, status = 307) { return new TestResponse(null, { status, headers: { Location: String(url) } }); }
+  static rewrite(url, options) {
+    const res = new TestResponse(null);
+    res.rewrittenTo = new URL(String(url)).pathname;
+    res.requestHeaders = options?.request?.headers;
+    return res;
+  }
 }
 
 async function main() {
@@ -115,7 +121,9 @@ async function main() {
     process.env.NODE_ENV = "production";
     process.env.NEXT_PUBLIC_SITE_URL = site;
     delete process.env.S3_ENDPOINT;
-    const { middleware } = load("src/middleware.ts", { "next/server": { NextResponse: TestResponse }, "./lib/security": policy });
+    delete process.env.ADMIN_PATH;
+    const loadMiddleware = () => load("src/middleware.ts", { "next/server": { NextResponse: TestResponse }, "./lib/security": policy, "./lib/admin-path": load("src/lib/admin-path.ts") }).middleware;
+    const middleware = loadMiddleware();
     const nextReq = (url, method = "GET", headers = {}, hasCookie = false) => Object.assign(new Request(url, { method, headers }), {
       nextUrl: { pathname: new URL(url).pathname, clone: () => new URL(url) }, cookies: { has: () => hasCookie },
     });
@@ -131,6 +139,31 @@ async function main() {
     assert.match(allowed.headers.get("content-security-policy"), /nonce-/);
     assert.equal(allowed.headers.get("content-security-policy"), allowed.requestHeaders.get("Content-Security-Policy"));
     assert.equal(allowed.headers.get("content-security-policy").includes("unsafe-eval"), false);
+
+    // secret admin address: plain /admin disappears, the secret path is rewritten to it
+    const secret = "/test-secret-admin-path";
+    process.env.ADMIN_PATH = secret.slice(1);
+    const hidden = loadMiddleware();
+    for (const p of ["/admin", "/admin/login", "/admin/users", "/admin/content?x=1"]) {
+      const r = hidden(nextReq(site + p, "GET", {}, true));
+      assert.equal(r.rewrittenTo, "/__not-found", `${p} must look like an unknown page`);
+      assert.match(r.headers.get("x-robots-tag"), /noindex/);
+    }
+    assert.equal(hidden(nextReq(site + "/administrator")).rewrittenTo, undefined, "only the /admin route itself is hidden");
+    const gate = hidden(nextReq(site + secret + "/users"));
+    assert.equal(gate.status, 307);
+    assert.equal(new URL(gate.headers.get("location")).pathname, secret + "/login", "login redirect stays on the secret path");
+    const login = hidden(nextReq(site + secret + "/login"));
+    assert.equal(login.rewrittenTo, "/admin/login");
+    assert.match(login.headers.get("cache-control"), /no-store/);
+    const panel = hidden(nextReq(site + secret + "/content", "GET", {}, true));
+    assert.equal(panel.rewrittenTo, "/admin/content");
+    assert.match(panel.headers.get("content-security-policy"), /nonce-/);
+    assert.equal(hidden(nextReq(site + secret, "POST", { origin: "https://evil.example" }, true)).status, 403);
+    assert.equal(hidden(nextReq(site + secret + "x/users", "GET", {}, true)).rewrittenTo, undefined, "a longer look-alike path is not the panel");
+    process.env.ADMIN_PATH = "short";
+    assert.throws(() => load("src/lib/admin-path.ts"), /ADMIN_PATH/);
+    delete process.env.ADMIN_PATH;
 
     for (const key of ["AUTH_SECRET", "RATE_LIMIT_SALT", "UPLOAD_SIGNING_SECRET"]) {
       process.env[key] = "short";

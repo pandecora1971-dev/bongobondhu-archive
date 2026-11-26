@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { adminOrNull } from "@/lib/auth";
@@ -51,6 +52,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: e instanceof UploadError ? e.message : "failed" }, { status: 400 });
   }
   invalidateHome();
-  const back = m.data.back?.startsWith("/admin") ? m.data.back : "/admin";
+  const back = m.data.back?.startsWith(`${ADMIN}`) ? m.data.back : `${ADMIN}`;
   return NextResponse.redirect(new URL(back + (back.includes("?") ? "&" : "?") + "saved=1", req.url), 303);
 }

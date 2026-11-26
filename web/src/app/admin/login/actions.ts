@@ -1,4 +1,5 @@
 "use server";
+import { ADMIN } from "@/lib/admin-path";
 import { AuthError } from "next-auth";
 import { checkPassword, signIn, TooMany } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -20,7 +21,7 @@ const fail = (e: unknown, base: LoginState = {}): LoginState => {
 export async function login(_: LoginState, fd: FormData): Promise<LoginState> {
   if (!emailOtpEnabled()) {
     try {
-      await signIn("credentials", { email: fd.get("email"), password: fd.get("password"), redirectTo: "/admin" });
+      await signIn("credentials", { email: fd.get("email"), password: fd.get("password"), redirectTo: `${ADMIN}` });
       return null;
     } catch (e) {
       return fail(e);
@@ -45,7 +46,7 @@ export async function verifyCode(prev: LoginState, fd: FormData): Promise<LoginS
   const challenge = String(fd.get("challenge") ?? "");
   const base = { challenge, to: prev?.to };
   try {
-    await signIn("credentials", { challenge, code: String(fd.get("code") ?? "").trim(), redirectTo: "/admin" });
+    await signIn("credentials", { challenge, code: String(fd.get("code") ?? "").trim(), redirectTo: `${ADMIN}` });
     return null;
   } catch (e) {
     return fail(e, base);

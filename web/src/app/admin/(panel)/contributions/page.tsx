@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Prisma } from "@prisma/client";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -37,8 +38,8 @@ export default async function Contributions({ searchParams }: { searchParams: Pr
         <tbody>
           {rows.map((r) => (
             <tr key={r.id}>
-              <td className={a.mono}><a href={`/admin/contributions/${r.id}`}>{r.ref}</a></td>
-              <td><a href={`/admin/contributions/${r.id}`}>{r.title}</a><br /><span className={a.muted}>{SUBJECTS.label(r.subject)} · {r.place}</span></td>
+              <td className={a.mono}><a href={`${ADMIN}/contributions/${r.id}`}>{r.ref}</a></td>
+              <td><a href={`${ADMIN}/contributions/${r.id}`}>{r.title}</a><br /><span className={a.muted}>{SUBJECTS.label(r.subject)} · {r.place}</span></td>
               <td className={a.muted}>{r.types.map((t) => CONTRIBUTION_TYPES.label(t)).join(", ")}</td>
               <td>{r.year}</td>
               <td><Pill s={r.status} /></td>
@@ -48,7 +49,7 @@ export default async function Contributions({ searchParams }: { searchParams: Pr
           {!rows.length && <tr><td colSpan={6} className={a.muted}>কিছু পাওয়া যায়নি।</td></tr>}
         </tbody>
       </table>
-      <Pager page={page} total={total} size={SIZE} base={`/admin/contributions?${qs}`} />
+      <Pager page={page} total={total} size={SIZE} base={`${ADMIN}/contributions?${qs}`} />
     </>
   );
 }

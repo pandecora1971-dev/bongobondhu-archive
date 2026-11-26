@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { currentAdmin } from "@/lib/auth";
@@ -8,7 +9,7 @@ export const metadata: Metadata = { title: "পর্যালোচক লগ�
 export const dynamic = "force-dynamic";
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ changed?: string }> }) {
-  if (await currentAdmin()) redirect("/admin");
+  if (await currentAdmin()) redirect(`${ADMIN}`);
   const sp = await searchParams;
   return (
     <div className={`${a.shell} ${a.login}`}>

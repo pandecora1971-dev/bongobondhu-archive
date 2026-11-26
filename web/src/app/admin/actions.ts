@@ -1,4 +1,5 @@
 "use server";
+import { ADMIN } from "@/lib/admin-path";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
@@ -28,7 +29,7 @@ const status = z.enum(["PENDING", "APPROVED", "REJECTED", "ARCHIVED"]);
 const fdo = (fd: FormData) => Object.fromEntries([...fd.keys()].map((k) => [k, fd.getAll(k).length > 1 ? fd.getAll(k) : fd.get(k)]));
 const back = (fd: FormData, fallback: string) => {
   const r = String(fd.get("back") || fallback);
-  return r.startsWith("/admin") && !r.startsWith("//") ? r : fallback;
+  return r.startsWith(`${ADMIN}`) && !r.startsWith("//") ? r : fallback;
 };
 const KIND_PERM = { contribution: "CONTRIBUTIONS", post: "POSTS", complaint: "COMPLAINTS" } as const;
 
@@ -53,7 +54,7 @@ export async function setStatus(fd: FormData) {
     await db.complaint.update({ where: { id: p.id }, data: { status: p.status } });
   }
   await audit(me, `status:${p.status}`, p.kind, p.id, p.note ? { note: p.note } : undefined);
-  redirect(back(fd, `/admin/${p.kind}s/${p.id}`));
+  redirect(back(fd, `${ADMIN}/${p.kind}s/${p.id}`));
 }
 
 // ───────────────────────────── contributions ─────────────────────────────
@@ -68,7 +69,7 @@ export async function updateContribution(fd: FormData) {
   await db.contribution.update({ where: { id: p.id }, data });
   await audit(me, "edit", "contribution", p.id, diff(before, data));
   revalidatePath("/contributions");
-  redirect(`/admin/contributions/${p.id}?saved=1`);
+  redirect(`${ADMIN}/contributions/${p.id}?saved=1`);
 }
 
 export async function redactContribution(fd: FormData) {
@@ -77,7 +78,7 @@ export async function redactContribution(fd: FormData) {
   await db.contribution.update({ where: { id: p.id }, data: p.what === "contact" ? { contactEnc: null } : { name: null, attribution: "ANON" } });
   await audit(me, `redact:${p.what}`, "contribution", p.id);
   revalidatePath("/contributions");
-  redirect(`/admin/contributions/${p.id}?saved=1`);
+  redirect(`${ADMIN}/contributions/${p.id}?saved=1`);
 }
 
 // ───────────────────────────── complaints ─────────────────────────────
@@ -92,7 +93,7 @@ export async function complaintUpdate(fd: FormData) {
     }),
   ]);
   await audit(me, `progress:${p.progress}`, "complaint", p.id, { public: p.public === "on" });
-  redirect(`/admin/complaints/${p.id}?saved=1`);
+  redirect(`${ADMIN}/complaints/${p.id}?saved=1`);
 }
 
 export async function complaintNote(fd: FormData) {
@@ -100,7 +101,7 @@ export async function complaintNote(fd: FormData) {
   const p = z.object({ id, internalNote: str(20000) }).parse(fdo(fd));
   await db.complaint.update({ where: { id: p.id }, data: { internalNote: seal(p.internalNote) } });
   await audit(me, "note", "complaint", p.id);
-  redirect(`/admin/complaints/${p.id}?saved=1`);
+  redirect(`${ADMIN}/complaints/${p.id}?saved=1`);
 }
 
 export async function redactComplaint(fd: FormData) {
@@ -111,7 +112,7 @@ export async function redactComplaint(fd: FormData) {
   if (p.what === "accused" && p.accusedId)
     await db.accusedPerson.updateMany({ where: { id: p.accusedId, complaintId: p.id }, data: { facebookUrl: null, photoUrl: null } });
   await audit(me, `redact:${p.what}`, "complaint", p.id, p.accusedId ? { accusedId: p.accusedId } : undefined);
-  redirect(`/admin/complaints/${p.id}?saved=1`);
+  redirect(`${ADMIN}/complaints/${p.id}?saved=1`);
 }
 
 // ───────────────────────────── posts ─────────────────────────────
@@ -135,7 +136,7 @@ export async function updatePost(fd: FormData) {
   await db.activityPost.update({ where: { id: p.id }, data });
   await audit(me, "edit", "post", p.id, diff(before, data as Record<string, unknown>));
   revalidateTag("posts");
-  redirect(`/admin/posts/${p.id}?saved=1`);
+  redirect(`${ADMIN}/posts/${p.id}?saved=1`);
 }
 
 // ───────────────────────────── media ─────────────────────────────
@@ -149,7 +150,7 @@ export async function setMediaHidden(fd: FormData) {
   await audit(me, p.hidden === "1" ? "media:hide" : "media:unhide", "media", p.id, { owner: `${a.ownerType}:${a.ownerId}` });
   if (a.ownerType === "POST") revalidateTag("posts");
   else invalidateHome();
-  redirect(back(fd, "/admin/media"));
+  redirect(back(fd, `${ADMIN}/media`));
 }
 
 /** Permanent deletion of a file — super admin only. Moderators can only hide. */
@@ -161,7 +162,7 @@ export async function deleteMedia(fd: FormData) {
   await audit(me, "media:delete", "media", p.id, { owner: `${a.ownerType}:${a.ownerId}`, slot: a.slot });
   invalidateHome();
   revalidateTag("posts");
-  redirect(back(fd, "/admin/media"));
+  redirect(back(fd, `${ADMIN}/media`));
 }
 
 // ───────────────────────────── content editors ─────────────────────────────
@@ -173,7 +174,7 @@ export async function saveProject(fd: FormData) {
   await db.project.update({ where: { id: p.id }, data });
   await audit(me, "edit", "project", p.id);
   invalidateHome();
-  redirect(`/admin/projects/${p.id}?saved=1`);
+  redirect(`${ADMIN}/projects/${p.id}?saved=1`);
 }
 
 export async function saveFilm(fd: FormData) {
@@ -191,11 +192,11 @@ export async function saveFilm(fd: FormData) {
     .parse(fdo(fd));
   const { id: _id, published, ...data } = p;
   const clash = await db.film.findFirst({ where: { order: data.order, NOT: { id: p.id } }, select: { id: true } });
-  if (clash) redirect(`/admin/films?error=order#f-${p.id}`);
+  if (clash) redirect(`${ADMIN}/films?error=order#f-${p.id}`);
   await db.film.update({ where: { id: p.id }, data: { ...data, published: published === "on" } });
   await audit(me, "edit", "film", p.id);
   invalidateHome();
-  redirect(`/admin/films?saved=1#f-${p.id}`);
+  redirect(`${ADMIN}/films?saved=1#f-${p.id}`);
 }
 
 export async function saveMilestone(fd: FormData) {
@@ -214,7 +215,7 @@ export async function saveMilestone(fd: FormData) {
   await db.milestone.update({ where: { id: p.id }, data });
   await audit(me, "edit", "milestone", p.id);
   invalidateHome();
-  redirect(`/admin/milestones?saved=1#m-${p.id}`);
+  redirect(`${ADMIN}/milestones?saved=1#m-${p.id}`);
 }
 
 export async function saveChapter(fd: FormData) {
@@ -224,7 +225,7 @@ export async function saveChapter(fd: FormData) {
   await db.historyChapter.update({ where: { id: p.id }, data });
   await audit(me, "edit", "chapter", p.id);
   invalidateHome();
-  redirect(`/admin/history/${p.id}?saved=1`);
+  redirect(`${ADMIN}/history/${p.id}?saved=1`);
 }
 
 export async function saveEvent(fd: FormData) {
@@ -237,7 +238,7 @@ export async function saveEvent(fd: FormData) {
   else await db.timelineEvent.create({ data: { ...data, chapterId: p.chapterId } });
   await audit(me, p.eventId ? "edit" : "create", "event", p.eventId || p.chapterId);
   invalidateHome();
-  redirect(`/admin/history/${p.chapterId}?saved=1`);
+  redirect(`${ADMIN}/history/${p.chapterId}?saved=1`);
 }
 
 export async function deleteEvent(fd: FormData) {
@@ -246,7 +247,7 @@ export async function deleteEvent(fd: FormData) {
   await db.timelineEvent.deleteMany({ where: { id: p.eventId, chapterId: p.chapterId } });
   await audit(me, "delete", "event", p.eventId);
   invalidateHome();
-  redirect(`/admin/history/${p.chapterId}?saved=1`);
+  redirect(`${ADMIN}/history/${p.chapterId}?saved=1`);
 }
 
 export async function saveBlock(fd: FormData): Promise<void> {
@@ -256,14 +257,14 @@ export async function saveBlock(fd: FormData): Promise<void> {
   try {
     json = JSON.parse(String(fd.get("json") || ""));
   } catch {
-    redirect(`/admin/content?error=json&key=${key}`);
+    redirect(`${ADMIN}/content?error=json&key=${key}`);
   }
   const p = BLOCKS[key].schema.safeParse(json);
-  if (!p.success) redirect(`/admin/content?error=schema&key=${key}`);
+  if (!p.success) redirect(`${ADMIN}/content?error=schema&key=${key}`);
   await db.contentBlock.upsert({ where: { key }, create: { key, data: p.data as Prisma.InputJsonValue }, update: { data: p.data as Prisma.InputJsonValue } });
   await audit(me, "edit", "content", key);
   invalidateHome();
-  redirect(`/admin/content?saved=${key}#b-${key}`);
+  redirect(`${ADMIN}/content?saved=${key}#b-${key}`);
 }
 
 /** Drop cached homepage + feed data (e.g. after `npm run images:import`). */
@@ -273,7 +274,7 @@ export async function refreshCache() {
   revalidateTag("posts");
   revalidatePath("/", "layout");
   await audit(me, "cache:refresh", "site");
-  redirect("/admin/content?saved=cache");
+  redirect(`${ADMIN}/content?saved=cache`);
 }
 
 // ───────────────────────────── users — SUPER ADMIN ONLY ─────────────────────────────
@@ -293,14 +294,14 @@ async function activeSupers(exceptId?: string) {
 export async function createUser(fd: FormData) {
   const me = await requireAdmin("SUPER");
   const p = z.object({ email: z.email().max(200).toLowerCase(), name: str(120).min(1), role: roleE, password: strongPw }).safeParse(fdo(fd));
-  if (!p.success) redirect("/admin/users?error=invalid");
-  if (await db.adminUser.findUnique({ where: { email: p.data.email } })) redirect("/admin/users?error=exists");
+  if (!p.success) redirect(`${ADMIN}/users?error=invalid`);
+  if (await db.adminUser.findUnique({ where: { email: p.data.email } })) redirect(`${ADMIN}/users?error=exists`);
   const permissions = p.data.role === "SUPER_ADMIN" ? [] : permList(fd);
   const u = await db.adminUser.create({
     data: { email: p.data.email, name: p.data.name, role: p.data.role, permissions, createdById: me.id, passwordHash: await bcrypt.hash(p.data.password, 12) },
   });
   await audit(me, "user:create", "AdminUser", u.id, { email: u.email, name: u.name, role: u.role, permissions });
-  redirect("/admin/users?saved=1");
+  redirect(`${ADMIN}/users?saved=1`);
 }
 
 export async function updateUser(fd: FormData) {
@@ -308,14 +309,14 @@ export async function updateUser(fd: FormData) {
   const p = z
     .object({ id, name: str(120).min(1), role: roleE, active: z.literal("on").optional(), password: z.union([strongPw, z.literal("")]) })
     .safeParse(fdo(fd));
-  if (!p.success) redirect(`/admin/users/${String(fd.get("id") || "")}?error=invalid`);
+  if (!p.success) redirect(`${ADMIN}/users/${String(fd.get("id") || "")}?error=invalid`);
   const d = p.data;
   const u = await db.adminUser.findUniqueOrThrow({ where: { id: d.id } });
   const active = d.active === "on";
   const permissions = d.role === "SUPER_ADMIN" ? [] : permList(fd);
   // you cannot lock yourself out, and there must always be one active super admin
-  if (u.id === me.id && (d.role !== "SUPER_ADMIN" || !active)) redirect(`/admin/users/${u.id}?error=self`);
-  if (u.role === "SUPER_ADMIN" && (d.role !== "SUPER_ADMIN" || !active) && (await activeSupers(u.id)) === 0) redirect(`/admin/users/${u.id}?error=last`);
+  if (u.id === me.id && (d.role !== "SUPER_ADMIN" || !active)) redirect(`${ADMIN}/users/${u.id}?error=self`);
+  if (u.role === "SUPER_ADMIN" && (d.role !== "SUPER_ADMIN" || !active) && (await activeSupers(u.id)) === 0) redirect(`${ADMIN}/users/${u.id}?error=last`);
 
   const changedAccess = u.role !== d.role || u.active !== active || !!d.password || u.permissions.slice().sort().join() !== permissions.slice().sort().join();
   await db.adminUser.update({
@@ -333,7 +334,7 @@ export async function updateUser(fd: FormData) {
     to: { name: d.name, role: d.role, active, permissions },
     passwordReset: !!d.password,
   });
-  redirect(`/admin/users/${u.id}?saved=1`);
+  redirect(`${ADMIN}/users/${u.id}?saved=1`);
 }
 
 /** Log a user out of every device (bumps their session version). */
@@ -342,7 +343,7 @@ export async function forceLogout(fd: FormData) {
   const p = z.object({ id }).parse(fdo(fd));
   const u = await db.adminUser.update({ where: { id: p.id }, data: { sessionVersion: { increment: 1 } } });
   await audit(me, "user:logout-all", "AdminUser", u.id, { email: u.email });
-  redirect(p.id === me.id ? "/admin/login" : `/admin/users/${p.id}?saved=1`);
+  redirect(p.id === me.id ? `${ADMIN}/login` : `${ADMIN}/users/${p.id}?saved=1`);
 }
 
 /** Permanently delete an account. Their log-book entries stay (name/email were copied in). */
@@ -350,12 +351,12 @@ export async function deleteUser(fd: FormData) {
   const me = await requireAdmin("SUPER");
   const p = z.object({ id, confirm: z.string() }).parse(fdo(fd));
   const u = await db.adminUser.findUniqueOrThrow({ where: { id: p.id } });
-  if (u.id === me.id) redirect(`/admin/users/${u.id}?error=self`);
-  if (p.confirm.trim().toLowerCase() !== u.email) redirect(`/admin/users/${u.id}?error=confirm`);
-  if (u.role === "SUPER_ADMIN" && (await activeSupers(u.id)) === 0) redirect(`/admin/users/${u.id}?error=last`);
+  if (u.id === me.id) redirect(`${ADMIN}/users/${u.id}?error=self`);
+  if (p.confirm.trim().toLowerCase() !== u.email) redirect(`${ADMIN}/users/${u.id}?error=confirm`);
+  if (u.role === "SUPER_ADMIN" && (await activeSupers(u.id)) === 0) redirect(`${ADMIN}/users/${u.id}?error=last`);
   await audit(me, "user:delete", "AdminUser", u.id, { email: u.email, name: u.name, role: u.role });
   await db.adminUser.delete({ where: { id: u.id } });
-  redirect("/admin/users?saved=deleted");
+  redirect(`${ADMIN}/users?saved=deleted`);
 }
 
 // ───────────────────────────── own account (everyone) ─────────────────────────────
@@ -363,15 +364,15 @@ export async function deleteUser(fd: FormData) {
 export async function changeOwnPassword(fd: FormData) {
   const me = await requireAdmin();
   const p = z.object({ current: z.string().min(1).max(200), password: strongPw, confirm: z.string() }).safeParse(fdo(fd));
-  if (!p.success || p.data.password !== p.data.confirm) redirect("/admin/account?error=invalid");
+  if (!p.success || p.data.password !== p.data.confirm) redirect(`${ADMIN}/account?error=invalid`);
   const u = await db.adminUser.findUniqueOrThrow({ where: { id: me.id } });
   if (!(await bcrypt.compare(p.data.current, u.passwordHash))) {
     await audit(me, "account:password-wrong", "AdminUser", me.id);
-    redirect("/admin/account?error=current");
+    redirect(`${ADMIN}/account?error=current`);
   }
   await db.adminUser.update({ where: { id: me.id }, data: { passwordHash: await bcrypt.hash(p.data.password, 12), sessionVersion: { increment: 1 } } });
   await audit(me, "account:password", "AdminUser", me.id);
-  redirect("/admin/login?changed=1");
+  redirect(`${ADMIN}/login?changed=1`);
 }
 
 // ───────────────────────────── helpers ─────────────────────────────

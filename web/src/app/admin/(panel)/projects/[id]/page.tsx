@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -12,10 +13,10 @@ export default async function Project({ params, searchParams }: { params: Promis
   const p = await db.project.findUnique({ where: { id } });
   if (!p) notFound();
   const media = await db.mediaAsset.findMany({ where: { ownerType: "PROJECT", ownerId: p.id }, orderBy: { sort: "asc" } });
-  const back = `/admin/projects/${p.id}`;
+  const back = `${ADMIN}/projects/${p.id}`;
   return (
     <>
-      <Top title={`${p.order + 1}. ${p.titleBn}`} sub={p.titleEn}><a className={`${a.btn} ${a.ghost}`} href="/admin/projects">← তালিকা</a></Top>
+      <Top title={`${p.order + 1}. ${p.titleBn}`} sub={p.titleEn}><a className={`${a.btn} ${a.ghost}`} href={`${ADMIN}/projects`}>← তালিকা</a></Top>
       <Saved on={(await searchParams).saved} />
       <div className={a.grid2}>
         <form action={saveProject} className={`${a.card} ${a.form}`}>

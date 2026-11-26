@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Prisma } from "@prisma/client";
 import { can, requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -41,7 +42,7 @@ export default async function Posts({ searchParams }: { searchParams: Promise<Re
             return (
               <tr key={r.id}>
                 <td style={{ width: 72 }}>{th && <img src={`/api/media/${th.id}?v=thumb`} alt="" style={{ width: 64, height: 48, objectFit: "cover", borderRadius: 3 }} />}</td>
-                <td><a href={`/admin/posts/${r.id}`}>{r.title}</a></td>
+                <td><a href={`${ADMIN}/posts/${r.id}`}>{r.title}</a></td>
                 <td className={a.muted}>{ORGS.label(r.org)} · {ACTIVITY_TYPES.label(r.activityType)}</td>
                 <td className={a.muted}>{r.thana}, {r.district}</td>
                 <td><Pill s={r.status} /></td>
@@ -52,7 +53,7 @@ export default async function Posts({ searchParams }: { searchParams: Promise<Re
           {!rows.length && <tr><td colSpan={6} className={a.muted}>কিছু পাওয়া যায়নি।</td></tr>}
         </tbody>
       </table>
-      <Pager page={page} total={total} size={SIZE} base={`/admin/posts?${qs}`} />
+      <Pager page={page} total={total} size={SIZE} base={`${ADMIN}/posts?${qs}`} />
     </>
   );
 }

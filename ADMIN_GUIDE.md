@@ -2,7 +2,17 @@
 
 > For the site owner, every super admin, and any AI assistant working on this project.
 > General setup (Supabase, R2, Vercel) is in [`README.md`](README.md).
-> Last updated: **2026-11-23**
+> Last updated: **2026-11-26**
+
+---
+
+## 0. Where the admin panel lives
+
+The panel is **not** at `/admin`. Its address is `/<ADMIN_PATH>`, where `ADMIN_PATH` is a secret
+word set only in Vercel → Settings → Environment Variables (and the local `.env`). Plain `/admin`
+answers "page not found". The repository is public, so **never write the secret into the code,
+docs, issues or commit messages**. To change it: edit the variable in Vercel, then redeploy.
+If the variable is missing, the panel falls back to `/admin`. Code: `web/src/lib/admin-path.ts`.
 
 ---
 

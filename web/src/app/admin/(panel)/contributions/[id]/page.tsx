@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import { notFound } from "next/navigation";
 import { can, requireAdmin } from "@/lib/auth";
 import { audit } from "@/lib/audit";
@@ -19,7 +20,7 @@ export default async function Contribution({ params, searchParams }: { params: P
   ]);
   const contact = can(me, "COMPLAINT_PII") ? decrypt(c.contactEnc) : null;
   if (contact) await audit(me, "view:pii", "contribution", c.id);
-  const back = `/admin/contributions/${c.id}`;
+  const back = `${ADMIN}/contributions/${c.id}`;
   return (
     <>
       <Top title={c.title} sub={`${c.ref} · ${SUBJECTS.label(c.subject)} · ${c.createdAt.toLocaleString("en-GB")}`}>

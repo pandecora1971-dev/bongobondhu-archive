@@ -1,3 +1,4 @@
+import { ADMIN } from "@/lib/admin-path";
 import type { Prisma } from "@prisma/client";
 import { can, requireAdmin } from "@/lib/auth";
 import { permissionForOwner } from "@/lib/access";
@@ -39,8 +40,8 @@ export default async function Media({ searchParams }: { searchParams: Promise<Re
         <label className={a.muted}><input type="checkbox" name="ext" value="1" defaultChecked={sp.ext === "1"} /> শুধু বাইরের লিংক (ইমপোর্ট বাকি)</label>
         <button className={a.btn}>দেখান</button>
       </form>
-      <MediaGrid items={items} back={`/admin/media?${qs}`} canDelete={me.super} />
-      <Pager page={page} total={total} size={SIZE} base={`/admin/media?${qs}`} />
+      <MediaGrid items={items} back={`${ADMIN}/media?${qs}`} canDelete={me.super} />
+      <Pager page={page} total={total} size={SIZE} base={`${ADMIN}/media?${qs}`} />
     </>
   );
 }
