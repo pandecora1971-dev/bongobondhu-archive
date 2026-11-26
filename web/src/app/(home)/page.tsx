@@ -404,7 +404,7 @@ export default async function HomePage() {
                 items={H.projects.map((x) => ({
                   id: x.id,
                   title: p(x.titleBn, x.titleEn),
-                  photos: x.photos.map((o) => ({ src: o.src, local: o.local, alt: o.alt, caption: o.caption, credit: o.credit, sourceUrl: o.sourceUrl })),
+                  photos: x.photos.map((o) => ({ src: o.src, thumb: o.thumb, w: o.w, h: o.h, local: o.local, alt: o.alt, caption: o.caption, credit: o.credit, sourceUrl: o.sourceUrl })),
                 }))}
               />
             </div>

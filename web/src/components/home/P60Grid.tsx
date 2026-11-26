@@ -4,7 +4,7 @@ import Pic from "@/components/ui/Pic";
 import Placeholder from "@/components/ui/Placeholder";
 import { bnd, pad2 } from "@/lib/bn";
 
-type Photo = { src: string; local: boolean; alt: string; caption: string; credit: string; sourceUrl: string };
+type Photo = { src: string; thumb?: string; w?: number | null; h?: number | null; local: boolean; alt: string; caption: string; credit: string; sourceUrl: string };
 type Item = { id: string; title: string; photos: Photo[] };
 
 /** 60-project index: 4 cols desktop / 2 mobile, first 12 shown, hover cycles photos (1.4s). */
