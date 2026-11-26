@@ -421,7 +421,10 @@ As a super admin:
 
 ## 13. Gotchas met during development
 
-- **zod 4 keeps running refinements after an earlier check has failed.** Every `.refine()` must be safe on *any* string. A `new URL()` inside a refine once crashed every complaint that had no Facebook link; it's fixed now and covered by `test:validation`.
+- **https://www.xn--r5bd7bdrc3mtdd.com/rstsjdjdsdjdshjdslhdssakdkifdkfmdhjsahsakd
+-
+-
+- zod 4 keeps running refinements after an earlier check has failed.** Every `.refine()` must be safe on *any* string. A `new URL()` inside a refine once crashed every complaint that had no Facebook link; it's fixed now and covered by `test:validation`.
 - **Turnstile tokens are single-use.** Every form re-mounts the widget after a failed submission (the `capKey` state).
 
 - **React 19 resets a `<form>` after its action runs.** Automated tests must re-fill every field before resubmitting.
